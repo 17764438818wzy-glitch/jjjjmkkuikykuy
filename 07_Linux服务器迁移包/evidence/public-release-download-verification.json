@@ -1,0 +1,28 @@
+{
+  "url": "https://github.com/17764438818wzy-glitch/jjjjmkkuikykuy/releases/download/linux-server-migration-20261114/paperflow-sample100-20261114.tar.gz.part025",
+  "part": "paperflow-sample100-20261114.tar.gz.part025",
+  "anonymous_range_check": {
+    "curl_exit": 28,
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "seconds": 25.01,
+    "authenticated": false,
+    "stderr_bytes": 78,
+    "range": "bytes=0-65535",
+    "expected_sha256": "0b26da6f4ae0c033cc3ecb0fcba8f2822f558d39d69ed04e8b8142b333f6ee73",
+    "result": "not_confirmed",
+    "full_asset_verified": false
+  },
+  "full_part_download_attempt": {
+    "curl_exit": 28,
+    "bytes": 704512,
+    "sha256": "2afc8af1b1efec5d83f818ddd2311fa141e984d543bb3976f87b44181bbdde08",
+    "seconds": 25.3,
+    "authenticated": false,
+    "stderr_bytes": 98,
+    "part": "paperflow-sample100-20261114.tar.gz.part025",
+    "url": "https://github.com/17764438818wzy-glitch/jjjjmkkuikykuy/releases/download/linux-server-migration-20261114/paperflow-sample100-20261114.tar.gz.part025",
+    "public_download": "not_confirmed"
+  },
+  "scope": "Public 64KiB Range check only; full release assets checked with GitHub size/digest metadata."
+}
