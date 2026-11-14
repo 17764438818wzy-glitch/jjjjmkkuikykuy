@@ -1,0 +1,1309 @@
+{
+  "selection": {
+    "seed": "linux-migration-100-v1-20261114",
+    "quotas": {
+      "survey_case_applied": 17,
+      "engineering_system": 17,
+      "textual_normative": 17,
+      "experimental_testing": 17,
+      "theoretical_modeling": 16,
+      "creative_design": 16
+    },
+    "actual": {
+      "survey_case_applied": 17,
+      "engineering_system": 17,
+      "textual_normative": 17,
+      "experimental_testing": 17,
+      "theoretical_modeling": 16,
+      "creative_design": 16
+    },
+    "rejected_unavailable_candidates": [
+      {
+        "article_id": "9404b3e185c4db176bdfc4394e2f5b55",
+        "reason": "original_missing_on_NAS"
+      },
+      {
+        "article_id": "303a0671ba462241cdc30f5c4eddff40",
+        "reason": "original_missing_on_NAS"
+      }
+    ],
+    "rule": "complete inventory; all original file paths, sizes and hashes; confirmed NAS stat size; <=20 MiB original files per article; no claimed/sending rows at selection; md5(id+seed) order"
+  },
+  "observed_at_utc": "2026-11-14T12:01:19.698829+00:00",
+  "articles": [
+    {
+      "article_id": "067108aa94383c40d0ab822d5702c864",
+      "revision": 3,
+      "title": "趣味实验在小学科学教学中的实践研究",
+      "research_type": "experimental_testing",
+      "original_file_count": 1,
+      "source_sha256": "9bc0045f5df2411ada00e6db1d91317a830d131b4d1e361db5b65c43774c11c5",
+      "majors": [
+        "040101",
+        "040102",
+        "040107"
+      ]
+    },
+    {
+      "article_id": "0a12952b3b57f7961f4ada14ab069ea2",
+      "revision": 2,
+      "title": "On Confucianism in Journey to the West",
+      "research_type": "textual_normative",
+      "original_file_count": 1,
+      "source_sha256": "cc076b14a66fc4fe29c4a5d929ad9a7260fbec786469063c507db29549a7c3c9",
+      "majors": [
+        "050112T",
+        "010101",
+        "050101"
+      ]
+    },
+    {
+      "article_id": "0c078e2a39111054a906ad96199bf5ea",
+      "revision": 6,
+      "title": "荜茇乙醇提取物对小鼠慢性实验性结肠炎的保护作用",
+      "research_type": "experimental_testing",
+      "original_file_count": 1,
+      "source_sha256": "68028f32ca786b570b2b6872074cdcc60a92e84315c2a9bb546368b2a662efb4",
+      "majors": [
+        "100801",
+        "100701"
+      ]
+    },
+    {
+      "article_id": "0da88d02715f07be7fb571b8abcd88fa",
+      "revision": 3,
+      "title": "基于杜邦分析法下X商业银行盈利能力分析",
+      "research_type": "survey_case_applied",
+      "original_file_count": 1,
+      "source_sha256": "9166c3e196e50492a490181dbc95e204093a839afd5bf0c68982047f7db10ee3",
+      "majors": [
+        "120203K",
+        "120204",
+        "020301K"
+      ]
+    },
+    {
+      "article_id": "128c67e4f05bff51141a191c0abb60c1",
+      "revision": 3,
+      "title": "毕业创作《初醒》论述报告",
+      "research_type": "creative_design",
+      "original_file_count": 1,
+      "source_sha256": "e3b76e0bf24ad7ce0adce945b611c7eda0685dea675ee4bb466f39e45bb94b36",
+      "majors": [
+        "130402",
+        "130406T",
+        "130401"
+      ]
+    },
+    {
+      "article_id": "14f2e3f7f84ba279d63930fe2edbeba9",
+      "revision": 7,
+      "title": "年产220万吨合金结构钢大方坯连铸车间设计",
+      "research_type": "engineering_system",
+      "original_file_count": 2,
+      "source_sha256": "c58f465e1efb4aeca1ce13f72206f5c33598671f865f8ed526dfe84049d71f82",
+      "majors": [
+        "080405",
+        "080404"
+      ]
+    },
+    {
+      "article_id": "1536de8241ec777dc4a6884639a59b47",
+      "revision": 2,
+      "title": "题名待核实（554bcda40db0）",
+      "research_type": "survey_case_applied",
+      "original_file_count": 1,
+      "source_sha256": "554bcda40db062002103fb4d29e5a6248f2b1a360c9f161a762a7e289212e373",
+      "majors": [
+        "120202",
+        "020401",
+        "120205"
+      ]
+    },
+    {
+      "article_id": "1663f28aae6c6ad4141a4085a1253134",
+      "revision": 4,
+      "title": "基于PLC圆形水果自动分拣系统设计",
+      "research_type": "engineering_system",
+      "original_file_count": 2,
+      "source_sha256": "ea44fc54f4dbed910beabbeff6b9eddb4c9886cf8c360785072dd265e78caccd",
+      "majors": [
+        "080601",
+        "080202",
+        "080801"
+      ]
+    },
+    {
+      "article_id": "1905d1bc687efd0e36c0c991436ff4fe",
+      "revision": 3,
+      "title": "生物炭和沸石不同配比对半夏抗氧化性的影响",
+      "research_type": "experimental_testing",
+      "original_file_count": 1,
+      "source_sha256": "3fc21a0d11f1c7f34bd1093ddc2f862f3c64d852c356bc01e836e2820645d732",
+      "majors": [
+        "090101",
+        "090102",
+        "090201"
+      ]
+    },
+    {
+      "article_id": "200fce9bb2c3e54c7683de2346670995",
+      "revision": 2,
+      "title": "兴业证券哈尔滨友谊路证券营业部客户关系管理研究",
+      "research_type": "survey_case_applied",
+      "original_file_count": 1,
+      "source_sha256": "8754847888e29dcb5d779ca07a58ec767ab25f22257cc29f8fabc793592748e1",
+      "majors": [
+        "120206",
+        "120201K",
+        "120202"
+      ]
+    },
+    {
+      "article_id": "21234c4fd39d91fa53a138d3670ae6ef",
+      "revision": 6,
+      "title": "网络时代汉语的发展变化和电影翻译",
+      "research_type": "textual_normative",
+      "original_file_count": 1,
+      "source_sha256": "c3cad2191c2812fe7579c07a1b36e57b7ba8b5beaf5b2f2e767b45d2c693c0e6",
+      "majors": [
+        "050201",
+        "050261",
+        "050102"
+      ]
+    },
+    {
+      "article_id": "254afc584121e90c2824958769761454",
+      "revision": 4,
+      "title": "简化剩余系隐性性质的挖掘与拓展应用",
+      "research_type": "theoretical_modeling",
+      "original_file_count": 1,
+      "source_sha256": "0b33a07359f3516dd0e423cc0939a8bab0a284501b76caebfa5820a4fe870f97",
+      "majors": [
+        "080904K",
+        "070102",
+        "070101"
+      ]
+    },
+    {
+      "article_id": "256390e47367d8640eda1694412aac25",
+      "revision": 5,
+      "title": "初中生心理韧性与自我控制的关系",
+      "research_type": "survey_case_applied",
+      "original_file_count": 1,
+      "source_sha256": "55d52c083b3b0fadaa2b3e8a1472d490ffc79603ea9b67bd10ca7da8e5648866",
+      "majors": [
+        "040101",
+        "071102",
+        "071101"
+      ]
+    },
+    {
+      "article_id": "256768f5a0abbe5cd5c230dcbab371fe",
+      "revision": 4,
+      "title": "瑶族体医融合下肥胖症患者减重的运动康复的研究",
+      "research_type": "experimental_testing",
+      "original_file_count": 1,
+      "source_sha256": "39df58c238359733021e2dfa510ef7d23e420660510e3656bd9d90876be6c9f5",
+      "majors": [
+        "040206T",
+        "040205",
+        "100406T"
+      ]
+    },
+    {
+      "article_id": "264e06f4c733e63aa2b7dc25ccfc88c6",
+      "revision": 5,
+      "title": "大掺量磷石膏超硫酸盐水泥的水化特性研究",
+      "research_type": "experimental_testing",
+      "original_file_count": 1,
+      "source_sha256": "329f4d3d88aeba725f6a2a0314dd3924c214bf00a8530ffc730897c05bd59fff",
+      "majors": [
+        "080401",
+        "081001",
+        "080406"
+      ]
+    },
+    {
+      "article_id": "27bf43356cc29c8b4c260d749b458dde",
+      "revision": 3,
+      "title": "水彩画技法在创作中的重要作用之我见",
+      "research_type": "creative_design",
+      "original_file_count": 1,
+      "source_sha256": "965dd3e25cdc75cdd8c2b2ab6f9515923b50271feeae2991114ca10c0f2e8e51",
+      "majors": [
+        "130413TK",
+        "130402",
+        "130401"
+      ]
+    },
+    {
+      "article_id": "27d944dc6f0eec1aea9acc3b77b150c9",
+      "revision": 5,
+      "title": "湖北省企业对外直接投资研究",
+      "research_type": "survey_case_applied",
+      "original_file_count": 1,
+      "source_sha256": "d92e4ff86a66d92ce11c769b36534aea65e35b5068ab6b7bcd33378c5d157b43",
+      "majors": [
+        "020401",
+        "120201K",
+        "020304"
+      ]
+    },
+    {
+      "article_id": "28c51b47b90ae63f30b10121b4697e1a",
+      "revision": 5,
+      "title": "基于结构和纹理相似性的图像质量评价方法",
+      "research_type": "theoretical_modeling",
+      "original_file_count": 1,
+      "source_sha256": "1b1bf893e77713197e2c84a384b7f70f8175a871477720c2da8edd267cf68edd",
+      "majors": [
+        "080717T",
+        "080721T",
+        "080701"
+      ]
+    },
+    {
+      "article_id": "2ce17dbb69c6d84138e055633472204d",
+      "revision": 3,
+      "title": "毕业创作《秋收》论述报告",
+      "research_type": "creative_design",
+      "original_file_count": 1,
+      "source_sha256": "60fc14f586bd43e65baf3fd16f702bcafe925c9e8b9b18262c1e42975704fb23",
+      "majors": [
+        "130401",
+        "130402"
+      ]
+    },
+    {
+      "article_id": "2ec654a0a1c04dcf70f2c969b7e5eae4",
+      "revision": 3,
+      "title": "梧州市城西社区公共健身设施适老化问题研究",
+      "research_type": "survey_case_applied",
+      "original_file_count": 1,
+      "source_sha256": "939f288b6b39182bb9e50a7cd72bd03e95ac521d50083251362b5be85797ce2e",
+      "majors": [
+        "120401",
+        "120414T",
+        "040203"
+      ]
+    },
+    {
+      "article_id": "30304ef8932559e384c81621fa3bc963",
+      "revision": 2,
+      "title": "装修工程设计方案",
+      "research_type": "creative_design",
+      "original_file_count": 1,
+      "source_sha256": "c944a04247405c4528cb132c03d2a703813befc07721967c5dd0e35376098d4f",
+      "majors": [
+        "082801",
+        "130503"
+      ]
+    },
+    {
+      "article_id": "39e9cc0fc06aabbd57bfeadc040c4349",
+      "revision": 5,
+      "title": "三江侗族木构建筑文化衍生产品设计",
+      "research_type": "creative_design",
+      "original_file_count": 1,
+      "source_sha256": "93dc4ff7dfb5e2a84c8e8bbaabce7bcfed1cc59c306b91c9588496345aed7c51",
+      "majors": [
+        "080205",
+        "130509T",
+        "130504"
+      ]
+    },
+    {
+      "article_id": "3b732217ff16c7035c469b05f83b1d18",
+      "revision": 2,
+      "title": "深圳万润科技股份有限公司内部审计问题研究",
+      "research_type": "survey_case_applied",
+      "original_file_count": 1,
+      "source_sha256": "5770cdcf7ecc1627f8c4da56cfb8feb8f9c1dd0f1c72bd339d329c8e7f5adf8d",
+      "majors": [
+        "120203K",
+        "120207",
+        "120201K"
+      ]
+    },
+    {
+      "article_id": "3e47093885740be1fd5c4212bf163161",
+      "revision": 5,
+      "title": "基于聚苯胺/WO3复合正极材料在锌离子电池应用中的性能研究",
+      "research_type": "experimental_testing",
+      "original_file_count": 1,
+      "source_sha256": "f5c53705409f1af927b153ca67a63e2da48c24b8d371cd32ab3b5b0862ec9ed8",
+      "majors": [
+        "080403",
+        "081301",
+        "080414T"
+      ]
+    },
+    {
+      "article_id": "3ea984889952e5663eba2e6012432044",
+      "revision": 5,
+      "title": "电机驱动调速模型预测控制系统设计",
+      "research_type": "engineering_system",
+      "original_file_count": 1,
+      "source_sha256": "b8fbe43fc28f7d3ed7a39c1100a9d6305753581b08a77f0807fe7ed1cddd5844",
+      "majors": [
+        "080601",
+        "080605T",
+        "080801"
+      ]
+    },
+    {
+      "article_id": "438048c214e504ef19a5df9f6bc16076",
+      "revision": 3,
+      "title": "广州花园酒店服务质量管理研究",
+      "research_type": "survey_case_applied",
+      "original_file_count": 1,
+      "source_sha256": "a676623815ab70ccb2b0a11bbb37826fc537658caf6ccbc844777fef07e856a3",
+      "majors": [
+        "120901K",
+        "120902",
+        "120201K"
+      ]
+    },
+    {
+      "article_id": "460698c1ccf71369aff298a7ddcfe6aa",
+      "revision": 4,
+      "title": "女巫之城动漫形象及衍生品设计",
+      "research_type": "creative_design",
+      "original_file_count": 1,
+      "source_sha256": "c978862d574ed811b9551afaa9de99538a4af429d2cc9db23349c9fd0cf946de",
+      "majors": [
+        "130310",
+        "130504",
+        "130508"
+      ]
+    },
+    {
+      "article_id": "46cedc09071ceba83fdb21dd91c7efb0",
+      "revision": 3,
+      "title": "《盛世家园踏歌来》",
+      "research_type": "creative_design",
+      "original_file_count": 1,
+      "source_sha256": "545e6a0e82f235df8f547e39a5f0d3fdf62d47d23eece1b8c8084d50fdf2da95",
+      "majors": [
+        "130301",
+        "130202",
+        "130201"
+      ]
+    },
+    {
+      "article_id": "47e63a99eea51a357a4cab9269d480b8",
+      "revision": 3,
+      "title": "试论高中历史教学对学生历史因果思维的培育——以《中外历史纲要（下）》第十七课为例",
+      "research_type": "textual_normative",
+      "original_file_count": 1,
+      "source_sha256": "6a87b362fdd5a5621450ed02f0986c16874e62841606747311a7ca9455549371",
+      "majors": [
+        "060101",
+        "040103",
+        "040101"
+      ]
+    },
+    {
+      "article_id": "4965bcab669d657662fc94664a869234",
+      "revision": 3,
+      "title": "基于单片机的酒精检测系统的设计",
+      "research_type": "engineering_system",
+      "original_file_count": 1,
+      "source_sha256": "8f028e98431bf0a4cbde501894292b089165c23bba5dbc28ba2189ca62d2c8a0",
+      "majors": [
+        "080905",
+        "080701",
+        "080801"
+      ]
+    },
+    {
+      "article_id": "4a86a9f267a3bc36610f23ce268f55fb",
+      "revision": 3,
+      "title": "偏瘫肢体综合训练对脑卒中（前中期）的治疗效果研究",
+      "research_type": "experimental_testing",
+      "original_file_count": 1,
+      "source_sha256": "6611adaf0e1c01f45954aa7d9df366805bcedc6eb51458ae73eea31e29c2ec31",
+      "majors": [
+        "101005",
+        "100201K",
+        "101101K"
+      ]
+    },
+    {
+      "article_id": "502be5752624b6db30387cbfe0587d8a",
+      "revision": 3,
+      "title": "“形影不离”唐山皮影数字可视化设计",
+      "research_type": "creative_design",
+      "original_file_count": 1,
+      "source_sha256": "090bf24f6dd7fc2ae8f5ee2470e39599208f9c3df09a0c75f74f2dfe9ede00aa",
+      "majors": [
+        "130508",
+        "130509T",
+        "130502"
+      ]
+    },
+    {
+      "article_id": "5263bc77fc7bb19d899eb4d43000fd3a",
+      "revision": 5,
+      "title": "乘用车电子机械制动系统",
+      "research_type": "engineering_system",
+      "original_file_count": 1,
+      "source_sha256": "7451c642450fd0aa9b2a529202bad4a9c9634f55b7b380163613794618519df1",
+      "majors": [
+        "080202",
+        "080207",
+        "080204"
+      ]
+    },
+    {
+      "article_id": "530d8db3aa89f67342ea55def8d08a9c",
+      "revision": 4,
+      "title": "《会计与财务基础》（第二章节选）翻译报告",
+      "research_type": "textual_normative",
+      "original_file_count": 1,
+      "source_sha256": "c70ec507ed2e637b75010fee5cd84d554e73db9162125bd3e5a03563b74c1bec",
+      "majors": [
+        "050261",
+        "120203K",
+        "050262"
+      ]
+    },
+    {
+      "article_id": "56157599bb875a3f21b7f7904dcd60fa",
+      "revision": 3,
+      "title": "《湘音乡情》",
+      "research_type": "creative_design",
+      "original_file_count": 1,
+      "source_sha256": "72ff444d5398d214baeb7590df3bcea69ba428d34ed618a308d13a2b1ffe8673",
+      "majors": [
+        "130212T",
+        "130201",
+        "130202"
+      ]
+    },
+    {
+      "article_id": "5c846c0d7167913c8aafdebe41a7d91e",
+      "revision": 2,
+      "title": "题名待核实（93bc0f9d3f96）",
+      "research_type": "textual_normative",
+      "original_file_count": 1,
+      "source_sha256": "93bc0f9d3f9667e067ae2d4349b0aaf443ee2b97d3645b6b201a009d5452dd15",
+      "majors": [
+        "050201",
+        "030304T",
+        "050101"
+      ]
+    },
+    {
+      "article_id": "5f5191c4f10cf479d3a050faa6f64ad3",
+      "revision": 5,
+      "title": "基于概率扩散模型的图像生成算法",
+      "research_type": "theoretical_modeling",
+      "original_file_count": 1,
+      "source_sha256": "35ea49908b5f6cc21b46472e380a54d5d87d06b90adde7345fc66b25db286572",
+      "majors": [
+        "080717T",
+        "080901",
+        "080721T"
+      ]
+    },
+    {
+      "article_id": "5f709a9dbf40df3038a37c8e094a225a",
+      "revision": 4,
+      "title": "中美家庭父子关系的跨文化差异对比分析—以电影《当幸福来敲门》和《向日葵》为例",
+      "research_type": "textual_normative",
+      "original_file_count": 1,
+      "source_sha256": "cef174ad95f8ba7deec1f0fbe27f2ae998ed8ddbb94b5f803d95e1a3535b7ae5",
+      "majors": [
+        "030301",
+        "050304",
+        "050201"
+      ]
+    },
+    {
+      "article_id": "5fe1ef8509a01f34e7048dc3f7ec256f",
+      "revision": 4,
+      "title": "环己烯的制备及其实验条件的探究",
+      "research_type": "experimental_testing",
+      "original_file_count": 1,
+      "source_sha256": "591ed037edc4cfdbe4f2bda018893026223d8817cdbb8500783bf97e6069be26",
+      "majors": [
+        "081301",
+        "070301",
+        "070302"
+      ]
+    },
+    {
+      "article_id": "62bbc94105bfc418dd9a24d1432c0b83",
+      "revision": 3,
+      "title": "盛世家园踏歌来（The Home of the Prosperous Times Comes with Songs）",
+      "research_type": "creative_design",
+      "original_file_count": 1,
+      "source_sha256": "a0d45bed13d61eac645e2948da7c8f4f817cf96058513e44e7587b75efa70637",
+      "majors": [
+        "130102T",
+        "130202",
+        "130201"
+      ]
+    },
+    {
+      "article_id": "62c78afd5a05e4d6e4ea29884f4a6239",
+      "revision": 5,
+      "title": "正项级数收敛性的判别法",
+      "research_type": "theoretical_modeling",
+      "original_file_count": 1,
+      "source_sha256": "c19856768536002ae37018007d82d01d4863a988fe1ad6b2f882b75eafa009ae",
+      "majors": [
+        "070102",
+        "070101"
+      ]
+    },
+    {
+      "article_id": "634e1a643d67ade813282ff01e37d507",
+      "revision": 2,
+      "title": "Analysis of Quality Management Problems and Countermeasures of hegang Changqi Machinery Manufacturing Co., Ltd.",
+      "research_type": "survey_case_applied",
+      "original_file_count": 1,
+      "source_sha256": "a89888e87a5be7e987f390604d95eb01aa7101bbdf856e559f03836b1354be10",
+      "majors": [
+        "120701",
+        "120201K"
+      ]
+    },
+    {
+      "article_id": "6a97d9d908fb12e17c4bd424b2920266",
+      "revision": 2,
+      "title": "杭州PET HOUSE宠物互动体验馆装饰工程设计方案",
+      "research_type": "creative_design",
+      "original_file_count": 1,
+      "source_sha256": "1567ad404bac5ac436917a74cd814383ecac4d16a83d6058f49f1373ce578d34",
+      "majors": [
+        "130503"
+      ]
+    },
+    {
+      "article_id": "6e34401991c1ed1aeb3d6e8a4523828d",
+      "revision": 4,
+      "title": "《英语语言教学实践》（第十八章节选）翻译报告",
+      "research_type": "textual_normative",
+      "original_file_count": 1,
+      "source_sha256": "99d139decb84740159bd6aa6d60c1e26ec561f4c707d901ad91e5ff4f21479ec",
+      "majors": [
+        "040101",
+        "050201",
+        "050261"
+      ]
+    },
+    {
+      "article_id": "752af16e9ea45dadbfb060779401715c",
+      "revision": 5,
+      "title": "ADMM译码中奇偶校验多胞体投影算法硬件实现研究",
+      "research_type": "engineering_system",
+      "original_file_count": 1,
+      "source_sha256": "4f12b3aa9265817de6c0acc1321e4531aa90c6c5d749f9ee4df6ef2268052af7",
+      "majors": [
+        "080710T",
+        "080703",
+        "080701"
+      ]
+    },
+    {
+      "article_id": "780600e669e4afc914914c42fff55708",
+      "revision": 3,
+      "title": "广东省化妆品出口贸易问题及对策",
+      "research_type": "survey_case_applied",
+      "original_file_count": 1,
+      "source_sha256": "323da81ecc50d3d51d49824355b346e454557278035df678b25d00f5e0b0be34",
+      "majors": [
+        "120202",
+        "020401",
+        "020402"
+      ]
+    },
+    {
+      "article_id": "79ebfd63c314042e829ef005b526aa23",
+      "revision": 3,
+      "title": "高校学生实训信息管理平台的系统设计",
+      "research_type": "engineering_system",
+      "original_file_count": 1,
+      "source_sha256": "a9d9698513eae86a2f3993d45055990623ef2600140992983bbfe26677b09d35",
+      "majors": []
+    },
+    {
+      "article_id": "7ad8528a58689f694cf148df43894e63",
+      "revision": 3,
+      "title": "基于初中力学创新实验的科学思维培养",
+      "research_type": "experimental_testing",
+      "original_file_count": 1,
+      "source_sha256": "0550e2f431eaa79fcf531daf0edb2b16cc2e9d859f6c0fd433818c0f66c9122c",
+      "majors": [
+        "040101",
+        "040102",
+        "070201"
+      ]
+    },
+    {
+      "article_id": "7dc38fef1abb5bd0a5fe51c56ea043da",
+      "revision": 2,
+      "title": "装修工程设计方案",
+      "research_type": "creative_design",
+      "original_file_count": 1,
+      "source_sha256": "166086bbdf912e360a2477b007eb2a26a57c904102363e7d45c56b8497725dd1",
+      "majors": [
+        "130503"
+      ]
+    },
+    {
+      "article_id": "7ee880b1cce07940f635411491d9f8e1",
+      "revision": 3,
+      "title": "年产1200吨牛肉白萝卜香肠工厂设计",
+      "research_type": "engineering_system",
+      "original_file_count": 1,
+      "source_sha256": "fa4b22f91cc9c63f068b5f156bd37622a8ab0d8fb10111d6b554560ed4f8af3b",
+      "majors": [
+        "082701",
+        "120701",
+        "082702"
+      ]
+    },
+    {
+      "article_id": "7f049c032db580494f07b41af957d05e",
+      "revision": 5,
+      "title": "单相并网逆变器的锁相环设计",
+      "research_type": "theoretical_modeling",
+      "original_file_count": 1,
+      "source_sha256": "743f7f7c91b239019878579b1fcab2027c3a5b5d04f185093d4bd220de9bba6a",
+      "majors": [
+        "080601",
+        "080604T",
+        "080602T"
+      ]
+    },
+    {
+      "article_id": "80674ecc49520db1841ca7ae9b4b0b43",
+      "revision": 5,
+      "title": "双功能MOF基催化剂用于CO2转化研究",
+      "research_type": "experimental_testing",
+      "original_file_count": 1,
+      "source_sha256": "ef04a40c176911c94702a01db2f99483ab32ba2020289fe33c04380a1d68e46c",
+      "majors": [
+        "070302",
+        "081301",
+        "080403"
+      ]
+    },
+    {
+      "article_id": "84bf4afd36bb71f3fbf9e2a7a2dc37b7",
+      "revision": 4,
+      "title": "西西弗书店进销存管理信息系统分析与设计",
+      "research_type": "engineering_system",
+      "original_file_count": 1,
+      "source_sha256": "298115ecbdf83fd5e316b926fbebb761b46e9b3048904be5d716f5e097e4af9e",
+      "majors": [
+        "120102",
+        "080902",
+        "080901"
+      ]
+    },
+    {
+      "article_id": "84c815b9f4da57b4a19da119a018c031",
+      "revision": 4,
+      "title": "厦门港务财务风险分析与控制研究",
+      "research_type": "survey_case_applied",
+      "original_file_count": 1,
+      "source_sha256": "92ae5d9c89c28c234c5db168537293d825d0c4b40185e022a9d3528026f4bb77",
+      "majors": [
+        "020301K",
+        "120204",
+        "120203K"
+      ]
+    },
+    {
+      "article_id": "88735b2742ae2772a6726308754e6c48",
+      "revision": 4,
+      "title": "桑叶有效成分的提取及药理作用研究进展",
+      "research_type": "textual_normative",
+      "original_file_count": 1,
+      "source_sha256": "f0e16dbf991db90a70c28a53619c293da2091eb3d5df01f0f95cf543a4994b0a",
+      "majors": [
+        "100802",
+        "100801",
+        "100701"
+      ]
+    },
+    {
+      "article_id": "8a9a9056ab0709ec9932f9d41f232331",
+      "revision": 5,
+      "title": "发泡磷建筑石膏防火门芯胶凝材料性能研究",
+      "research_type": "experimental_testing",
+      "original_file_count": 1,
+      "source_sha256": "b12523f2055a5977f4b936519e5ab59178c6f2e7a2654ca506ff64c79bb680e5",
+      "majors": [
+        "080406",
+        "081001",
+        "080401"
+      ]
+    },
+    {
+      "article_id": "8b83e285d18eacc13c99903249c72a37",
+      "revision": 4,
+      "title": "基于STM32的公交乘坐服务系统",
+      "research_type": "engineering_system",
+      "original_file_count": 1,
+      "source_sha256": "2301bf34c538cacd303a4718c78001bbd22b9037ac5c0270e9a2ad30ca149f28",
+      "majors": [
+        "080905",
+        "080701",
+        "080901"
+      ]
+    },
+    {
+      "article_id": "9318a515c273f732bc97f15dbb5d1f22",
+      "revision": 5,
+      "title": "管网压降模拟计算",
+      "research_type": "engineering_system",
+      "original_file_count": 1,
+      "source_sha256": "593611b422a62613abb426d1c5f467433b0159cd0b1c384be5be2e8eacc25589",
+      "majors": [
+        "080102",
+        "080501",
+        "081002"
+      ]
+    },
+    {
+      "article_id": "95d7b08cc3d78c919a9c0abe178900f2",
+      "revision": 5,
+      "title": "车辆座椅悬架减振机构设计",
+      "research_type": "theoretical_modeling",
+      "original_file_count": 1,
+      "source_sha256": "9fe253f1d8f801d1ccc8ae3e957eee86fa9f467c238966a2a90a029a18ad3b9c",
+      "majors": [
+        "080801",
+        "080204",
+        "080207"
+      ]
+    },
+    {
+      "article_id": "96c0c0e2154999e7c63cc79f61cf1ef3",
+      "revision": 3,
+      "title": "基于自贸区视角的江苏跨境电商发展策略研究",
+      "research_type": "survey_case_applied",
+      "original_file_count": 1,
+      "source_sha256": "778219b3d501c40a90aff028556b31cd62407d33322f4494d38dad168a823150",
+      "majors": [
+        "120205",
+        "120803T",
+        "020401"
+      ]
+    },
+    {
+      "article_id": "9b56826ad03bb21b07ca8dc505ae0245",
+      "revision": 5,
+      "title": "光热槽式反射镜面灰尘微颗粒沉积特性数值研究",
+      "research_type": "theoretical_modeling",
+      "original_file_count": 1,
+      "source_sha256": "b0104f527b863a68207a595a755937f1e00a73ff465c26e9f6aa69ac3d62b463",
+      "majors": [
+        "080501",
+        "080503T"
+      ]
+    },
+    {
+      "article_id": "9cb21055e1846904d4ec4c3b400da60b",
+      "revision": 5,
+      "title": "基于概念分解的聚类算法性能分析",
+      "research_type": "theoretical_modeling",
+      "original_file_count": 1,
+      "source_sha256": "2fbac9035c034411e17415bda5d8edcf2e3a411e4b916b8de3b0aa60121f013f",
+      "majors": [
+        "080910T",
+        "080801",
+        "080901"
+      ]
+    },
+    {
+      "article_id": "a331d87b09f67c40dff7d6288ed872ed",
+      "revision": 4,
+      "title": "论《炸裂志》中的民间叙事",
+      "research_type": "textual_normative",
+      "original_file_count": 1,
+      "source_sha256": "bc952af8a527d8bfac51097177bf0c6a9adf8b432b1725d25c7f6a417ca004ba",
+      "majors": [
+        "050101"
+      ]
+    },
+    {
+      "article_id": "a804ce3daf94acd8089c5d2318c2461c",
+      "revision": 3,
+      "title": "毕业创作《朝起暮落》的论述报告",
+      "research_type": "creative_design",
+      "original_file_count": 1,
+      "source_sha256": "c8dfff19888f50c4109425a8b588c23266c3d36c8e4a37a8d1399b0940e6f0e8",
+      "majors": [
+        "130401",
+        "130402"
+      ]
+    },
+    {
+      "article_id": "aa2b1129d2afd07246d8fafdfa5d7f2b",
+      "revision": 3,
+      "title": "校园外卖电商小程序的设计与实现",
+      "research_type": "engineering_system",
+      "original_file_count": 1,
+      "source_sha256": "4565bf5f2c0a5c3b0b8bf6703dda8351a3de2b8c0cc3a37ae1838b35ed3c799a",
+      "majors": [
+        "120102",
+        "080901",
+        "080902"
+      ]
+    },
+    {
+      "article_id": "aaad5bdf5257c88b69d1d4f84aaaf290",
+      "revision": 3,
+      "title": "马蹄全果速溶粉的研制及其年产1800 t生产线设计",
+      "research_type": "experimental_testing",
+      "original_file_count": 1,
+      "source_sha256": "b4564b1bc88826434840eeaf5eac8fb696c1358ab562024e846844c46580bcd2",
+      "majors": [
+        "082701",
+        "082702",
+        "120103"
+      ]
+    },
+    {
+      "article_id": "aaf8e125c8275b139c0e1a01012bb8ed",
+      "revision": 4,
+      "title": "区域活动中幼儿分享行为的指导策略研究",
+      "research_type": "survey_case_applied",
+      "original_file_count": 1,
+      "source_sha256": "96539c693abff7c07a2606310803c5d7eb8587411af9e6478e983314ee5cd90e",
+      "majors": [
+        "040115T",
+        "040101",
+        "040106"
+      ]
+    },
+    {
+      "article_id": "ae693e196774d6d63cf85ad520deda42",
+      "revision": 5,
+      "title": "电子雷管延期时间对爆破振动效应的影响规律",
+      "research_type": "experimental_testing",
+      "original_file_count": 1,
+      "source_sha256": "309d003ad44f90b51a0ba2ffc217fedf79cb658a30212231c208fc72636a62bf",
+      "majors": [
+        "082901",
+        "080102",
+        "081001"
+      ]
+    },
+    {
+      "article_id": "b01b0e4688457b6a9fe80a145a22f3c8",
+      "revision": 4,
+      "title": "邯郸市丛台区顺丰速运末端配送路径优化",
+      "research_type": "theoretical_modeling",
+      "original_file_count": 1,
+      "source_sha256": "fa0d1609ac0cd91f3e5a1f6321841388128c30f609feceba5cee6eb9b060e068",
+      "majors": [
+        "120602",
+        "120601",
+        "081801"
+      ]
+    },
+    {
+      "article_id": "b02c79f93fa10a3754c16ea0bb8e49e3",
+      "revision": 5,
+      "title": "磷酸硼多孔陶瓷制备",
+      "research_type": "experimental_testing",
+      "original_file_count": 1,
+      "source_sha256": "e314daf91dde388f838e07aa755e9d09c2c2220f3b71c08c13c25f092b421cf5",
+      "majors": [
+        "080401",
+        "080406",
+        "080403"
+      ]
+    },
+    {
+      "article_id": "b10009dc0a700097ca4974d99426dabc",
+      "revision": 3,
+      "title": "“内卷”对大学生的消极影响及解决路径探究——以保定学院为例",
+      "research_type": "survey_case_applied",
+      "original_file_count": 1,
+      "source_sha256": "d279b8d4d872bbe5b24fb59e59a981980eafe87aec1d4afa790cfbbcbf029468",
+      "majors": [
+        "040101",
+        "030301",
+        "030503"
+      ]
+    },
+    {
+      "article_id": "b3d58dfdfd5e7e436f5c423bdccfc501",
+      "revision": 4,
+      "title": "商标反向混淆侵权认定研究",
+      "research_type": "textual_normative",
+      "original_file_count": 1,
+      "source_sha256": "3e7140bfe53473a18f1db8eeb98ca3f4dc06efe91b37304307d1da448593e0d9",
+      "majors": [
+        "030101K",
+        "030102T"
+      ]
+    },
+    {
+      "article_id": "b436093b02618c9c217fef5392cfeb53",
+      "revision": 3,
+      "title": "论明代白银货币化对当代中国的启示",
+      "research_type": "textual_normative",
+      "original_file_count": 1,
+      "source_sha256": "b3c3b1da536f8d01d25dbd665b45b470933cfd8ebecd1d7e7ad5caba0e72b0de",
+      "majors": [
+        "120402",
+        "060101",
+        "020101"
+      ]
+    },
+    {
+      "article_id": "b60a01fefb006dd4a038e3e91b749a6b",
+      "revision": 4,
+      "title": "跨文化交际视角下中西隐私观对比研究",
+      "research_type": "textual_normative",
+      "original_file_count": 1,
+      "source_sha256": "568accf49d0f4e4abe146eecb058d78f48f863853f156eb2b0cb14f1f686f124",
+      "majors": [
+        "050201",
+        "0502104TK",
+        "050304"
+      ]
+    },
+    {
+      "article_id": "b6487d2da8b9f871273699a30358c431",
+      "revision": 4,
+      "title": "基于AT89C52单片机的语音万年历系统的设计",
+      "research_type": "engineering_system",
+      "original_file_count": 1,
+      "source_sha256": "60203591c48d3b70caeaef43cf617de8ad58156943d6e52bb4a3534eea2ef804",
+      "majors": [
+        "080701",
+        "080714T",
+        "080801"
+      ]
+    },
+    {
+      "article_id": "b754ba75080783ca35f92534c96c1fcf",
+      "revision": 2,
+      "title": "浅析《聊斋志异》中的批判性文学性质",
+      "research_type": "textual_normative",
+      "original_file_count": 1,
+      "source_sha256": "3504ef485bd9b1536ffc7f85a35a96434004171638fcf9a4294d33e179d9c08e",
+      "majors": [
+        "050101"
+      ]
+    },
+    {
+      "article_id": "b758d12ef26d6945d70ef8b1cdecc8dc",
+      "revision": 5,
+      "title": "珊瑚礁灰岩宏微观损伤特性试验研究",
+      "research_type": "experimental_testing",
+      "original_file_count": 1,
+      "source_sha256": "c8945f127df6b70b85e756e98c6995de3b3b9796c387e06b8047434de5cb0f21",
+      "majors": [
+        "081001",
+        "080102",
+        "081401"
+      ]
+    },
+    {
+      "article_id": "b8b47eb644c9a9ab9a335e5f949e8508",
+      "revision": 5,
+      "title": "汽车悬架振动系统有限元分析及优化设计",
+      "research_type": "theoretical_modeling",
+      "original_file_count": 1,
+      "source_sha256": "7f2e5b4ffa03d02710e7be55579810dbc84e90804f907b3cc9d5aebc9ac03394",
+      "majors": [
+        "080102",
+        "080207",
+        "080202"
+      ]
+    },
+    {
+      "article_id": "cac10c1dc0ca89b6f0dcec79e38a3723",
+      "revision": 5,
+      "title": "投资便利化发展现状与路径探究——以多边框架为视角",
+      "research_type": "textual_normative",
+      "original_file_count": 1,
+      "source_sha256": "7940a299d1e5f22f16975c02a5ea8f95e365058012c5d7b5a0a9b1dcb0122104",
+      "majors": [
+        "030105T",
+        "030109TK",
+        "020401"
+      ]
+    },
+    {
+      "article_id": "cad87456ac807a1898409057cc438321",
+      "revision": 5,
+      "title": "Hopfield神经网络的有限时间同步控制",
+      "research_type": "theoretical_modeling",
+      "original_file_count": 1,
+      "source_sha256": "3dd6a13b20fdb43a171506f22d722ecf620bb782babef67a25334d32c40588c3",
+      "majors": [
+        "080717T",
+        "080801",
+        "070101"
+      ]
+    },
+    {
+      "article_id": "cc6d0fbf144464836798c0e3aa9c40e4",
+      "revision": 4,
+      "title": "“互联网+”背景下石家庄国际会展中心营销策略研究",
+      "research_type": "survey_case_applied",
+      "original_file_count": 1,
+      "source_sha256": "4c649bdda9fc9d01f508da3cb4112273c30ed76fc9113e8722699e3dc80652b5",
+      "majors": [
+        "120202",
+        "120903",
+        "120801"
+      ]
+    },
+    {
+      "article_id": "ce330a0a38bc3836fea3c4a8ea51962d",
+      "revision": 2,
+      "title": "装修工程设计方案",
+      "research_type": "creative_design",
+      "original_file_count": 1,
+      "source_sha256": "a2749ade256b429599a4416b537c66161577d00bbdea4ae1409c5c0fc644e996",
+      "majors": [
+        "130503"
+      ]
+    },
+    {
+      "article_id": "d0e8af830ee7c5aa2a848d179cbf6c42",
+      "revision": 5,
+      "title": "基于模型参考自适应的PMSM无速度传感器控制",
+      "research_type": "theoretical_modeling",
+      "original_file_count": 1,
+      "source_sha256": "6a398bc494b139fc724bec8b92e286a37d7d9c2d36694ddc8284c805b01d6c8e",
+      "majors": [
+        "080801",
+        "080601",
+        "080803T"
+      ]
+    },
+    {
+      "article_id": "d56df61a1fc1c87d3cb3cd345e77ad47",
+      "revision": 5,
+      "title": "仿青蛙弹跳机器人设计与运动控制",
+      "research_type": "engineering_system",
+      "original_file_count": 1,
+      "source_sha256": "52251d8ef4bfcab86cb059cdfed50d7eccc3ec1d0d32a902941ae148010743cb",
+      "majors": [
+        "080803T",
+        "080204",
+        "080202"
+      ]
+    },
+    {
+      "article_id": "d6f9b8e8172b5246a61ad77c12088eda",
+      "revision": 4,
+      "title": "明代辅政机构内阁的秘书职能研究",
+      "research_type": "textual_normative",
+      "original_file_count": 1,
+      "source_sha256": "d3d5f53bba2051f9e882b08d23835934e7cb404eceb3ff824850b663bb37573f",
+      "majors": [
+        "050107T",
+        "060101",
+        "120402"
+      ]
+    },
+    {
+      "article_id": "d763a22cb4043c59cd924b3f980dbb50",
+      "revision": 3,
+      "title": "泰勒公式在近似计算中的应用",
+      "research_type": "theoretical_modeling",
+      "original_file_count": 1,
+      "source_sha256": "dd231908d61014d92baf35ae4ad121a9706bc98f0410a85edfa56361b6928969",
+      "majors": [
+        "070101",
+        "070102",
+        "070104T"
+      ]
+    },
+    {
+      "article_id": "d8dbc9d6615a5954c8d15d5514a3d0f7",
+      "revision": 5,
+      "title": "阆中江东片区排水工程初步设计",
+      "research_type": "engineering_system",
+      "original_file_count": 1,
+      "source_sha256": "f989a63096ea1e6efa9238b5e41767c50601fdf3ad8ebba047a204174c05b72a",
+      "majors": [
+        "081001",
+        "081003",
+        "082502"
+      ]
+    },
+    {
+      "article_id": "da81123d5a3b04b96d6bd6006fbedb79",
+      "revision": 5,
+      "title": "少腹逐瘀方剂和中成药辅助治疗子宫内膜异位症的网状Meta分析",
+      "research_type": "experimental_testing",
+      "original_file_count": 1,
+      "source_sha256": "435cfa4d801b68313c693f95f65a5b8ff8eb30aece878d484e20e688e254f022",
+      "majors": [
+        "100701",
+        "100601K",
+        "100801"
+      ]
+    },
+    {
+      "article_id": "e0f3d73233b6d15f089f685f07705e09",
+      "revision": 2,
+      "title": "题名待核实（a5c5d4274f40）",
+      "research_type": "textual_normative",
+      "original_file_count": 1,
+      "source_sha256": "a5c5d4274f403866c6832144857195d246280e9758c5a2e96835cdb9198afeab",
+      "majors": [
+        "050101",
+        "050201"
+      ]
+    },
+    {
+      "article_id": "e1d5f40a7f915869f2e94a72550c9616",
+      "revision": 5,
+      "title": "磷石膏路缘石的力学性能与耐水性能研究",
+      "research_type": "experimental_testing",
+      "original_file_count": 1,
+      "source_sha256": "bb5a2a174910d4a3ea04b3adf2791a6c614547aa63c41458ae437ffa3cc64a58",
+      "majors": [
+        "081303T",
+        "080406",
+        "081001"
+      ]
+    },
+    {
+      "article_id": "e2ae6d24bd435e382c9176a2a9e0953f",
+      "revision": 3,
+      "title": "公益广告融入大学生思想政治教育路径研究——以保定学院为例",
+      "research_type": "survey_case_applied",
+      "original_file_count": 1,
+      "source_sha256": "f625c7ce179022bbada624a485621476b4b39907e6044003723ed07b51d9b0d9",
+      "majors": [
+        "030503",
+        "050303",
+        "040101"
+      ]
+    },
+    {
+      "article_id": "e716178414e0d053814e56e4c5f543b4",
+      "revision": 5,
+      "title": "流形上的斯托克斯公式",
+      "research_type": "theoretical_modeling",
+      "original_file_count": 1,
+      "source_sha256": "225c135d3c24cf2c67ba872a3e4b9383de5983c1b755f353ec431894cafa0125",
+      "majors": [
+        "070101",
+        "070102",
+        "070103T"
+      ]
+    },
+    {
+      "article_id": "ea42cd5162d9222c9dcf5346e3d71397",
+      "revision": 5,
+      "title": "基于深度学习的无参考图像质量评价方法",
+      "research_type": "theoretical_modeling",
+      "original_file_count": 1,
+      "source_sha256": "be935ed41fbf8e2f57c933cbf12e5b1ee577693520f8cc6c4a6c1f4bf09d9ed5",
+      "majors": [
+        "080703",
+        "080721T",
+        "080717T"
+      ]
+    },
+    {
+      "article_id": "ead1ed0e90d4336eb10b95f4b2009aa1",
+      "revision": 3,
+      "title": "综合材料实践与中学美术教学研究",
+      "research_type": "textual_normative",
+      "original_file_count": 1,
+      "source_sha256": "477e2d25d3e4b95ca9c06f3f473552d6794ab8000c039982f94279cc24fa6705",
+      "majors": [
+        "130401",
+        "130413TK",
+        "040101"
+      ]
+    },
+    {
+      "article_id": "f4dc832171d193981dcc5a22e90114da",
+      "revision": 2,
+      "title": "装修工程设计方案",
+      "research_type": "creative_design",
+      "original_file_count": 1,
+      "source_sha256": "0fb33eee2352b8148c5b7f859dd0081a5357f415290afebb17fa51d5944155ff",
+      "majors": [
+        "130503"
+      ]
+    },
+    {
+      "article_id": "faa3c362b1b091a401ff365386a02e2c",
+      "revision": 6,
+      "title": "广西苍梧县X053公路沙头至大同段设计",
+      "research_type": "engineering_system",
+      "original_file_count": 3,
+      "source_sha256": "d3a3aa835f20b5c2198b45b39f1e3f684b8c26553e03df073ec5d1ef54802cd6",
+      "majors": [
+        "081001",
+        "081006T",
+        "081802"
+      ]
+    },
+    {
+      "article_id": "fb89b3220e8034b61bc872e150ddd4a1",
+      "revision": 2,
+      "title": "海通证券公司融资融券业务问题分析",
+      "research_type": "survey_case_applied",
+      "original_file_count": 1,
+      "source_sha256": "8f75b3c306d8391321e0a939d6589b93be3398fda93b5a2637f879e5c47a169e",
+      "majors": [
+        "020301K",
+        "120201K",
+        "020304"
+      ]
+    },
+    {
+      "article_id": "fbac5c64b1184990cebf80d73c5780e8",
+      "revision": 4,
+      "title": "基于SSM框架的二手房交易服务平台",
+      "research_type": "engineering_system",
+      "original_file_count": 1,
+      "source_sha256": "647df4ab2ea6b538bf4f79d081397f5df3fa9112473fb849be8bef5669f7ed48",
+      "majors": [
+        "080902",
+        "120102",
+        "080901"
+      ]
+    },
+    {
+      "article_id": "fc57303f36103e32b48c1c5ac43ff3ba",
+      "revision": 5,
+      "title": "基于COMSOL的非均匀热功率表面仿生流道设计",
+      "research_type": "theoretical_modeling",
+      "original_file_count": 1,
+      "source_sha256": "d08e2017f2a3d57d9022be356648d028ce1027c8a8e44d0afe91b7ca8d1bd730",
+      "majors": [
+        "080204",
+        "080206",
+        "080501"
+      ]
+    },
+    {
+      "article_id": "fca35a08d51dc6df067f09d12793a81b",
+      "revision": 2,
+      "title": "题名待核实（c6b2085928aa）",
+      "research_type": "creative_design",
+      "original_file_count": 1,
+      "source_sha256": "c6b2085928aa34155e1537843d68fa084a52ba3a7e9da821e886b3a09a57168d",
+      "majors": [
+        "130512T",
+        "130502",
+        "130501"
+      ]
+    }
+  ]
+}

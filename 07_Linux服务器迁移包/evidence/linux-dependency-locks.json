@@ -1,0 +1,39 @@
+{
+  "paperflow-qdrant-gateway": {
+    "python_version": "Python 3.12.16",
+    "pip_freeze": "annotated-doc==0.0.5\nannotated-types==0.8.0\nanyio==4.16.0\nattrs==26.1.0\nbackoff==2.2.1\ncertifi==2026.10.23\ncharset-normalizer==3.5.2\nclick==8.5.0\ndistro==1.9.0\ndocstring_parser==0.18.0\nfastapi==0.136.3\nfiletype==1.2.0\ngrpcio==1.85.1\nh11==0.16.0\nh2==4.4.1\nhaystack-ai==3.4.1\nhpack==4.2.0\nhttpcore==1.0.9\nhttpcore2==2.16.0\nhttpx==0.28.1\nhttpx2==2.16.0\nhyperframe==6.1.0\nidna==3.20\nJinja2==3.1.6\njiter==0.18.0\njsonschema==4.26.0\njsonschema-specifications==2025.9.1\nlazy_imports==1.2.0\nMarkupSafe==3.0.4\nmore-itertools==11.2.1\nnetworkx==3.7\nnumpy==2.5.4\nopenai==3.42.1\npip==25.0.1\nportalocker==4.4.2\nposthog==7.82.2\nprotobuf==7.36.2\npydantic==2.14.2\npydantic_core==2.50.2\npython-dateutil==4.0.0\nPyYAML==6.0.3\nqdrant-client==1.20.0\nqdrant-haystack==13.1.0\nreferencing==0.37.0\nrequests==2.34.2\nrpds-py==2026.9.1\nsniffio==1.3.1\nstarlette==1.10.0\ntenacity==9.2.1\ntqdm==4.70.1\ntruststore==0.10.5\ntyping-inspection==0.4.4\ntyping_extensions==4.16.0\ntzdata==2026.6\nurllib3==2.8.0\nuvicorn==0.47.0"
+  },
+  "paperflow-article-repository": {
+    "python_version": "Python 3.12.16",
+    "pip_freeze": "annotated-doc==0.0.5\nannotated-types==0.8.0\nanyio==4.16.0\nattrs==26.1.0\nbackoff==2.2.1\ncertifi==2026.10.23\ncffi==2.1.1\ncharset-normalizer==3.5.2\nclick==8.5.0\ncryptography==50.0.2\ndistro==1.9.0\ndocstring_parser==0.18.0\nfastapi==0.136.3\nfiletype==1.2.0\ngrpcio==1.85.1\nh11==0.16.0\nh2==4.4.1\nhaystack-ai==3.4.1\nhpack==4.2.0\nhttpcore==1.0.9\nhttpcore2==2.16.0\nhttpx==0.28.1\nhttpx2==2.16.0\nhyperframe==6.1.0\nidna==3.20\nJinja2==3.1.6\njiter==0.18.0\njsonschema==4.26.0\njsonschema-specifications==2025.9.1\nlazy_imports==1.2.0\nMarkupSafe==3.0.4\nmore-itertools==11.2.1\nnetworkx==3.7\nnumpy==2.5.4\nopenai==3.42.1\npip==25.0.1\nportalocker==4.4.2\nposthog==7.82.2\nprotobuf==7.36.2\npsycopg==3.3.3\npsycopg-binary==3.3.3\npycparser==3.12\npydantic==2.14.2\npydantic_core==2.50.2\npyspnego==0.12.4\npython-dateutil==4.0.0\nPyYAML==6.0.3\nqdrant-client==1.20.0\nqdrant-haystack==13.1.0\nreferencing==0.37.0\nrequests==2.34.2\nrpds-py==2026.9.1\nsmbprotocol==1.17.0\nsniffio==1.3.1\nstarlette==1.10.0\ntenacity==9.2.1\ntqdm==4.70.1\ntruststore==0.10.5\ntyping-inspection==0.4.4\ntyping_extensions==4.16.0\ntzdata==2026.6\nurllib3==2.8.0\nuvicorn==0.47.0"
+  },
+  "images": [
+    {
+      "tag": "qdrant/qdrant:v1.20.0",
+      "id": "sha256:9bfc89f9914fc14876a88c05270685921a55b8877b254a98bcc1cc2f0a424cd2",
+      "repo_digests": [
+        "qdrant/qdrant@sha256:9bfc89f9914fc14876a88c05270685921a55b8877b254a98bcc1cc2f0a424cd2"
+      ],
+      "os": "linux",
+      "architecture": "amd64"
+    },
+    {
+      "tag": "postgres:18.6-alpine",
+      "id": "sha256:10a5c69a83035ab5239f5620d708520e8b28f5aa1f2b20143e6024532edadfb5",
+      "repo_digests": [
+        "postgres@sha256:10a5c69a83035ab5239f5620d708520e8b28f5aa1f2b20143e6024532edadfb5"
+      ],
+      "os": "linux",
+      "architecture": "amd64"
+    },
+    {
+      "tag": "prefecthq/prefect:3.9.0-python3.12@sha256:9f4fb20a431f0aba81bbcede83d5c08648aa769faf0ec47e989e9d370270129e",
+      "id": "sha256:9f4fb20a431f0aba81bbcede83d5c08648aa769faf0ec47e989e9d370270129e",
+      "repo_digests": [
+        "prefecthq/prefect@sha256:9f4fb20a431f0aba81bbcede83d5c08648aa769faf0ec47e989e9d370270129e"
+      ],
+      "os": "linux",
+      "architecture": "amd64"
+    }
+  ]
+}

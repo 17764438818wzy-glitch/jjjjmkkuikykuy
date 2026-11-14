@@ -1,0 +1,638 @@
+{
+  "host": "wzy-System-Product-Name",
+  "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+  "machine": "x86_64",
+  "os_release": "PRETTY_NAME=\"Ubuntu 24.04.5 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"24.04\"\nVERSION=\"24.04.5 LTS (Noble Numbat)\"\nVERSION_CODENAME=noble\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=noble\nLOGO=ubuntu-logo\n",
+  "docker_version": "29.8.0",
+  "compose_version": "5.5.1",
+  "containers": [
+    {
+      "name": "paperflow-article-repository",
+      "image": "paperflow-article-repository-repository",
+      "image_id": "sha256:01efa35301abdfc95bd7cf060a42ae57b135d4a53a2a912e767f05252c835fbc",
+      "running": true,
+      "status": "running",
+      "working_dir": "/app",
+      "compose_directory": "/opt/paperflow-article-repository",
+      "compose_files": "/opt/paperflow-article-repository/compose.yaml",
+      "compose_service": "repository",
+      "mounts": [],
+      "ports": {
+        "8098/tcp": [
+          {
+            "HostIp": "192.168.1.120",
+            "HostPort": "8098"
+          }
+        ]
+      },
+      "environment_names": [
+        "ARTICLE_DATABASE_URL",
+        "ARTICLE_NAS_PASSWORD",
+        "ARTICLE_NAS_ROOT",
+        "ARTICLE_NAS_USER",
+        "ARTICLE_POSTGRES_PASSWORD",
+        "GPG_KEY",
+        "HAYSTACK_TELEMETRY_ENABLED",
+        "LANG",
+        "PAPERFLOW_RAG_API_KEY",
+        "PATH",
+        "PREFECT_API_URL",
+        "PYTHONUNBUFFERED",
+        "PYTHON_SHA256",
+        "PYTHON_VERSION",
+        "QDRANT_API_KEY",
+        "QDRANT_URL"
+      ]
+    },
+    {
+      "name": "paperflow-legacy-reference-repair-20261103",
+      "image": "paperflow-legacy-migration:20261103",
+      "image_id": "sha256:5da03d9ab09357526f77c11d6b93dae3c11b56689b1865db4becc66a765a889b",
+      "running": false,
+      "status": "exited",
+      "working_dir": "/app",
+      "compose_directory": null,
+      "compose_files": null,
+      "compose_service": "repository",
+      "mounts": [
+        {
+          "type": "bind",
+          "source": "/opt/paperflow-legacy-migration-20261103/input",
+          "destination": "/input",
+          "rw": false
+        },
+        {
+          "type": "bind",
+          "source": "/opt/paperflow-qdrant-20261103/objects",
+          "destination": "/objects",
+          "rw": true
+        },
+        {
+          "type": "bind",
+          "source": "/opt/paperflow-legacy-migration-20261103/state",
+          "destination": "/state",
+          "rw": true
+        }
+      ],
+      "ports": {},
+      "environment_names": [
+        "ARTICLE_DATABASE_URL",
+        "ARTICLE_NAS_PASSWORD",
+        "ARTICLE_NAS_ROOT",
+        "ARTICLE_NAS_USER",
+        "GPG_KEY",
+        "HAYSTACK_TELEMETRY_ENABLED",
+        "LANG",
+        "LEGACY_ES_PASSWORD",
+        "LEGACY_ES_URL",
+        "LEGACY_MINIO_ENDPOINT",
+        "LEGACY_MINIO_PASSWORD",
+        "LEGACY_MINIO_USER",
+        "PAPERFLOW_RAG_API_KEY",
+        "PATH",
+        "PYTHONPATH",
+        "PYTHONUNBUFFERED",
+        "PYTHON_SHA256",
+        "PYTHON_VERSION",
+        "QDRANT_API_KEY",
+        "QDRANT_URL"
+      ]
+    },
+    {
+      "name": "paperflow-legacy-migration-20261103",
+      "image": "paperflow-legacy-migration:20261103",
+      "image_id": "sha256:55b108480884590258b1064c3bc2d3d882155a40298c06a93653514e95c33f5f",
+      "running": false,
+      "status": "exited",
+      "working_dir": "/app",
+      "compose_directory": null,
+      "compose_files": null,
+      "compose_service": "repository",
+      "mounts": [
+        {
+          "type": "bind",
+          "source": "/opt/paperflow-legacy-migration-20261103/input",
+          "destination": "/input",
+          "rw": false
+        },
+        {
+          "type": "bind",
+          "source": "/opt/paperflow-qdrant-20261103/objects",
+          "destination": "/objects",
+          "rw": true
+        },
+        {
+          "type": "bind",
+          "source": "/opt/paperflow-legacy-migration-20261103/state",
+          "destination": "/state",
+          "rw": true
+        }
+      ],
+      "ports": {},
+      "environment_names": [
+        "ARTICLE_DATABASE_URL",
+        "ARTICLE_NAS_PASSWORD",
+        "ARTICLE_NAS_ROOT",
+        "ARTICLE_NAS_USER",
+        "GPG_KEY",
+        "HAYSTACK_TELEMETRY_ENABLED",
+        "LANG",
+        "LEGACY_ES_PASSWORD",
+        "LEGACY_ES_URL",
+        "LEGACY_MINIO_ENDPOINT",
+        "LEGACY_MINIO_PASSWORD",
+        "LEGACY_MINIO_USER",
+        "PAPERFLOW_RAG_API_KEY",
+        "PATH",
+        "PYTHONPATH",
+        "PYTHONUNBUFFERED",
+        "PYTHON_SHA256",
+        "PYTHON_VERSION",
+        "QDRANT_API_KEY",
+        "QDRANT_URL"
+      ]
+    },
+    {
+      "name": "paperflow-legacy-attachment-repair-20261103",
+      "image": "paperflow-legacy-migration:20261103",
+      "image_id": "sha256:55b108480884590258b1064c3bc2d3d882155a40298c06a93653514e95c33f5f",
+      "running": false,
+      "status": "exited",
+      "working_dir": "/app",
+      "compose_directory": null,
+      "compose_files": null,
+      "compose_service": "repository",
+      "mounts": [
+        {
+          "type": "bind",
+          "source": "/opt/paperflow-legacy-migration-20261103/input",
+          "destination": "/input",
+          "rw": false
+        },
+        {
+          "type": "bind",
+          "source": "/opt/paperflow-qdrant-20261103/objects",
+          "destination": "/objects",
+          "rw": true
+        },
+        {
+          "type": "bind",
+          "source": "/opt/paperflow-legacy-migration-20261103/state",
+          "destination": "/state",
+          "rw": true
+        }
+      ],
+      "ports": {},
+      "environment_names": [
+        "ARTICLE_DATABASE_URL",
+        "ARTICLE_NAS_PASSWORD",
+        "ARTICLE_NAS_ROOT",
+        "ARTICLE_NAS_USER",
+        "GPG_KEY",
+        "HAYSTACK_TELEMETRY_ENABLED",
+        "LANG",
+        "LEGACY_ES_PASSWORD",
+        "LEGACY_ES_URL",
+        "LEGACY_MINIO_ENDPOINT",
+        "LEGACY_MINIO_PASSWORD",
+        "LEGACY_MINIO_USER",
+        "PAPERFLOW_RAG_API_KEY",
+        "PATH",
+        "PYTHONPATH",
+        "PYTHONUNBUFFERED",
+        "PYTHON_SHA256",
+        "PYTHON_VERSION",
+        "QDRANT_API_KEY",
+        "QDRANT_URL"
+      ]
+    },
+    {
+      "name": "paperflow-article-postgres",
+      "image": "postgres:18.6-alpine",
+      "image_id": "sha256:10a5c69a83035ab5239f5620d708520e8b28f5aa1f2b20143e6024532edadfb5",
+      "running": true,
+      "status": "running",
+      "working_dir": "/",
+      "compose_directory": "/opt/paperflow-article-repository",
+      "compose_files": "/opt/paperflow-article-repository/compose.yaml",
+      "compose_service": "article-postgres",
+      "mounts": [
+        {
+          "type": "volume",
+          "source": "/var/lib/docker/volumes/paperflow-article-repository_article_pgdata/_data",
+          "destination": "/var/lib/postgresql",
+          "rw": true
+        }
+      ],
+      "ports": {
+        "5432/tcp": null
+      },
+      "environment_names": [
+        "DOCKER_PG_LLVM_DEPS",
+        "GOSU_VERSION",
+        "LANG",
+        "PATH",
+        "PGDATA",
+        "PG_MAJOR",
+        "PG_SHA256",
+        "PG_VERSION",
+        "POSTGRES_DB",
+        "POSTGRES_PASSWORD",
+        "POSTGRES_USER"
+      ]
+    },
+    {
+      "name": "paperflow-qdrant-gateway",
+      "image": "paperflow-qdrant-20261103-gateway",
+      "image_id": "sha256:441471b3a19843933a3defde7c456f82e321a0ad27c0f36bc3588cb2525d8955",
+      "running": true,
+      "status": "running",
+      "working_dir": "/app",
+      "compose_directory": "/opt/paperflow-qdrant-20261103",
+      "compose_files": "/opt/paperflow-qdrant-20261103/compose.yaml",
+      "compose_service": "gateway",
+      "mounts": [
+        {
+          "type": "bind",
+          "source": "/opt/paperflow-qdrant-20261103/objects",
+          "destination": "/data/objects",
+          "rw": true
+        }
+      ],
+      "ports": {
+        "8097/tcp": [
+          {
+            "HostIp": "192.168.1.120",
+            "HostPort": "8097"
+          }
+        ]
+      },
+      "environment_names": [
+        "EMBEDDING_BATCH_SIZE",
+        "EMBEDDING_CONCURRENCY",
+        "EMBEDDING_URL",
+        "GPG_KEY",
+        "HAYSTACK_TELEMETRY_ENABLED",
+        "LANG",
+        "OBJECT_ROOT",
+        "PAPERFLOW_RAG_API_KEY",
+        "PATH",
+        "PYTHONUNBUFFERED",
+        "PYTHON_SHA256",
+        "PYTHON_VERSION",
+        "QDRANT_API_KEY",
+        "QDRANT_COLLECTION",
+        "QDRANT_URL"
+      ]
+    },
+    {
+      "name": "paperflow-qdrant",
+      "image": "qdrant/qdrant:v1.20.0",
+      "image_id": "sha256:9bfc89f9914fc14876a88c05270685921a55b8877b254a98bcc1cc2f0a424cd2",
+      "running": true,
+      "status": "running",
+      "working_dir": "/qdrant",
+      "compose_directory": "/opt/paperflow-qdrant-20261103",
+      "compose_files": "/opt/paperflow-qdrant-20261103/compose.yaml",
+      "compose_service": "qdrant",
+      "mounts": [
+        {
+          "type": "bind",
+          "source": "/opt/paperflow-qdrant-20261103/qdrant-data",
+          "destination": "/qdrant/storage",
+          "rw": true
+        }
+      ],
+      "ports": {
+        "6333/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "6333"
+          }
+        ],
+        "6334/tcp": null
+      },
+      "environment_names": [
+        "DIR",
+        "PATH",
+        "QDRANT__SERVICE__API_KEY",
+        "QDRANT__TELEMETRY_DISABLED",
+        "RUN_MODE",
+        "TZ"
+      ]
+    },
+    {
+      "name": "paperflow-prefect-preview-demo-runner-1",
+      "image": "prefecthq/prefect:3.9.0-python3.12@sha256:9f4fb20a431f0aba81bbcede83d5c08648aa769faf0ec47e989e9d370270129e",
+      "image_id": "sha256:9f4fb20a431f0aba81bbcede83d5c08648aa769faf0ec47e989e9d370270129e",
+      "running": true,
+      "status": "running",
+      "working_dir": "/opt/prefect",
+      "compose_directory": "/home/wzy/prefect-preview",
+      "compose_files": "/home/wzy/prefect-preview/compose.yaml",
+      "compose_service": "demo-runner",
+      "mounts": [
+        {
+          "type": "bind",
+          "source": "/home/wzy/prefect-preview/demo-output",
+          "destination": "/demo-output",
+          "rw": true
+        },
+        {
+          "type": "bind",
+          "source": "/home/wzy/prefect-preview/demo.py",
+          "destination": "/demo/demo.py",
+          "rw": false
+        },
+        {
+          "type": "volume",
+          "source": "/var/lib/docker/volumes/paperflow-prefect-preview_demo_data/_data",
+          "destination": "/opt/prefect-demo",
+          "rw": true
+        }
+      ],
+      "ports": {},
+      "environment_names": [
+        "GPG_KEY",
+        "LANG",
+        "LC_ALL",
+        "LD_LIBRARY_PATH",
+        "PATH",
+        "PREFECT_API_URL",
+        "PREFECT_HOME",
+        "PREFECT_LOGGING_LEVEL",
+        "PREFECT_RESULTS_PERSIST_BY_DEFAULT",
+        "PYTHONUNBUFFERED",
+        "PYTHON_SHA256",
+        "PYTHON_VERSION",
+        "UV_LINK_MODE",
+        "UV_SYSTEM_PYTHON"
+      ]
+    },
+    {
+      "name": "paperflow-prefect-preview-server-1",
+      "image": "prefecthq/prefect:3.9.0-python3.12@sha256:9f4fb20a431f0aba81bbcede83d5c08648aa769faf0ec47e989e9d370270129e",
+      "image_id": "sha256:9f4fb20a431f0aba81bbcede83d5c08648aa769faf0ec47e989e9d370270129e",
+      "running": true,
+      "status": "running",
+      "working_dir": "/opt/prefect",
+      "compose_directory": "/home/wzy/prefect-preview",
+      "compose_files": "/home/wzy/prefect-preview/compose.yaml",
+      "compose_service": "server",
+      "mounts": [
+        {
+          "type": "volume",
+          "source": "/var/lib/docker/volumes/paperflow-prefect-preview_prefect_data/_data",
+          "destination": "/opt/prefect",
+          "rw": true
+        }
+      ],
+      "ports": {
+        "4200/tcp": [
+          {
+            "HostIp": "192.168.1.120",
+            "HostPort": "4200"
+          }
+        ]
+      },
+      "environment_names": [
+        "GPG_KEY",
+        "LANG",
+        "LC_ALL",
+        "LD_LIBRARY_PATH",
+        "PATH",
+        "PREFECT_HOME",
+        "PREFECT_SERVER_ANALYTICS_ENABLED",
+        "PREFECT_SERVER_DATABASE_CONNECTION_URL",
+        "PREFECT_UI_API_URL",
+        "PYTHON_SHA256",
+        "PYTHON_VERSION",
+        "UV_LINK_MODE",
+        "UV_SYSTEM_PYTHON"
+      ]
+    },
+    {
+      "name": "paperflow-prefect-preview-postgres-1",
+      "image": "postgres:18.6-alpine",
+      "image_id": "sha256:10a5c69a83035ab5239f5620d708520e8b28f5aa1f2b20143e6024532edadfb5",
+      "running": true,
+      "status": "running",
+      "working_dir": "/",
+      "compose_directory": "/home/wzy/prefect-preview",
+      "compose_files": "/home/wzy/prefect-preview/compose.yaml",
+      "compose_service": "postgres",
+      "mounts": [
+        {
+          "type": "volume",
+          "source": "/var/lib/docker/volumes/paperflow-prefect-preview_postgres_data/_data",
+          "destination": "/var/lib/postgresql",
+          "rw": true
+        }
+      ],
+      "ports": {
+        "5432/tcp": null
+      },
+      "environment_names": [
+        "DOCKER_PG_LLVM_DEPS",
+        "GOSU_VERSION",
+        "LANG",
+        "PATH",
+        "PGDATA",
+        "PG_MAJOR",
+        "PG_SHA256",
+        "PG_VERSION",
+        "POSTGRES_DB",
+        "POSTGRES_PASSWORD",
+        "POSTGRES_USER"
+      ]
+    }
+  ],
+  "project_directories": {
+    "/home/wzy/prefect-preview": [
+      {
+        "name": ".env",
+        "is_dir": false,
+        "is_link": false,
+        "bytes": 67
+      },
+      {
+        "name": "README.md",
+        "is_dir": false,
+        "is_link": false,
+        "bytes": 2800
+      },
+      {
+        "name": "compose.yaml",
+        "is_dir": false,
+        "is_link": false,
+        "bytes": 2164
+      },
+      {
+        "name": "demo-output",
+        "is_dir": true,
+        "is_link": false,
+        "bytes": 4096
+      },
+      {
+        "name": "demo.py",
+        "is_dir": false,
+        "is_link": false,
+        "bytes": 7990
+      },
+      {
+        "name": "pull-a147a986.exit",
+        "is_dir": false,
+        "is_link": false,
+        "bytes": 1
+      },
+      {
+        "name": "pull-a147a986.log",
+        "is_dir": false,
+        "is_link": false,
+        "bytes": 33778
+      },
+      {
+        "name": "pull.exit",
+        "is_dir": false,
+        "is_link": false,
+        "bytes": 1
+      },
+      {
+        "name": "pull.log",
+        "is_dir": false,
+        "is_link": false,
+        "bytes": 295
+      }
+    ],
+    "/opt/paperflow-article-repository": [
+      {
+        "name": ".display-releases",
+        "is_dir": true,
+        "is_link": false,
+        "bytes": 4096
+      },
+      {
+        "name": ".env",
+        "is_dir": false,
+        "is_link": false,
+        "bytes": 283
+      },
+      {
+        "name": "Dockerfile",
+        "is_dir": false,
+        "is_link": false,
+        "bytes": 466
+      },
+      {
+        "name": "article_repository",
+        "is_dir": true,
+        "is_link": false,
+        "bytes": 4096
+      },
+      {
+        "name": "backups",
+        "is_dir": true,
+        "is_link": false,
+        "bytes": 4096
+      },
+      {
+        "name": "compose.search-20261111.yaml",
+        "is_dir": false,
+        "is_link": false,
+        "bytes": 80
+      },
+      {
+        "name": "compose.yaml",
+        "is_dir": false,
+        "is_link": false,
+        "bytes": 1204
+      },
+      {
+        "name": "compose.year-20261111.yaml",
+        "is_dir": false,
+        "is_link": false,
+        "bytes": 81
+      },
+      {
+        "name": "frontend",
+        "is_dir": true,
+        "is_link": false,
+        "bytes": 4096
+      },
+      {
+        "name": "legacy-records.json",
+        "is_dir": false,
+        "is_link": false,
+        "bytes": 23199763
+      },
+      {
+        "name": "library.py",
+        "is_dir": false,
+        "is_link": false,
+        "bytes": 12454
+      },
+      {
+        "name": "maintenance",
+        "is_dir": true,
+        "is_link": false,
+        "bytes": 4096
+      },
+      {
+        "name": "majors.json",
+        "is_dir": false,
+        "is_link": false,
+        "bytes": 281835
+      },
+      {
+        "name": "requirements.txt",
+        "is_dir": false,
+        "is_link": false,
+        "bytes": 43
+      }
+    ],
+    "/opt/paperflow-qdrant-20261103": [
+      {
+        "name": ".env",
+        "is_dir": false,
+        "is_link": false,
+        "bytes": 271
+      },
+      {
+        "name": "Dockerfile",
+        "is_dir": false,
+        "is_link": false,
+        "bytes": 340
+      },
+      {
+        "name": "compose.yaml",
+        "is_dir": false,
+        "is_link": false,
+        "bytes": 642
+      },
+      {
+        "name": "objects",
+        "is_dir": true,
+        "is_link": false,
+        "bytes": 4096
+      },
+      {
+        "name": "paperflow_qdrant",
+        "is_dir": true,
+        "is_link": false,
+        "bytes": 4096
+      },
+      {
+        "name": "qdrant-data",
+        "is_dir": true,
+        "is_link": false,
+        "bytes": 4096
+      },
+      {
+        "name": "requirements-qdrant.txt",
+        "is_dir": false,
+        "is_link": false,
+        "bytes": 112
+      }
+    ]
+  }
+}

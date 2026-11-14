@@ -1,0 +1,10 @@
+ARG GATEWAY_IMAGE=paperflow-migration/gateway:20261114
+FROM ${GATEWAY_IMAGE}
+WORKDIR /app
+COPY requirements-deployed-lock.txt /app/article-requirements-deployed-lock.txt
+RUN pip install --no-cache-dir -r /app/article-requirements-deployed-lock.txt
+COPY article_repository /app/article_repository
+COPY library.py /app/paperflow_qdrant/library.py
+COPY frontend/dist /app/article-site
+COPY majors.json legacy-records.json /app/
+CMD ["uvicorn","article_repository.server:app_factory","--factory","--host","0.0.0.0","--port","8098","--no-access-log"]

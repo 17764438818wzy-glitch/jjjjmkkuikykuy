@@ -1,0 +1,567 @@
+{
+  "catalog": {
+    "transaction_read_only": "on",
+    "schema_columns": [
+      {
+        "table_name": "article",
+        "column_name": "id",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article",
+        "column_name": "source_key",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article",
+        "column_name": "base",
+        "data_type": "jsonb",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article",
+        "column_name": "overrides",
+        "data_type": "jsonb",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article",
+        "column_name": "revision",
+        "data_type": "integer",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article",
+        "column_name": "title",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article",
+        "column_name": "folder_name",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article",
+        "column_name": "sync",
+        "data_type": "jsonb",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article",
+        "column_name": "updated_at",
+        "data_type": "timestamp with time zone",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article",
+        "column_name": "search_text",
+        "data_type": "text",
+        "is_generated": "ALWAYS"
+      },
+      {
+        "table_name": "article_major",
+        "column_name": "article_id",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_major",
+        "column_name": "code",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating",
+        "column_name": "operation_id",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating",
+        "column_name": "article_id",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating",
+        "column_name": "article_revision",
+        "data_type": "integer",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating",
+        "column_name": "research_type",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating",
+        "column_name": "source_files",
+        "data_type": "jsonb",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating",
+        "column_name": "rubric_version",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating",
+        "column_name": "tier",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating",
+        "column_name": "score",
+        "data_type": "integer",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating",
+        "column_name": "payload_digest",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating",
+        "column_name": "payload",
+        "data_type": "jsonb",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating",
+        "column_name": "created_at",
+        "data_type": "timestamp with time zone",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating_claim",
+        "column_name": "version_id",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating_claim",
+        "column_name": "article_id",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating_claim",
+        "column_name": "stage",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating_claim",
+        "column_name": "request_id",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating_claim",
+        "column_name": "operation_id",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating_claim",
+        "column_name": "run_id",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating_claim",
+        "column_name": "payload",
+        "data_type": "jsonb",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating_claim",
+        "column_name": "state",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating_claim",
+        "column_name": "terminal_evidence",
+        "data_type": "jsonb",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating_claim",
+        "column_name": "created_at",
+        "data_type": "timestamp with time zone",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating_claim",
+        "column_name": "updated_at",
+        "data_type": "timestamp with time zone",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating_discovery",
+        "column_name": "sequence",
+        "data_type": "bigint",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating_discovery",
+        "column_name": "article_id",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating_discovery",
+        "column_name": "article_revision",
+        "data_type": "integer",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating_discovery",
+        "column_name": "profile_sha256",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating_discovery",
+        "column_name": "reason",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating_discovery",
+        "column_name": "created_at",
+        "data_type": "timestamp with time zone",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating_profile",
+        "column_name": "article_id",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating_profile",
+        "column_name": "article_revision",
+        "data_type": "integer",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating_profile",
+        "column_name": "catalog_guard",
+        "data_type": "jsonb",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating_profile",
+        "column_name": "profile_snapshot",
+        "data_type": "jsonb",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating_profile",
+        "column_name": "profile_sha256",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_rating_profile",
+        "column_name": "observed_at",
+        "data_type": "timestamp with time zone",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_research_type_operation",
+        "column_name": "operation_id",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_research_type_operation",
+        "column_name": "article_id",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_research_type_operation",
+        "column_name": "payload_digest",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_research_type_operation",
+        "column_name": "payload",
+        "data_type": "jsonb",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_research_type_operation",
+        "column_name": "output_revision",
+        "data_type": "integer",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "article_research_type_operation",
+        "column_name": "created_at",
+        "data_type": "timestamp with time zone",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "major",
+        "column_name": "code",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "major",
+        "column_name": "name",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "major",
+        "column_name": "paper_dataset_id",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "major",
+        "column_name": "image_dataset_id",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "source_status",
+        "column_name": "name",
+        "data_type": "text",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "source_status",
+        "column_name": "status",
+        "data_type": "jsonb",
+        "is_generated": "NEVER"
+      },
+      {
+        "table_name": "source_status",
+        "column_name": "observed_at",
+        "data_type": "timestamp with time zone",
+        "is_generated": "NEVER"
+      }
+    ],
+    "category_counts": [
+      {
+        "category": "survey_case_applied",
+        "n": 6707,
+        "complete_inventory": 6002
+      },
+      {
+        "category": "engineering_system",
+        "n": 3388,
+        "complete_inventory": 2961
+      },
+      {
+        "category": "textual_normative",
+        "n": 1551,
+        "complete_inventory": 1465
+      },
+      {
+        "category": "experimental_testing",
+        "n": 1053,
+        "complete_inventory": 1006
+      },
+      {
+        "category": "theoretical_modeling",
+        "n": 920,
+        "complete_inventory": 792
+      },
+      {
+        "category": "creative_design",
+        "n": 793,
+        "complete_inventory": 642
+      },
+      {
+        "category": "unknown",
+        "n": 27,
+        "complete_inventory": 27
+      }
+    ],
+    "sample_structure": {
+      "base_keys": [
+        "files",
+        "folder_name",
+        "inventory_complete",
+        "majors",
+        "migration",
+        "profile",
+        "qdrant",
+        "source",
+        "source_key",
+        "source_sha256",
+        "source_updated_at",
+        "title"
+      ],
+      "profile_keys": [
+        "additional_related_specialties",
+        "applicable_level",
+        "article",
+        "attachments",
+        "education_level",
+        "gaps",
+        "learning_units",
+        "material_disposition",
+        "material_type",
+        "migration_boundary",
+        "research_profile",
+        "routing_candidates",
+        "source_id",
+        "source_sha256",
+        "task_id"
+      ],
+      "qdrant_keys": [
+        "folder_ids",
+        "source_folder_id"
+      ],
+      "first_file_fields": [
+        "availability",
+        "bytes",
+        "id",
+        "kind",
+        "name",
+        "relative",
+        "sha256"
+      ],
+      "sync_keys": []
+    }
+  },
+  "qdrant_collection": {
+    "result": {
+      "status": "green",
+      "optimizer_status": "ok",
+      "indexed_vectors_count": 2008239,
+      "points_count": 2009795,
+      "segments_count": 6,
+      "config": {
+        "params": {
+          "vectors": {
+            "size": 1024,
+            "distance": "Cosine",
+            "on_disk": false
+          },
+          "shard_number": 1,
+          "replication_factor": 1,
+          "write_consistency_factor": 1,
+          "on_disk_payload": true
+        },
+        "hnsw_config": {
+          "m": 16,
+          "ef_construct": 100,
+          "full_scan_threshold": 10000,
+          "max_indexing_threads": 0,
+          "on_disk": false
+        },
+        "optimizer_config": {
+          "deleted_threshold": 0.2,
+          "vacuum_min_vector_number": 1000,
+          "default_segment_number": 0,
+          "max_segment_size": null,
+          "memmap_threshold": null,
+          "indexing_threshold": 10000,
+          "flush_interval_sec": 5,
+          "max_optimization_threads": null,
+          "prevent_unoptimized": null
+        },
+        "wal_config": {
+          "wal_capacity_mb": 32,
+          "wal_segments_ahead": 0,
+          "wal_retain_closed": 1
+        },
+        "quantization_config": null
+      },
+      "payload_schema": {
+        "meta.active": {
+          "data_type": "bool",
+          "points": 1992940
+        },
+        "meta.dataset_ids": {
+          "data_type": "keyword",
+          "points": 1976224
+        },
+        "meta.document_id": {
+          "data_type": "keyword",
+          "points": 1976224
+        },
+        "meta.folder_id": {
+          "data_type": "keyword",
+          "points": 2009795
+        },
+        "meta.kind": {
+          "data_type": "keyword",
+          "points": 2009795
+        }
+      },
+      "update_queue": {
+        "length": 0
+      },
+      "created_at": "2026-11-03T10:02:54.484Z"
+    },
+    "status": "ok",
+    "time": 0.118155195
+  },
+  "embedding_units": {
+    "local-embedding-ollama.service": {
+      "MainPID": "0",
+      "WorkingDirectory": "/opt/local-embedding-test",
+      "ActiveState": "activating",
+      "SubState": "auto-restart",
+      "FragmentPath": "/etc/systemd/system/local-embedding-ollama.service",
+      "model_environment": {
+        "OLLAMA_HOST": "172.17.0.1:11434",
+        "OLLAMA_MODELS": "/opt/local-embedding-test/models",
+        "OLLAMA_NUM_PARALLEL": "4",
+        "OLLAMA_CONTEXT_LENGTH": "8192",
+        "OLLAMA_KEEP_ALIVE": "-1",
+        "OLLAMA_NO_CLOUD": "1"
+      }
+    },
+    "ollama-ragflow-embedding.service": {
+      "MainPID": "12954",
+      "WorkingDirectory": "",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/etc/systemd/system/ollama-ragflow-embedding.service",
+      "model_environment": {
+        "OLLAMA_HOST": "172.17.0.1:11434",
+        "OLLAMA_MODELS": "/opt/local-embedding-test/models",
+        "OLLAMA_NUM_PARALLEL": "4",
+        "OLLAMA_CONTEXT_LENGTH": "8192",
+        "OLLAMA_KEEP_ALIVE": "-1",
+        "OLLAMA_NO_CLOUD": "1"
+      }
+    },
+    "rag-upload-gpu-20261027.service": {
+      "MainPID": "3377",
+      "WorkingDirectory": "/opt/rag-upload-gpu-stage-20261027",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/etc/systemd/system/rag-upload-gpu-20261027.service",
+      "model_environment": {
+        "OLLAMA_HOST": "172.17.0.1:11436",
+        "OLLAMA_MODELS": "/opt/rag-upload-gpu-stage-20261027/models",
+        "OLLAMA_NUM_PARALLEL": "4",
+        "OLLAMA_CONTEXT_LENGTH": "8192",
+        "OLLAMA_KEEP_ALIVE": "-1",
+        "OLLAMA_NO_CLOUD": "1",
+        "OLLAMA_NOPRUNE": "true"
+      }
+    }
+  }
+}

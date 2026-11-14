@@ -1,0 +1,515 @@
+{
+  "source_files": {
+    "gateway": [
+      {
+        "path": "Dockerfile",
+        "bytes": 340,
+        "sha256": "7fd7034893c1680e617208fe8e44810bb1389b6bc69835e0cbf5dcf88ac7ffdb"
+      },
+      {
+        "path": "compose.yaml",
+        "bytes": 642,
+        "sha256": "3c5c43f6c3f970ef836767df229c85d350e8e8f8b17ed6cad6c6b64d78b29d09"
+      },
+      {
+        "path": "requirements-qdrant.txt",
+        "bytes": 112,
+        "sha256": "69743e740281058d45d38c0ef518667ae6c0a03a0ff895deed3a2a7295596282"
+      },
+      {
+        "path": "paperflow_qdrant/__init__.py",
+        "bytes": 77,
+        "sha256": "0d99adcb88e1c63d4d99c3aaad65d30aa0559a5813d2c6276854d4a1706a5846"
+      },
+      {
+        "path": "paperflow_qdrant/api.py",
+        "bytes": 6607,
+        "sha256": "507f5e71acff83cdfe9a5572cfe91075929b72efc522b55fafef1f8046b1bf04"
+      },
+      {
+        "path": "paperflow_qdrant/delivery.py",
+        "bytes": 8683,
+        "sha256": "b09d6e066913aa76cd4b23c8290dd54088be4d8162f23087cd8eaaee554c2a0b"
+      },
+      {
+        "path": "paperflow_qdrant/embedding.py",
+        "bytes": 1159,
+        "sha256": "7f376961ea066389c0e4b9e587fcbbf5027aaa646c408d608531f1c38cc24637"
+      },
+      {
+        "path": "paperflow_qdrant/identity.py",
+        "bytes": 356,
+        "sha256": "0b4911aa128c0185d7ed71659af9a3c114161be854fbfa5284425735aa36db00"
+      },
+      {
+        "path": "paperflow_qdrant/library.py",
+        "bytes": 11239,
+        "sha256": "f499f2eff0ac7fd79e56f58899ee2f998a38299078e3f77612fc284a45b03258"
+      },
+      {
+        "path": "paperflow_qdrant/server.py",
+        "bytes": 1158,
+        "sha256": "2b2f3f0007ee8687c3a63edee64eeecd72b66af7421be8c6f4711ce8c22fccad"
+      }
+    ],
+    "article-repository": [
+      {
+        "path": "Dockerfile",
+        "bytes": 466,
+        "sha256": "c2e6076d03b1a95b8317f15fbe2b5672d503c0372680ff3d43d3050391169b20"
+      },
+      {
+        "path": "compose.search-20261111.yaml",
+        "bytes": 80,
+        "sha256": "46e4710b4f02135e5a0c1bf139ed153e1ff4634f6a653bd5e5938ab16969e69d"
+      },
+      {
+        "path": "compose.yaml",
+        "bytes": 1204,
+        "sha256": "c6394b66d6fb457b08984f3b4d31ab7283c760adfbc64f0c5cc137b48b7af3e7"
+      },
+      {
+        "path": "compose.year-20261111.yaml",
+        "bytes": 81,
+        "sha256": "33824b660899100f24fabae9a3e23e447ad8485bf89160ab09ea0ef07d1a4385"
+      },
+      {
+        "path": "library.py",
+        "bytes": 12454,
+        "sha256": "af0459a95381f85177cdb77534a59218a2df654836518fdd59d35ec66a054ec0"
+      },
+      {
+        "path": "majors.json",
+        "bytes": 281835,
+        "sha256": "6394b6dc7376cfd2cea64451e5d4b00a616999327b4424dea734f04977a9746b"
+      },
+      {
+        "path": "requirements.txt",
+        "bytes": 43,
+        "sha256": "e91dcb9da33d1e72c1d9b35fab98d837ac0b777b148064867ff74e079b83ba5e"
+      },
+      {
+        "path": "frontend/ArchiveCard.vue",
+        "bytes": 1962,
+        "sha256": "6661dc73e7244322149c8582f77b124733f346a05152c15181bb2d01c481bb37"
+      },
+      {
+        "path": "frontend/ArticleRepository.vue",
+        "bytes": 24005,
+        "sha256": "26bfcc3059b86c7e29909d9f0372c5673811f6e1a246162550d70742feb2ea5b"
+      },
+      {
+        "path": "frontend/Icon.vue",
+        "bytes": 1321,
+        "sha256": "e37c05837bc1a5b55faea7003bc8be2d944dd0554d54adb9c94a4e7443858179"
+      },
+      {
+        "path": "frontend/PaperProfile.vue",
+        "bytes": 7720,
+        "sha256": "69ff383109b5c356ded393316697d4dd2c83d029e2afd5924ec5c8ea2746b789"
+      },
+      {
+        "path": "frontend/ReferenceTags.vue",
+        "bytes": 663,
+        "sha256": "e2554ff8162632c98f38c3895366b387bc5cc4772fe10e33320f380f162c5ce7"
+      },
+      {
+        "path": "frontend/warehouse.css",
+        "bytes": 39187,
+        "sha256": "f3d596f4c741a7f77406c607bd33c0c707b50195a2af92f428256b4530e7845a"
+      },
+      {
+        "path": "frontend/dist/index.html",
+        "bytes": 373,
+        "sha256": "2b0a8c00d70a66cbd6e49172dffdbeb87766001ea09e61ab4ec2843a3ae8ad80"
+      },
+      {
+        "path": "frontend/dist/assets/index-B0L_uf-F.js",
+        "bytes": 1461893,
+        "sha256": "ed353d521e262f3b75f27f2666acff27aa735e8ecdfac42aa4b5e10025672208"
+      },
+      {
+        "path": "frontend/dist/assets/index-BDB931Tj.js",
+        "bytes": 1461378,
+        "sha256": "a8af04733402c86fb8118fba47932d1f82eb8512489131bbf0f7eef40807d972"
+      },
+      {
+        "path": "frontend/dist/assets/index-BYtnWgHq.css",
+        "bytes": 41931,
+        "sha256": "3a470c7626dc0f41c13ce78df19e348b94972b6de5b623b4936a12bdd0201f2d"
+      },
+      {
+        "path": "frontend/dist/assets/index-BfeBnhKc.css",
+        "bytes": 41757,
+        "sha256": "ded8954f0cce0c10e99145da21f35bb695bbb5714ccf78dc04385b14d5389b86"
+      },
+      {
+        "path": "frontend/dist/assets/index-CgFdghJz.css",
+        "bytes": 7337,
+        "sha256": "f048bcb786e70a66fca373a30ad7424abd838d6e035aa507ad9ca15450bb8ce7"
+      },
+      {
+        "path": "frontend/dist/assets/index-ClDydNuf.js",
+        "bytes": 1461839,
+        "sha256": "2957dc835b06df38d27daa27c0082b6d938249755965f3c5306a297ed7dc57fd"
+      },
+      {
+        "path": "frontend/dist/assets/index-DH3Nfo7F.js",
+        "bytes": 1486422,
+        "sha256": "4e1daa233f1d5d91e36c87587185af5e0c3163d73926a7be864f97eb4b3e018c"
+      },
+      {
+        "path": "frontend/dist/assets/index-DHnCM0px.js",
+        "bytes": 1488816,
+        "sha256": "6a6e6290b8b6092a38c00a56623d917728ee96dc2c551546dfab318efa35e37e"
+      },
+      {
+        "path": "frontend/dist/assets/index-DSFBHUDu.js",
+        "bytes": 1487443,
+        "sha256": "b143becaf256565d4ea131e33f0a9cf0df5cdb58d6fb83333f4a231f5aa8c381"
+      },
+      {
+        "path": "frontend/dist/assets/index-DbFrp3cl.js",
+        "bytes": 1461895,
+        "sha256": "5b9eaf9cc026a0c713d51e75ddb03c155cc6745b73899b41151875ba56e7a3d9"
+      },
+      {
+        "path": "frontend/dist/assets/index-DlgU3ZRL.js",
+        "bytes": 1489202,
+        "sha256": "7de53fb7b2990ead2ef0a61681dae24e3609c3098d28dac542559b80066428dc"
+      },
+      {
+        "path": "frontend/dist/assets/index-es8mM1Xk.js",
+        "bytes": 1489303,
+        "sha256": "69a04f483077b236e35e1888761a49f366d6b8d0bd52396a5b9f04c42600f7ce"
+      },
+      {
+        "path": "article_repository/__init__.py",
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      {
+        "path": "article_repository/api.py",
+        "bytes": 8442,
+        "sha256": "01c74f82f160dcae6ab035947184d56454c84b473ad0f7bd5c11a563047b2b09"
+      },
+      {
+        "path": "article_repository/catalog.py",
+        "bytes": 22354,
+        "sha256": "b5e39566bae85526fc5634aa0ef843ad24449677a2117c9ea06eb47d2b67b945"
+      },
+      {
+        "path": "article_repository/files.py",
+        "bytes": 5240,
+        "sha256": "600c43bc950d366d8549399c24c781a155338594fdf98c98e15215326d99e77b"
+      },
+      {
+        "path": "article_repository/filters.py",
+        "bytes": 6105,
+        "sha256": "88f3bcf84020fb4f7d81721846d228c217642ee132506505bc81e2bb54d0ca7e"
+      },
+      {
+        "path": "article_repository/imports.py",
+        "bytes": 9537,
+        "sha256": "d454270a815141fb7551821537c60d88cad9c01781541140669ba6794c52ed65"
+      },
+      {
+        "path": "article_repository/profiles.py",
+        "bytes": 8937,
+        "sha256": "a9a8cb22e0c6ab4cf383ab838ed116116240e2c010e6b0a6d9fb34df8e2c2bb6"
+      },
+      {
+        "path": "article_repository/rating_automation.py",
+        "bytes": 16359,
+        "sha256": "176775ff1e25d2276e2893c6889acbd87bdd7e94fa7b8495c8ad1c63c476cd61"
+      },
+      {
+        "path": "article_repository/ratings.py",
+        "bytes": 11298,
+        "sha256": "0864058c265717bc67df242e1936ef293099081df1c53c1368aca45b1de75c4d"
+      },
+      {
+        "path": "article_repository/rubric-definitions.json",
+        "bytes": 88938,
+        "sha256": "7261fb99136d3067d6a8c1b9eef61c47d6963b56d167e3d7fe3d95fad9d0ffd0"
+      },
+      {
+        "path": "article_repository/schema.sql",
+        "bytes": 4404,
+        "sha256": "4763b921827c40c50195fdf809d6c7f5b09eaaa7d5b8f685e0de07bb75e5538b"
+      },
+      {
+        "path": "article_repository/server.py",
+        "bytes": 3745,
+        "sha256": "6a2c70e25ff51066e24bccc51a40d80edcc5d3526fcf54095ec42d5346919f11"
+      },
+      {
+        "path": "article_repository/sync.py",
+        "bytes": 10441,
+        "sha256": "89f25885d8cebc33e6dbaebf144b22dfc3e2dd7e3c2d59746df2bd388985cd4a"
+      },
+      {
+        "path": "article_repository/years.py",
+        "bytes": 2303,
+        "sha256": "31e85133e5d65983c0e3494e582724459b15b3da7f362bad74a68702e94a49ad"
+      },
+      {
+        "path": "maintenance/display-names-20261110T072312200425Z/before.json",
+        "bytes": 1858,
+        "sha256": "03cd20e5371b6b1d4c2f6dc03a30ccf26e8df5fe3ca2f2b672bf0676b148a5a4"
+      },
+      {
+        "path": "maintenance/display-names-20261110T072312200425Z/result.json",
+        "bytes": 1535,
+        "sha256": "1bfe6646b5d6a6904cb188a604ab659157c5174ec2b1040ced83f94dc75e3e6c"
+      },
+      {
+        "path": "maintenance/rating-20261112T144205Z/receipt.json",
+        "bytes": 1690,
+        "sha256": "5436a57768dea89f43972ba15ba24875203a64a14bacda5678e97c3fc25ac6a2"
+      },
+      {
+        "path": "maintenance/rating-20261112T144205Z/files/article_repository/api.py",
+        "bytes": 6438,
+        "sha256": "36071e7124309d746f53559564f8f54c9d0e8fbebe3ae4c1f41445e090d9f641"
+      },
+      {
+        "path": "maintenance/rating-20261112T144205Z/files/article_repository/catalog.py",
+        "bytes": 20766,
+        "sha256": "151df774a58e5fee52b85120f2867b99df4bcf1187e2b329bf661b7369620731"
+      },
+      {
+        "path": "maintenance/rating-20261112T144205Z/files/article_repository/schema.sql",
+        "bytes": 3155,
+        "sha256": "d91de89e922b7feab542a7b77cd05702766f47e55967f1f309491a5445a9ef67"
+      },
+      {
+        "path": "maintenance/rating-size-20261112T183856Z/receipt.json",
+        "bytes": 804,
+        "sha256": "5bcb50f026368759634b5adc1239742886137f6b76f69ca6a16c81b7ff9f0286"
+      },
+      {
+        "path": "maintenance/rating-size-20261112T183856Z/files/article_repository/ratings.py",
+        "bytes": 10769,
+        "sha256": "75b60a007b0f94850d569dfbfe72bf91346a41e25f77698587773dba5030d202"
+      },
+      {
+        "path": "maintenance/rating-20261112T125226Z/receipt.json",
+        "bytes": 1722,
+        "sha256": "8d1ed6e99e88d3fa035319f7600fa4cee5416ae07a85845cb21ab47110e2602c"
+      },
+      {
+        "path": "maintenance/rating-20261112T125226Z/files/article_repository/api.py",
+        "bytes": 6438,
+        "sha256": "36071e7124309d746f53559564f8f54c9d0e8fbebe3ae4c1f41445e090d9f641"
+      },
+      {
+        "path": "maintenance/rating-20261112T125226Z/files/article_repository/catalog.py",
+        "bytes": 20766,
+        "sha256": "151df774a58e5fee52b85120f2867b99df4bcf1187e2b329bf661b7369620731"
+      },
+      {
+        "path": "maintenance/rating-20261112T125226Z/files/article_repository/ratings.py",
+        "bytes": 10648,
+        "sha256": "d20c3ee0389cc6928dd3d29f8905363c2241014f41e73452b44d35d0644aeba8"
+      },
+      {
+        "path": "maintenance/rating-20261112T125226Z/files/article_repository/schema.sql",
+        "bytes": 3155,
+        "sha256": "d91de89e922b7feab542a7b77cd05702766f47e55967f1f309491a5445a9ef67"
+      },
+      {
+        "path": "maintenance/display-names-20261110T072343925148Z/before.json",
+        "bytes": 513546,
+        "sha256": "b4a62b508cb6aec199ff2469612a7804a26f259191ff77ed136c2bfa8c794768"
+      },
+      {
+        "path": "maintenance/display-names-20261110T072343925148Z/result.json",
+        "bytes": 337119,
+        "sha256": "1ed35881363a61394d4735930c9322579fa3328e57264ababcfe47325c4b479f"
+      },
+      {
+        "path": "maintenance/display-names-20261110T072712752509Z/before.json",
+        "bytes": 22088,
+        "sha256": "965531d89ea3788da12dd986f8b049ce69f66c02a5c8e786fbdf58f1560992b2"
+      },
+      {
+        "path": "maintenance/display-names-20261110T072712752509Z/result.json",
+        "bytes": 14933,
+        "sha256": "c7e1f2a0971ffc4c18b44506dc8d6bc9ae2b2eee29624a69c41e79c29a0bec39"
+      },
+      {
+        "path": "maintenance/rating-20261112T123238Z/receipt.json",
+        "bytes": 828,
+        "sha256": "d2b0523e7e10180dc9d5c1a85c3e5dc9c1d6ac80fdf853d8af383760587a20cf"
+      },
+      {
+        "path": "maintenance/rating-20261112T123238Z/files/article_repository/rubric-definitions.json",
+        "bytes": 100129,
+        "sha256": "7ada5c72a0915f1315fe2a927ce06b7e7b9d3cee9040c7a17a129f49c092c506"
+      },
+      {
+        "path": "maintenance/rating-20261112T123822Z/receipt.json",
+        "bytes": 1407,
+        "sha256": "e2aa852219a9b73b72b6221e6b631e58014e334297c22cc1335129c52d5a9e1d"
+      },
+      {
+        "path": "maintenance/rating-20261112T123822Z/files/article_repository/api.py",
+        "bytes": 5951,
+        "sha256": "84780245fc4f0945c793f5e0171b55d0b69d3b10b7629395ca0cb5d5918cdf6e"
+      },
+      {
+        "path": "maintenance/rating-20261112T123822Z/files/article_repository/catalog.py",
+        "bytes": 17650,
+        "sha256": "2c02790433ae16c0d782fbc6f9f356fdc81d834798dfe9430eeb97af98720363"
+      },
+      {
+        "path": "maintenance/rating-20261112T123822Z/files/article_repository/ratings.py",
+        "bytes": 7827,
+        "sha256": "023519f8225b1ad60251b61cc918d84eb89c2281756add1240724b857a896959"
+      },
+      {
+        "path": "maintenance/rating-20261112T122749Z/receipt.json",
+        "bytes": 3816,
+        "sha256": "97db5c4036e4f0f9c0160283d8676ed2e769754d5906f1aaa8a8463b434faeee"
+      },
+      {
+        "path": "maintenance/rating-20261112T122749Z/files/frontend/ArticleRepository.vue",
+        "bytes": 23979,
+        "sha256": "5d4e692f194ad96735ccf028f42d529cc63f1a52804597eee2f3487e449eb83f"
+      },
+      {
+        "path": "maintenance/rating-20261112T122749Z/files/frontend/ReferenceTags.vue",
+        "bytes": 563,
+        "sha256": "6305590532455f0b653ca6d20e5c908c78a5a290520106906532e61459576da6"
+      },
+      {
+        "path": "maintenance/rating-20261112T122749Z/files/frontend/dist/index.html",
+        "bytes": 373,
+        "sha256": "b16e520bab1df1ebc2f8af8fe0cb67e21720ef677cd72f2a0c81964b96efe902"
+      },
+      {
+        "path": "maintenance/rating-20261112T122749Z/files/frontend/dist/assets/index-BYtnWgHq.css",
+        "bytes": 41931,
+        "sha256": "3a470c7626dc0f41c13ce78df19e348b94972b6de5b623b4936a12bdd0201f2d"
+      },
+      {
+        "path": "maintenance/rating-20261112T122749Z/files/article_repository/api.py",
+        "bytes": 5299,
+        "sha256": "80dc37940b4516b68d3231be1d1c924736cc6d41dc78edea43d3b509ea4ece94"
+      },
+      {
+        "path": "maintenance/rating-20261112T122749Z/files/article_repository/catalog.py",
+        "bytes": 13800,
+        "sha256": "64afbce87b9e19ace3a8dab11907eae2d71c80bf0fec1422cd91897c6aaad35e"
+      },
+      {
+        "path": "maintenance/rating-20261112T122749Z/files/article_repository/filters.py",
+        "bytes": 5978,
+        "sha256": "697442dea07ed1026334a02ae07051ab05518adf093ac6b634edfbdbf893fa7e"
+      },
+      {
+        "path": "maintenance/rating-20261112T122749Z/files/article_repository/schema.sql",
+        "bytes": 2239,
+        "sha256": "28621b2e537c857c0c5e687fa8afb414756915cf70698dd81f684bc0ae6eb49f"
+      },
+      {
+        "path": "maintenance/rating-20261112T124831Z/receipt.json",
+        "bytes": 1722,
+        "sha256": "f1b7cbec6c3072a04759e26ac0d8cca3b236c32e5151f2fbd00e9a15a97947d9"
+      },
+      {
+        "path": "maintenance/rating-20261112T124831Z/files/article_repository/api.py",
+        "bytes": 6228,
+        "sha256": "f1637518e558e0340c522e6c4c2e99f280fc37679446fe13d28c449e776aec2a"
+      },
+      {
+        "path": "maintenance/rating-20261112T124831Z/files/article_repository/catalog.py",
+        "bytes": 18409,
+        "sha256": "2926d4a16a91a9c041011f3345569d5449455eb5e943c563dd255511beacea19"
+      },
+      {
+        "path": "maintenance/rating-20261112T124831Z/files/article_repository/ratings.py",
+        "bytes": 11316,
+        "sha256": "686321c8befcc70f36b5969dcc38c0639aeb81e06b2c8b6f8c9cd0b46df364e2"
+      },
+      {
+        "path": "maintenance/rating-20261112T124831Z/files/article_repository/schema.sql",
+        "bytes": 2858,
+        "sha256": "77c596e212c8681d60aeb5547dadeb6382adaaa48a567b94b266c75d95a6029d"
+      }
+    ],
+    "prefect": [
+      {
+        "path": "README.md",
+        "bytes": 2800,
+        "sha256": "0b65d8f7d2b63db80608d6f527e6632af2d9548cf52bb17aaec72f7b519698a5"
+      },
+      {
+        "path": "compose.yaml",
+        "bytes": 2164,
+        "sha256": "728cdddc91ee0bcd157d7d99ee8adae2c92541fde917246a71b3a0c88f1faa66"
+      },
+      {
+        "path": "demo.py",
+        "bytes": 7990,
+        "sha256": "d37bf5919764a01252393db1e5073b552538e3c8525a1502345fe9184078f7bb"
+      }
+    ]
+  },
+  "systemd": {
+    "local-embedding-ollama.service": {
+      "WorkingDirectory": "/opt/local-embedding-test",
+      "User": "wzy",
+      "FragmentPath": "/etc/systemd/system/local-embedding-ollama.service",
+      "DropInPaths": "",
+      "executable_paths": [
+        "/opt/local-embedding-test/runtime/bin/ollama"
+      ]
+    },
+    "ollama-ragflow-embedding.service": {
+      "WorkingDirectory": "",
+      "User": "wzy",
+      "FragmentPath": "/etc/systemd/system/ollama-ragflow-embedding.service",
+      "DropInPaths": "",
+      "executable_paths": [
+        "/0",
+        "/a",
+        "/opt/local-embedding-test/runtime/bin/ollama"
+      ]
+    },
+    "rag-upload-gpu-20261027.service": {
+      "WorkingDirectory": "/opt/rag-upload-gpu-stage-20261027",
+      "User": "wzy",
+      "FragmentPath": "/etc/systemd/system/rag-upload-gpu-20261027.service",
+      "DropInPaths": "",
+      "executable_paths": [
+        "/0",
+        "/a",
+        "/opt/local-embedding-test/runtime/bin/ollama"
+      ]
+    }
+  },
+  "listeners": [
+    "LISTEN 0      4096                      0.0.0.0:8081       0.0.0.0:*    users:((\"docker-proxy\",pid=2322454,fd=8))                                                                                                                                                                                                                                                                                                                                                       ",
+    "LISTEN 0      4096                   172.17.0.1:11434      0.0.0.0:*    users:((\"ollama\",pid=12954,fd=3))                                                                                                                                                                                                                                                                                                                                                               ",
+    "LISTEN 0      4096                   172.17.0.1:11436      0.0.0.0:*    users:((\"ollama\",pid=3377,fd=3))                                                                                                                                                                                                                                                                                                                                                                ",
+    "LISTEN 0      4096                192.168.1.120:4200       0.0.0.0:*    users:((\"docker-proxy\",pid=5011,fd=8))                                                                                                                                                                                                                                                                                                                                                          ",
+    "LISTEN 0      4096                192.168.1.120:8098       0.0.0.0:*    users:((\"docker-proxy\",pid=634976,fd=8))                                                                                                                                                                                                                                                                                                                                                        ",
+    "LISTEN 0      4096                192.168.1.120:8097       0.0.0.0:*    users:((\"docker-proxy\",pid=1339290,fd=8))                                                                                                                                                                                                                                                                                                                                                       ",
+    "LISTEN 0      4096                         [::]:8081          [::]:*    users:((\"docker-proxy\",pid=2322460,fd=8))                                                                                                                                                                                                                                                                                                                                                       "
+  ],
+  "nonsecret_service_settings": {
+    "paperflow-qdrant-gateway": {
+      "QDRANT_COLLECTION": "paperflow_v1",
+      "OBJECT_ROOT": "/data/objects",
+      "QDRANT_URL": "http://qdrant:6333",
+      "EMBEDDING_URL": "http://172.17.0.1:11436"
+    },
+    "paperflow-article-repository": {
+      "ARTICLE_NAS_ROOT": "\\\\192.168.1.67\\paper_ai\\论文原件库",
+      "QDRANT_URL": "http://paperflow-qdrant:6333",
+      "PREFECT_API_URL": "http://192.168.1.120:4200/api"
+    }
+  }
+}

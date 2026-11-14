@@ -1,0 +1,24 @@
+{
+  "format": "paperflow-migration-release/1",
+  "release_tag": "linux-server-migration-20261114",
+  "assets": [
+    {
+      "name": "linux-embedding-model.tar.gz",
+      "bytes": 1053646733,
+      "sha256": "483ef2833b8cb1dcd7cef2bf968edbdc7ec991d662fe2f05b160e1b95b979d6f",
+      "url": "https://github.com/17764438818wzy-glitch/jjjjmkkuikykuy/releases/download/linux-server-migration-20261114/linux-embedding-model.tar.gz"
+    },
+    {
+      "name": "linux-embedding-runtime.tar.gz",
+      "bytes": 1718333419,
+      "sha256": "4ea3db3dda3d8db6da12a5218712e2c73c5dbd0801b4ec5b28f92b3c4d382f95",
+      "url": "https://github.com/17764438818wzy-glitch/jjjjmkkuikykuy/releases/download/linux-server-migration-20261114/linux-embedding-runtime.tar.gz"
+    },
+    {
+      "name": "paperflow-sample100-20261114.tar.gz",
+      "bytes": 407575264,
+      "sha256": "366a273953eee1353f562556c0de6ba9342f099fa9875a1ce23532351c2b1e1f",
+      "url": "https://github.com/17764438818wzy-glitch/jjjjmkkuikykuy/releases/download/linux-server-migration-20261114/paperflow-sample100-20261114.tar.gz"
+    }
+  ]
+}

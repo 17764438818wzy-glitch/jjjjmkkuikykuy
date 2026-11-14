@@ -1,0 +1,116 @@
+name: paperflow-migration100
+services:
+  qdrant:
+    image: qdrant/qdrant:v1.20.0@sha256:9bfc89f9914fc14876a88c05270685921a55b8877b254a98bcc1cc2f0a424cd2
+    restart: unless-stopped
+    environment:
+      QDRANT__SERVICE__API_KEY: ${QDRANT_API_KEY:?Run configure.py first}
+      QDRANT__TELEMETRY_DISABLED: 'true'
+    ports:
+      - '127.0.0.1:${QDRANT_PORT:-16333}:6333'
+    volumes:
+      - ${STATE_ROOT:-./state}/qdrant:/qdrant/storage
+  article-postgres:
+    image: postgres:18.6-alpine@sha256:10a5c69a83035ab5239f5620d708520e8b28f5aa1f2b20143e6024532edadfb5
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: article_repository
+      POSTGRES_USER: article_repository
+      POSTGRES_PASSWORD: ${ARTICLE_POSTGRES_PASSWORD:?Run configure.py first}
+    volumes:
+      - ${STATE_ROOT:-./state}/article-postgres:/var/lib/postgresql
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U article_repository -d article_repository']
+      interval: 5s
+      timeout: 3s
+      retries: 30
+  gateway:
+    image: paperflow-migration/gateway:20261114
+    build:
+      context: ../services/gateway
+      dockerfile: Dockerfile.migration
+    restart: unless-stopped
+    environment:
+      QDRANT_URL: http://qdrant:6333
+      QDRANT_API_KEY: ${QDRANT_API_KEY:?Run configure.py first}
+      QDRANT_COLLECTION: paperflow_v1
+      PAPERFLOW_RAG_API_KEY: ${PAPERFLOW_RAG_API_KEY:?Run configure.py first}
+      EMBEDDING_URL: ${EMBEDDING_URL:-http://host.docker.internal:11436}
+      OBJECT_ROOT: /data/objects
+      HAYSTACK_TELEMETRY_ENABLED: 'false'
+      PYTHONUNBUFFERED: '1'
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    ports:
+      - '${BIND_HOST:-127.0.0.1}:${GATEWAY_PORT:-18097}:8097'
+    volumes:
+      - ${STATE_ROOT:-./state}/objects:/data/objects
+    depends_on:
+      - qdrant
+  repository:
+    image: paperflow-migration/article-repository:20261114
+    build:
+      context: ../services/article-repository
+      dockerfile: Dockerfile.migration
+      args:
+        GATEWAY_IMAGE: paperflow-migration/gateway:20261114
+    restart: unless-stopped
+    environment:
+      ARTICLE_DATABASE_URL: postgresql://article_repository:${ARTICLE_POSTGRES_PASSWORD:?Run configure.py first}@article-postgres/article_repository
+      ARTICLE_DATABASE_SCHEMA: public
+      ARTICLE_IMPORT_ENABLED: ${ARTICLE_IMPORT_ENABLED:-false}
+      ARTICLE_NAS_ROOT: ${ARTICLE_NAS_ROOT:-/sample/nas}
+      ARTICLE_NAS_USER: ${ARTICLE_NAS_USER:-}
+      ARTICLE_NAS_PASSWORD: ${ARTICLE_NAS_PASSWORD:-}
+      QDRANT_URL: http://qdrant:6333
+      QDRANT_API_KEY: ${QDRANT_API_KEY:?Run configure.py first}
+      QDRANT_COLLECTION: paperflow_v1
+      OBJECT_ROOT: /data/objects
+      PAPERFLOW_RAG_API_KEY: ${PAPERFLOW_RAG_API_KEY:?Run configure.py first}
+      EMBEDDING_URL: ${EMBEDDING_URL:-http://host.docker.internal:11436}
+      PREFECT_API_URL: http://prefect:4200/api
+      HAYSTACK_TELEMETRY_ENABLED: 'false'
+      PYTHONUNBUFFERED: '1'
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    ports:
+      - '${BIND_HOST:-127.0.0.1}:${ARTICLE_PORT:-18098}:8098'
+    volumes:
+      - ${SAMPLE_DIR:?Run configure.py first}:/sample:ro
+      - ../scripts:/migration-tools:ro
+      - ${STATE_ROOT:-./state}/objects:/data/objects
+    depends_on:
+      article-postgres:
+        condition: service_healthy
+      qdrant:
+        condition: service_started
+  prefect-postgres:
+    image: postgres:18.6-alpine@sha256:10a5c69a83035ab5239f5620d708520e8b28f5aa1f2b20143e6024532edadfb5
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: prefect_preview
+      POSTGRES_USER: prefect_preview
+      POSTGRES_PASSWORD: ${PREFECT_POSTGRES_PASSWORD:?Run configure.py first}
+    volumes:
+      - ${STATE_ROOT:-./state}/prefect-postgres:/var/lib/postgresql
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U prefect_preview -d prefect_preview']
+      interval: 5s
+      timeout: 3s
+      retries: 30
+  prefect:
+    image: prefecthq/prefect:3.9.0-python3.12@sha256:9f4fb20a431f0aba81bbcede83d5c08648aa769faf0ec47e989e9d370270129e
+    restart: unless-stopped
+    command: [prefect, server, start, --host, 0.0.0.0, --port, '4200']
+    environment:
+      PREFECT_SERVER_DATABASE_CONNECTION_URL: postgresql+asyncpg://prefect_preview:${PREFECT_POSTGRES_PASSWORD:?Run configure.py first}@prefect-postgres:5432/prefect_preview
+      PREFECT_UI_API_URL: http://${PUBLIC_HOST:-127.0.0.1}:${PREFECT_PORT:-14200}/api
+      PREFECT_SERVER_ANALYTICS_ENABLED: 'false'
+      PREFECT_HOME: /opt/prefect
+    ports:
+      - '${BIND_HOST:-127.0.0.1}:${PREFECT_PORT:-14200}:4200'
+    volumes:
+      - ${STATE_ROOT:-./state}/prefect:/opt/prefect
+    depends_on:
+      prefect-postgres:
+        condition: service_healthy

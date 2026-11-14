@@ -1,0 +1,30 @@
+[Unit]
+Description=Paperflow RAG BGE GPU embedding sidecar
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=wzy
+Group=wzy
+WorkingDirectory=/opt/rag-upload-gpu-stage-20261027
+Environment=HOME=/opt/rag-upload-gpu-stage-20261027
+Environment=OLLAMA_HOST=172.17.0.1:11436
+Environment=OLLAMA_MODELS=/opt/rag-upload-gpu-stage-20261027/models
+Environment=OLLAMA_NUM_PARALLEL=4
+Environment=OLLAMA_CONTEXT_LENGTH=8192
+Environment=OLLAMA_KEEP_ALIVE=-1
+Environment=OLLAMA_NO_CLOUD=1
+Environment=OLLAMA_NOPRUNE=true
+ExecStart=/opt/local-embedding-test/runtime/bin/ollama serve
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=65535
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/opt/rag-upload-gpu-stage-20261027
+
+[Install]
+WantedBy=multi-user.target

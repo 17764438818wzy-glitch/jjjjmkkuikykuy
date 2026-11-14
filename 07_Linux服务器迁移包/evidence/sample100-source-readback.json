@@ -1,0 +1,47 @@
+{
+  "observed_at_utc": "2026-11-14T12:30:02.363263+00:00",
+  "transaction_read_only": "on",
+  "tables": {
+    "article": {
+      "count": 100,
+      "sha256": "b798f8b5647f7e63d5938689ba83488ae1895b74aafc0a3513612c51ca531ade",
+      "matches_export": true
+    },
+    "article_major": {
+      "count": 275,
+      "sha256": "580cd5182d745ea4d891877c8e0bd2a88e6c0ea4464750e428c40c20bbe98aeb",
+      "matches_export": true
+    },
+    "article_rating": {
+      "count": 8,
+      "sha256": "d6dffac7a484519496bd5355d44b5a2d4ac9d1d4b18165f3bba0cc102f598324",
+      "matches_export": true
+    },
+    "article_rating_profile": {
+      "count": 78,
+      "sha256": "ac94fa24a3582823e79596d9370e4359ec9a918f9f0b78853f42af9dc2a46697",
+      "matches_export": true
+    },
+    "article_rating_discovery": {
+      "count": 20,
+      "sha256": "2d362fe76d8a6d666c1d48a928552c3a4cf6c793160c0a7183ba0aca0de29e2e",
+      "matches_export": true
+    },
+    "article_research_type_operation": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches_export": true
+    },
+    "article_rating_claim": {
+      "count": 14,
+      "sha256": "9ad08717deade228396b6522000dc13bc33e4e3624da7e7cb99b4c44a73cb793",
+      "matches_export": true
+    },
+    "major": {
+      "count": 883,
+      "sha256": "4b4dc261cec10c9cd672bb504936a45c813943e7d7101854665c1ee48f113e9f",
+      "matches_export": true
+    }
+  },
+  "all_selected_records_unchanged": true
+}

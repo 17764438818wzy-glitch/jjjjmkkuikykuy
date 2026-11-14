@@ -1,0 +1,23 @@
+{
+  "articles": 100,
+  "tables": {
+    "major": 883,
+    "article": 100,
+    "article_major": 275,
+    "article_rating": 8,
+    "article_rating_profile": 78,
+    "article_rating_discovery": 20,
+    "article_research_type_operation": 0,
+    "article_rating_claim": 14
+  },
+  "files_hashed": 687,
+  "points": 14405,
+  "kinds": {
+    "chunk": 14028,
+    "folder_complete": 110,
+    "folder_binding": 110,
+    "manifest": 157
+  },
+  "folders": 110,
+  "offline_integrity": "passed"
+}

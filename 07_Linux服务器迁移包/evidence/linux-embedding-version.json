@@ -1,0 +1,5 @@
+{
+  "returncode": 0,
+  "version_output": "Warning: could not connect to a running Ollama instance\nWarning: client version is 0.34.0",
+  "stderr": ""
+}

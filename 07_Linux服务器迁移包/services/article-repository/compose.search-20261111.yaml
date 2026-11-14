@@ -1,0 +1,3 @@
+services:
+  repository:
+    image: paperflow-article-repository:search-20261111

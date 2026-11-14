@@ -1,0 +1,214 @@
+{
+  "model_root": "/opt/rag-upload-gpu-stage-20261027/models",
+  "manifests": [
+    {
+      "path": "manifests/registry.ollama.ai/library/bge-m3/latest",
+      "bytes": 563,
+      "sha256": "7907646426070047a77226ac3e684fbbe8410524f7b4a74d02837e43f2146bab",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:0c4c9c2a325fb1cdafec606e6809cb745f1cb26a6d919994400d27372303e276",
+          "size": 337
+        },
+        "layers": [
+          {
+            "mediaType": "application/vnd.ollama.image.model",
+            "digest": "sha256:daec91ffb5dd0c27411bd71f29932917c49cf529a641d0168496c3a501e3062c",
+            "size": 1157671200
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.license",
+            "digest": "sha256:a406579cd136771c705c521db86ca7d60a6f3de7c9b5460e6193a2df27861bde",
+            "size": 1068
+          }
+        ]
+      }
+    }
+  ],
+  "runtime_root": "/opt/local-embedding-test/runtime",
+  "runtime_files": [
+    {
+      "path": "bin/ollama",
+      "bytes": 40014640
+    },
+    {
+      "path": "lib/ollama/CPP_HTTPLIB_LICENSE",
+      "bytes": 1075
+    },
+    {
+      "path": "lib/ollama/DLPACK_LICENSE",
+      "bytes": 11345
+    },
+    {
+      "path": "lib/ollama/FMT_LICENSE",
+      "bytes": 1431
+    },
+    {
+      "path": "lib/ollama/GO_LICENSE",
+      "bytes": 255417
+    },
+    {
+      "path": "lib/ollama/LLAMA_CPP_LICENSE",
+      "bytes": 1078
+    },
+    {
+      "path": "lib/ollama/LLAMA_CPP_VENDORS_LICENSE",
+      "bytes": 7257
+    },
+    {
+      "path": "lib/ollama/MLX_C_LICENSE",
+      "bytes": 1067
+    },
+    {
+      "path": "lib/ollama/MLX_LICENSE",
+      "bytes": 1066
+    },
+    {
+      "path": "lib/ollama/PICOJSON_LICENSE",
+      "bytes": 1414
+    },
+    {
+      "path": "lib/ollama/XGRAMMAR_LICENSE",
+      "bytes": 11357
+    },
+    {
+      "path": "lib/ollama/XGRAMMAR_NOTICE",
+      "bytes": 54
+    },
+    {
+      "path": "lib/ollama/cuda_v12/libcublas.so.12.8.5.5",
+      "bytes": 116388640
+    },
+    {
+      "path": "lib/ollama/cuda_v12/libcublasLt.so.12.8.5.5",
+      "bytes": 751775824
+    },
+    {
+      "path": "lib/ollama/cuda_v12/libcudart.so.12.8.90",
+      "bytes": 728800
+    },
+    {
+      "path": "lib/ollama/cuda_v12/libggml-cuda.so",
+      "bytes": 418087456
+    },
+    {
+      "path": "lib/ollama/cuda_v13/libcublas.so.13.1.1.3",
+      "bytes": 54177976
+    },
+    {
+      "path": "lib/ollama/cuda_v13/libcublasLt.so.13.1.1.3",
+      "bytes": 541607888
+    },
+    {
+      "path": "lib/ollama/cuda_v13/libcudart.so.13.0.96",
+      "bytes": 704288
+    },
+    {
+      "path": "lib/ollama/cuda_v13/libggml-cuda.so",
+      "bytes": 253915584
+    },
+    {
+      "path": "lib/ollama/libggml-base.so.0.22.0",
+      "bytes": 826016
+    },
+    {
+      "path": "lib/ollama/libggml-cpu-alderlake.so",
+      "bytes": 1108040
+    },
+    {
+      "path": "lib/ollama/libggml-cpu-cannonlake.so",
+      "bytes": 1337416
+    },
+    {
+      "path": "lib/ollama/libggml-cpu-cascadelake.so",
+      "bytes": 1333320
+    },
+    {
+      "path": "lib/ollama/libggml-cpu-cooperlake.so",
+      "bytes": 1329224
+    },
+    {
+      "path": "lib/ollama/libggml-cpu-haswell.so",
+      "bytes": 1112136
+    },
+    {
+      "path": "lib/ollama/libggml-cpu-icelake.so",
+      "bytes": 1333320
+    },
+    {
+      "path": "lib/ollama/libggml-cpu-ivybridge.so",
+      "bytes": 1046696
+    },
+    {
+      "path": "lib/ollama/libggml-cpu-piledriver.so",
+      "bytes": 1042600
+    },
+    {
+      "path": "lib/ollama/libggml-cpu-sandybridge.so",
+      "bytes": 1038504
+    },
+    {
+      "path": "lib/ollama/libggml-cpu-sapphirerapids.so",
+      "bytes": 1579376
+    },
+    {
+      "path": "lib/ollama/libggml-cpu-skylakex.so",
+      "bytes": 1337416
+    },
+    {
+      "path": "lib/ollama/libggml-cpu-sse42.so",
+      "bytes": 878888
+    },
+    {
+      "path": "lib/ollama/libggml-cpu-x64.so",
+      "bytes": 874824
+    },
+    {
+      "path": "lib/ollama/libggml-cpu-zen4.so",
+      "bytes": 1329224
+    },
+    {
+      "path": "lib/ollama/libggml.so.0.22.0",
+      "bytes": 220832
+    },
+    {
+      "path": "lib/ollama/libgomp.so.1.0.0",
+      "bytes": 235072
+    },
+    {
+      "path": "lib/ollama/libllama-common.so.0.3.0",
+      "bytes": 4220016
+    },
+    {
+      "path": "lib/ollama/libllama-quantize-impl.so",
+      "bytes": 72560
+    },
+    {
+      "path": "lib/ollama/libllama-server-impl.so",
+      "bytes": 2774448
+    },
+    {
+      "path": "lib/ollama/libllama.so.0.3.0",
+      "bytes": 4025208
+    },
+    {
+      "path": "lib/ollama/libmtmd.so.0.3.0",
+      "bytes": 1852048
+    },
+    {
+      "path": "lib/ollama/llama-quantize",
+      "bytes": 15096
+    },
+    {
+      "path": "lib/ollama/llama-server",
+      "bytes": 15096
+    },
+    {
+      "path": "lib/ollama/vulkan/libggml-vulkan.so",
+      "bytes": 54039208
+    }
+  ]
+}

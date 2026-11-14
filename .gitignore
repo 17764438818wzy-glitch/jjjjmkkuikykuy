@@ -24,3 +24,10 @@ __pycache__/
 *.p12
 id_rsa
 id_ed25519
+
+# Linux migration attachments and destination-generated state are outside Git.
+07_Linux服务器迁移包/deployment/state/
+07_Linux服务器迁移包/deployment/paperflow-migration-embedding.service
+08_100篇样例数据/data/
+08_100篇样例数据/downloads/
+*.download
