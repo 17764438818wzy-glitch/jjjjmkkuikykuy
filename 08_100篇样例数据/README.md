@@ -17,4 +17,6 @@
 | `linux-embedding-runtime.tar.gz` | 源服务器 Linux x86_64 Ollama 0.34.0 运行时与原许可文件 |
 | `linux-embedding-model.tar.gz` | bge-m3 manifest、模型 blob 及模型许可文件 |
 
-使用 `07_Linux服务器迁移包/scripts/download_assets.py` 下载时会验证 SHA256。解压和恢复前先运行 `sample_tools.py`；恢复脚本只接受新的空目标实例。历史 active=false、原 ID 和评分操作状态均保留，恢复不触发重新处理或评分。
+上表是合并后的归档名称。Release 实际附件按最大 16MiB 分卷，共 191 份（样例 25、模型 63、运行时 103），完整归档及每份分卷的 hash 都在清单中。使用 `07_Linux服务器迁移包/scripts/download_assets.py` 自动下载、逐份校验并合并，再核对完整归档 SHA256；中断后可复用已校验分卷，无需手动拼接。
+
+解压和恢复前先运行 `sample_tools.py`；恢复脚本只接受新的空目标实例。历史 active=false、原 ID 和评分操作状态均保留，恢复不触发重新处理或评分。

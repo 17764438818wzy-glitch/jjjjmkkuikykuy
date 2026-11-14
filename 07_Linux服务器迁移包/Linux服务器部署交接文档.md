@@ -72,9 +72,11 @@ tar -xzf "$TASK_REPO/08_100篇样例数据/downloads/paperflow-sample100-2026111
 python3 "$TASK_REPO/07_Linux服务器迁移包/scripts/sample_tools.py" "$TASK_REPO/08_100篇样例数据/data"
 ```
 
-下载器会核对每个附件的字节数与 SHA256，数据离线检查会核对全部文件、100 篇身份、Qdrant 点 ID 映射、manifest/分块闭包及完成标记。预期输出 `offline_integrity: passed`、`articles: 100`、`points: 14405`、`folders: 110`。
+Release 使用最大 16MiB 的 `.part001` 等分卷，以减少长连接中断的影响。下载器按清单逐份下载并核对字节数与 SHA256，自动合并成上面命令使用的三个 `.tar.gz`，再核对完整归档的 SHA256；无需手动拼接。已下载并校验的分卷保留在 `downloads/*.parts/`，再次执行会复用。
 
-只想先看目录和原件时，下载命令可追加 `--sample-only`，暂不安装嵌入模型。断开的 `.download` 文件不会自动覆盖；保留到其他位置后再执行下载。网络需要代理时，在新机器自行配置 `HTTPS_PROXY`，本包没有保存旧电脑的代理账户。
+数据离线检查会核对全部文件、100 篇身份、Qdrant 点 ID 映射、manifest/分块闭包及完成标记。预期输出 `offline_integrity: passed`、`articles: 100`、`points: 14405`、`folders: 110`。
+
+只想先看目录和原件时，下载命令可追加 `--sample-only`，暂不安装嵌入模型。网络中断时再次执行同一命令：已校验的分卷跳过，下载器自己的未完成 `.download` 临时文件可重新下载；若完整分卷或完整归档的校验不符，脚本会停止并保留文件，需先移到其他位置后重试。网络需要代理时，在新机器自行配置 `HTTPS_PROXY`，本包没有保存旧电脑的代理账户。
 
 ## 3. 创建新机配置并构建
 

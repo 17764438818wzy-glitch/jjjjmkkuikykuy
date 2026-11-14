@@ -1,0 +1,8 @@
+{
+  "local_http_download": "passed",
+  "partial_resume": "passed",
+  "existing_archive_reuse": "passed",
+  "part_and_archive_hash": "passed",
+  "corrupt_part_rejected": "passed",
+  "unsafe_path_rejected": "passed"
+}
