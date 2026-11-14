@@ -1,0 +1,20 @@
+{
+  "name": "paperflow-query-frontend-candidate",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/folder-ticket-dashboard.test.cjs tests/query-recovery.test.cjs tests/workbuddy-account-controls.test.cjs"
+  },
+  "dependencies": {
+    "@tanstack/query-async-storage-persister": "5.105.3",
+    "@tanstack/query-core": "5.105.3",
+    "@tanstack/query-persist-client-core": "5.105.3",
+    "idb-keyval": "6.3.0",
+    "workbox-precaching": "7.4.1"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "playwright": "1.64.1"
+  }
+}

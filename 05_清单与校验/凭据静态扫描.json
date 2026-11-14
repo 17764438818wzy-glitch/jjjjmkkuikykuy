@@ -1,0 +1,96 @@
+{
+  "files_scanned": 1467,
+  "hits_without_values": [
+    {
+      "path": "01_程序文件\\论文预处理系统\\程序\\desktop\\test_derived_upload_port.py",
+      "line": 18,
+      "pattern": "literal_credential"
+    },
+    {
+      "path": "01_程序文件\\论文预处理系统\\程序\\desktop\\test_education_llm_capacity.py",
+      "line": 15,
+      "pattern": "literal_credential"
+    },
+    {
+      "path": "01_程序文件\\论文预处理系统\\程序\\desktop\\test_failed_privacy_evidence.py",
+      "line": 28,
+      "pattern": "literal_credential"
+    },
+    {
+      "path": "01_程序文件\\论文预处理系统\\程序\\desktop\\test_library_selection_during_processing.py",
+      "line": 80,
+      "pattern": "literal_credential"
+    },
+    {
+      "path": "01_程序文件\\论文预处理系统\\程序\\desktop\\test_library_selection_during_processing.py",
+      "line": 120,
+      "pattern": "literal_credential"
+    },
+    {
+      "path": "01_程序文件\\论文预处理系统\\程序\\desktop\\test_preextract_handoff.py",
+      "line": 55,
+      "pattern": "literal_credential"
+    },
+    {
+      "path": "01_程序文件\\论文预处理系统\\程序\\desktop\\test_preextract_partition.py",
+      "line": 304,
+      "pattern": "literal_credential"
+    },
+    {
+      "path": "01_程序文件\\论文预处理系统\\程序\\desktop\\test_preextract_pipeline.py",
+      "line": 115,
+      "pattern": "literal_credential"
+    },
+    {
+      "path": "01_程序文件\\论文预处理系统\\程序\\desktop\\test_preextract_pipeline.py",
+      "line": 148,
+      "pattern": "literal_credential"
+    },
+    {
+      "path": "01_程序文件\\论文预处理系统\\程序\\desktop\\test_preextract_pipeline.py",
+      "line": 380,
+      "pattern": "literal_credential"
+    },
+    {
+      "path": "01_程序文件\\论文预处理系统\\程序\\desktop\\test_preextract_pipeline.py",
+      "line": 428,
+      "pattern": "literal_credential"
+    },
+    {
+      "path": "01_程序文件\\论文预处理系统\\程序\\desktop\\test_preextract_pipeline.py",
+      "line": 511,
+      "pattern": "literal_credential"
+    },
+    {
+      "path": "01_程序文件\\论文预处理系统\\程序\\desktop\\test_preextract_start_pacing.py",
+      "line": 21,
+      "pattern": "literal_credential"
+    },
+    {
+      "path": "01_程序文件\\论文预处理系统\\程序\\desktop\\test_privacy_failure_trace.py",
+      "line": 15,
+      "pattern": "literal_credential"
+    },
+    {
+      "path": "01_程序文件\\论文预处理系统\\程序\\desktop\\test_upload_dedup.py",
+      "line": 43,
+      "pattern": "literal_credential"
+    },
+    {
+      "path": "01_程序文件\\论文预处理系统\\程序\\desktop\\server_patches\\education_llm_capacity\\probe.py",
+      "line": 26,
+      "pattern": "literal_credential"
+    },
+    {
+      "path": "06_服务器测试知识库\\prepare_test_env.py",
+      "line": 7,
+      "pattern": "literal_credential"
+    },
+    {
+      "path": "06_服务器测试知识库\\prepare_test_env.py",
+      "line": 8,
+      "pattern": "literal_credential"
+    }
+  ],
+  "note": "heuristic; literals must be reviewed; never logs values"
+}

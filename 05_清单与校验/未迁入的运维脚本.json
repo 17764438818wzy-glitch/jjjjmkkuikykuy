@@ -1,0 +1,28 @@
+{
+  "reason": "unrelated production database maintenance; no runtime or pinned manifest references",
+  "verified_target": "F:\\论文处理端迁移包\\01_程序文件\\论文预处理系统\\预处理系统2\\candidates\\parent-child-v3-20261102\\ops",
+  "files": [
+    {
+      "source": "F:\\论文预处理系统\\预处理系统2\\candidates\\parent-child-v3-20261102\\ops\\classification-query-maintenance\\query_indexes.py",
+      "destination": "01_程序文件\\论文预处理系统\\预处理系统2\\candidates\\parent-child-v3-20261102\\ops\\classification-query-maintenance\\query_indexes.py",
+      "bytes": 7806,
+      "sha256": "565314d234bf1061ee45159c22a158c6a0d007622c28ca1398aea8d06e58a369",
+      "kind": "copied"
+    },
+    {
+      "source": "F:\\论文预处理系统\\预处理系统2\\candidates\\parent-child-v3-20261102\\ops\\classification-query-maintenance\\README.md",
+      "destination": "01_程序文件\\论文预处理系统\\预处理系统2\\candidates\\parent-child-v3-20261102\\ops\\classification-query-maintenance\\README.md",
+      "bytes": 7362,
+      "sha256": "bac98b813a2f681c92e5b0dd27461e7687bacf3308fab9962694cc628ee45e74",
+      "kind": "copied"
+    },
+    {
+      "source": "F:\\论文预处理系统\\预处理系统2\\candidates\\parent-child-v3-20261102\\ops\\classification-query-maintenance\\snapshot_maintenance.py",
+      "destination": "01_程序文件\\论文预处理系统\\预处理系统2\\candidates\\parent-child-v3-20261102\\ops\\classification-query-maintenance\\snapshot_maintenance.py",
+      "bytes": 16182,
+      "sha256": "3f7787b88cc7c07d17d2f230c4de9fd7507d2b1d167c769a402b857e04efac52",
+      "kind": "copied"
+    }
+  ],
+  "originals_preserved": true
+}

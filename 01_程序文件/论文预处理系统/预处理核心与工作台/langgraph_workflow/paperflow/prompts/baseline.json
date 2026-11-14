@@ -1,0 +1,6 @@
+{
+  "source_sha256": "709c83fccf535c30d0047e1cd87cf71a53069d5442d49750efc2500d63f8d097",
+  "round1_sha256": "5a4655acdc0f079f500362248f8719cf08efe09260ed63278a4f783b92514d72",
+  "round2_sha256": "8fa88b81ff35d65286f62e5ce3c599d62aef251214906353414731b1c2b828c5",
+  "overrides": "design.md 本次用户明确批准更新优先；不执行原提示词中删除原稿/固定测试批次/逐篇人工审批。"
+}

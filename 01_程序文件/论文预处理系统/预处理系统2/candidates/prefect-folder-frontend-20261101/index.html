@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="zh-CN" data-query-mode="summary">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>论文处理</title>
+  <link rel="stylesheet" href="styles.css?v=20261102-llm-metrics-1">
+  <link rel="stylesheet" href="vendor/uppy/uppy.min.css">
+  <script src="vendor/query-runtime.js?v=20261104-summary-pause-1" defer></script>
+  <script src="host-resources.js?v=20261102-monitor-1" defer></script>
+  <script src="folder-ticket-dashboard.js?v=20261111-start-selfcheck-1" defer></script>
+  <script src="workbuddy-dashboard.js?v=20261107-account-controls-1" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <span class="brand-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 3.75h7l4 4v12.5H7a1 1 0 0 1-1-1V4.75a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M14 3.75v4h4M9 12h6M9 15.5h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span>论文预处理系统</span>
+      <a id="article-repository-link" href="http://192.168.1.120:8098/" target="_blank" rel="noopener" style="margin-left:auto;color:#2b67bd;font-size:14px;text-decoration:none">文章仓库 ↗</a>
+    </div>
+  </header>
+  <main>
+    <p class="eyebrow">论文处理 / 文件夹工单</p>
+    <h1>论文处理</h1>
+    <p class="subtitle">查看文件夹工单的处理进度和阶段结果。</p>
+
+    <section class="workspace-bar" aria-label="工作间">
+      <div class="workspace-actions">
+        <button id="new-task-button" class="control-button control-primary" type="button" disabled>新建任务</button>
+        <button id="open-task-button" class="control-button" type="button" disabled>打开任务</button>
+        <button id="refresh-task-button" class="control-button" type="button" disabled>刷新当前任务</button>
+        <button id="save-task-button" class="control-button" type="button" disabled>保存</button>
+      </div>
+      <span id="save-state" class="save-state" role="status">未选择任务</span>
+    </section>
+
+    <div class="first-stage-layout">
+      <div class="first-stage-cards">
+    <section class="card" aria-labelledby="card-title">
+      <div class="card-body">
+        <div class="card-heading">
+          <h2 id="card-title">当前任务</h2>
+          <span id="task-state" class="status">待接入</span>
+        </div>
+        <p id="task-name" class="task-name">等待接入 Prefect 任务</p>
+        <p id="task-detail" class="entry-reason" role="status" hidden></p>
+        <div class="task-controls" aria-label="任务操作">
+          <button id="local-folder-button" class="control-button" type="button" disabled>选择本机文件夹</button>
+          <button id="upload-button" class="control-button" type="button" disabled>上传</button>
+          <button id="start-button" class="control-button control-primary" type="button" disabled>开始</button>
+          <button id="pause-button" class="control-button" type="button" disabled>暂停</button>
+          <button id="delete-task-button" class="control-button control-danger" type="button" disabled>删除任务</button>
+          <span id="control-message" class="control-message" role="status">任务操作等待后端接口</span>
+        </div>
+        <p id="control-availability" class="control-message" role="status"></p>
+        <div class="metric-overview">
+          <div class="metric">
+            <p class="metric-label">已登记论文工单</p>
+            <div id="task-total" class="metric-value">待接入</div>
+            <p id="discovered" class="discovered">当前任务信息待接入</p>
+          </div>
+          <div class="concurrency-labels" aria-label="并发标注">
+            <span>并发配置待接入</span>
+          </div>
+        </div>
+
+        <section id="processing" class="processing" aria-label="工作处理进度" hidden>
+          <div class="progress-heading"><span>工作处理进度</span><span id="progress-caption">正在处理</span></div>
+          <div class="progress" role="progressbar" aria-label="工作正在处理，任务总数尚未确定"><span class="progress-fill"></span></div>
+          <p id="progress-hint" class="progress-hint">正在识别和分流资料，请稍候。</p>
+        </section>
+
+        <details id="ungrouped" class="ungrouped" hidden>
+          <summary>待核对的未归组资料 <span id="ungrouped-count"></span></summary>
+          <p>这些文件暂时无法归入资料组。</p>
+          <ul id="ungrouped-list"></ul>
+        </details>
+
+        <div id="results" class="results">
+          <div class="stats" aria-label="处理结果">
+            <button class="stat" data-filter="passed" type="button" aria-pressed="false" disabled><span>已通过</span><strong id="passed-count" class="passed">待接入</strong></button>
+            <button class="stat" data-filter="failed" type="button" aria-pressed="false" disabled><span>失败</span><strong id="failed-count" class="failed">待接入</strong></button>
+            <button class="stat" data-filter="unrecognized" type="button" aria-pressed="false" disabled><span>未识别</span><strong id="unrecognized-count" class="unrecognized">待接入</strong></button>
+            <button id="unknown-stat" class="stat" data-filter="unresolved" type="button" aria-pressed="false" hidden disabled><span>结果待核对</span><strong id="unknown-count" class="unknown">待接入</strong></button>
+          </div>
+          <p id="classification-results-hint" class="queue-hint">第一步分类结果接口待接入</p>
+          <section id="list-panel" class="list-panel" aria-labelledby="list-title" hidden>
+            <div class="list-header"><div><h3 id="list-title">已通过</h3><p id="list-count">列表获取中</p></div><button id="close-list" class="text-button" type="button">收起</button></div>
+            <div id="list-message" class="list-message" hidden></div>
+            <ul id="group-list" class="group-list"></ul>
+            <div id="pagination" class="pagination" hidden><span id="page-info"></span><div><button id="previous-page" type="button">上一页</button><button id="next-page" type="button">下一页</button></div></div>
+          </section>
+        </div>
+      </div>
+      <div class="notice"><span class="notice-dot" aria-hidden="true"></span><span id="notice-text">任务控制接口待接入。</span><button id="demo-toggle" type="button" hidden>查看完成状态 →</button></div>
+    </section>
+
+    <section class="card queue-card" aria-labelledby="waiting-preprocessing-title">
+      <div class="card-body">
+        <div class="metric-overview">
+          <div>
+            <div class="card-heading"><h2 id="waiting-preprocessing-title">等待前处理队列</h2></div>
+            <p id="folder-ticket-overview" class="queue-hint" role="status">等待后端接入 Prefect 文件夹工单接口</p>
+            <p id="waiting-preprocessing-count" class="queue-count" aria-live="polite" aria-label="等待前处理队列数量：暂不可用">—</p>
+            <p id="waiting-preprocessing-hint" class="queue-hint">当前任务 · 数据未就绪</p>
+          </div>
+          <div class="concurrency-labels"><span>按 Prefect 文件夹工单统计</span></div>
+        </div>
+        <button id="failed-folders-button" class="control-button" type="button" hidden disabled>查看失败工单</button>
+        <section id="failed-folders-panel" class="list-panel" aria-labelledby="failed-folders-title" hidden>
+          <div class="list-header"><div><h3 id="failed-folders-title">当前任务的失败工单</h3><p>选择论文并核对失败位置；只有后端确认可重试的工单才能重试。</p></div><button id="close-failed-folders" class="text-button" type="button">收起</button></div>
+          <p id="failed-folders-message" class="entry-detail" role="status"></p>
+          <ul id="failed-folders-list" class="group-list"></ul>
+        </section>
+      </div>
+    </section>
+
+    <section class="card queue-card" aria-labelledby="preprocessing-title">
+      <div class="card-body">
+        <div class="card-heading"><h2 id="preprocessing-title">前处理中</h2></div>
+        <p id="preprocessing-count" class="queue-count" aria-label="前处理中数量：暂不可用">—</p>
+        <p id="preprocessing-hint" class="queue-hint">当前任务 · 数据未就绪</p>
+        <div class="results" role="group" aria-label="前处理结果">
+          <div class="stats">
+            <button class="preprocessing-stat" data-preprocessing-filter="passed" type="button" aria-pressed="false"><span>已通过</span><strong id="preprocessing-passed-count" class="passed">—</strong></button>
+            <button class="preprocessing-stat" data-preprocessing-filter="failed" type="button" aria-pressed="false"><span>失败</span><strong id="preprocessing-failed-count" class="failed">—</strong></button>
+            <button class="preprocessing-stat" data-preprocessing-filter="unrecognized" type="button" aria-pressed="false"><span>未识别</span><strong id="preprocessing-unrecognized-count" class="unrecognized">—</strong></button>
+          </div>
+          <p id="preprocessing-results-hint" class="queue-hint">当前任务 · 工单数据未就绪</p>
+          <section id="preprocessing-list-panel" class="list-panel" aria-labelledby="preprocessing-list-title" hidden>
+            <div class="list-header"><div><h3 id="preprocessing-list-title">前处理结果</h3><p id="preprocessing-list-count">列表获取中</p></div><button id="preprocessing-close-list" class="text-button" type="button">收起</button></div>
+            <div id="preprocessing-list-message" class="list-message" hidden></div>
+            <ul id="preprocessing-group-list" class="group-list"></ul>
+            <div id="preprocessing-pagination" class="pagination" hidden><span id="preprocessing-page-info"></span><div><button id="preprocessing-previous-page" type="button">上一页</button><button id="preprocessing-next-page" type="button">下一页</button></div></div>
+          </section>
+        </div>
+      </div>
+    </section>
+      </div>
+      <aside class="card host-resources" aria-labelledby="host-resources-title">
+        <div class="host-heading">
+          <h2 id="host-resources-title">本机资源</h2>
+          <span id="host-resources-state" role="status">连接中</span>
+        </div>
+        <p class="host-scope">整机占用 · 每 1 秒更新</p>
+        <div class="host-resource">
+          <div class="host-resource-heading"><span>CPU</span><strong id="host-cpu">—</strong></div>
+          <div class="host-bar" aria-hidden="true"><span id="host-cpu-bar" hidden></span></div>
+        </div>
+        <div class="host-resource">
+          <div class="host-resource-heading"><span>GPU</span><strong id="host-gpu">—</strong></div>
+          <div class="host-bar" aria-hidden="true"><span id="host-gpu-bar" hidden></span></div>
+          <p id="host-gpu-memory" class="host-detail">显存 —</p>
+        </div>
+        <div class="host-resource">
+          <div class="host-resource-heading"><span>内存</span><strong id="host-memory">—</strong></div>
+          <div class="host-bar" aria-hidden="true"><span id="host-memory-bar" hidden></span></div>
+          <p id="host-memory-size" class="host-detail">已用 —</p>
+        </div>
+      </aside>
+    </div>
+
+    <div class="llm-stage-layout">
+      <div class="llm-stage-cards">
+    <section class="card queue-card" aria-labelledby="waiting-llm-title">
+      <div class="card-body">
+        <div class="card-heading"><h2 id="waiting-llm-title">等待llm处理队列</h2></div>
+        <p id="waiting-llm-count" class="queue-count" aria-label="等待llm处理队列数量：数据待接入">—</p>
+        <p id="waiting-llm-hint" class="queue-hint">当前任务 · 工单数据未就绪</p>
+      </div>
+    </section>
+
+    <section class="card queue-card" aria-labelledby="llm-processing-title">
+      <div class="card-body">
+        <div class="card-heading"><h2 id="llm-processing-title">llm处理队列</h2></div>
+        <div class="stats llm-metrics" aria-label="llm处理队列数量">
+          <div><span class="metric-label">处理中工单</span> <strong id="llm-folder-count" class="metric-value" aria-label="LLM 处理中工单数量：数据待接入">—</strong></div>
+          <div><span class="metric-label">附件识别</span> <strong id="llm-attachment-count" class="metric-value" aria-label="附件识别数量：数据待接入">—</strong></div>
+          <div><span class="metric-label">正文识别</span> <strong id="llm-body-count" class="metric-value" aria-label="正文识别数量：数据待接入">—</strong></div>
+        </div>
+        <p id="llm-processing-hint" class="queue-hint">当前任务 · 工单数据未就绪</p>
+        <div class="results" role="group" aria-label="LLM 处理结果">
+          <div class="stats">
+            <button class="preprocessing-stat" data-llm-filter="passed" type="button" aria-pressed="false"><span>已通过</span><strong id="llm-passed-count" class="passed">—</strong></button>
+            <button class="preprocessing-stat" data-llm-filter="failed" type="button" aria-pressed="false"><span>失败</span><strong id="llm-failed-count" class="failed">—</strong></button>
+            <button class="preprocessing-stat" data-llm-filter="unrecognized" type="button" aria-pressed="false"><span>未识别</span><strong id="llm-unrecognized-count" class="unrecognized">—</strong></button>
+          </div>
+          <p id="llm-results-hint" class="queue-hint">当前任务 · 结果暂不可用</p>
+          <section id="llm-list-panel" class="list-panel" aria-labelledby="llm-list-title" hidden>
+            <div class="list-header"><div><h3 id="llm-list-title">LLM 处理结果</h3><p id="llm-list-count">列表获取中</p></div><button id="llm-close-list" class="text-button" type="button">收起</button></div>
+            <div id="llm-list-message" class="list-message" hidden></div>
+            <ul id="llm-group-list" class="group-list"></ul>
+            <div id="llm-pagination" class="pagination" hidden><span id="llm-page-info"></span><div><button id="llm-previous-page" type="button">上一页</button><button id="llm-next-page" type="button">下一页</button></div></div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+      </div>
+      <aside class="card workbuddy-panel" aria-labelledby="workbuddy-title">
+        <div class="host-heading">
+          <h2 id="workbuddy-title">WorkBuddy 网关</h2>
+          <span id="workbuddy-state" role="status">连接中</span>
+        </div>
+        <p id="workbuddy-updated" class="host-scope">每 1 秒刷新 · 等待数据</p>
+        <div class="workbuddy-actions">
+          <a href="http://192.168.1.120:8789/" target="_blank" rel="noopener noreferrer">打开网关 ↗</a>
+        </div>
+        <p id="workbuddy-session" class="host-detail">等待连接</p>
+        <div class="workbuddy-section">
+          <p class="workbuddy-caption">今日 Token · 全部线路</p>
+          <div class="workbuddy-row"><span>输入</span><strong id="workbuddy-input-tokens">—</strong></div>
+          <div class="workbuddy-row"><span>输出</span><strong id="workbuddy-output-tokens">—</strong></div>
+        </div>
+        <div class="workbuddy-section">
+          <div class="workbuddy-row"><span>网关实际在途</span><strong id="workbuddy-inflight">—</strong></div>
+          <div class="workbuddy-row"><span>论文流程名额</span><strong id="workbuddy-prefect-slots">—</strong></div>
+          <p class="host-detail">Prefect 已占名额 / 上限</p>
+          <div class="workbuddy-row"><span>今日成功</span><strong id="workbuddy-success">—</strong></div>
+          <div class="workbuddy-row"><span>今日失败</span><strong id="workbuddy-failed">—</strong></div>
+        </div>
+        <div class="workbuddy-section">
+          <div class="workbuddy-test-heading"><span>线路测试</span><span id="workbuddy-test-result" class="workbuddy-test-result" data-state="idle" role="status">未测试</span><button id="workbuddy-test-button" class="control-button" type="button" disabled>测试</button></div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="postprocess-stage-layout">
+      <div class="postprocess-stage-cards">
+
+    <section class="card queue-card" aria-labelledby="waiting-postprocessing-title">
+      <div class="card-body">
+        <div class="card-heading"><h2 id="waiting-postprocessing-title">等待后处理队列</h2></div>
+        <p id="waiting-postprocessing-count" class="queue-count" aria-live="polite" aria-label="等待后处理队列数量：暂不可用">—</p>
+        <p id="waiting-postprocessing-hint" class="queue-hint">当前任务 · 工单数据未就绪</p>
+      </div>
+    </section>
+
+    <section class="card queue-card" aria-labelledby="postprocessing-title">
+      <div class="card-body">
+        <div class="card-heading"><h2 id="postprocessing-title">后处理中</h2></div>
+        <p id="postprocessing-count" class="queue-count" aria-live="polite" aria-label="后处理中数量：暂不可用">—</p>
+        <p id="postprocessing-hint" class="queue-hint">当前任务 · 工单数据未就绪</p>
+        <div class="results" role="group" aria-label="后处理结果">
+          <div class="stats">
+            <button class="preprocessing-stat" data-postprocessing-filter="passed" type="button" aria-pressed="false"><span>已通过</span><strong id="postprocessing-passed-count" class="passed">—</strong></button>
+            <button class="preprocessing-stat" data-postprocessing-filter="failed" type="button" aria-pressed="false"><span>未通过</span><strong id="postprocessing-failed-count" class="failed">—</strong></button>
+            <button class="preprocessing-stat" data-postprocessing-filter="unrecognized" type="button" aria-pressed="false"><span>未识别</span><strong id="postprocessing-unrecognized-count" class="unrecognized">—</strong></button>
+          </div>
+          <p id="postprocessing-results-hint" class="queue-hint">当前任务 · 结果暂不可用</p>
+          <section id="postprocessing-list-panel" class="list-panel" aria-labelledby="postprocessing-list-title" hidden>
+            <div class="list-header"><div><h3 id="postprocessing-list-title">后处理结果</h3><p id="postprocessing-list-count">列表获取中</p></div><button id="postprocessing-close-list" class="text-button" type="button">收起</button></div>
+            <div id="postprocessing-list-message" class="list-message" hidden></div>
+            <ul id="postprocessing-group-list" class="group-list"></ul>
+            <div id="postprocessing-pagination" class="pagination" hidden><span id="postprocessing-page-info"></span><div><button id="postprocessing-previous-page" type="button">上一页</button><button id="postprocessing-next-page" type="button">下一页</button></div></div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="card queue-card" aria-labelledby="waiting-rag-upload-title">
+      <div class="card-body">
+        <div class="card-heading"><h2 id="waiting-rag-upload-title">等待rag上传队列</h2></div>
+        <p id="waiting-rag-upload-count" class="queue-count" aria-label="等待rag上传队列数量：数据待接入">—</p>
+        <p id="waiting-rag-upload-hint" class="queue-hint">当前任务 · 工单数据未就绪</p>
+      </div>
+    </section>
+
+    <section class="card queue-card" aria-labelledby="rag-processing-title">
+      <div class="card-body">
+        <div class="card-heading"><h2 id="rag-processing-title">rag 处理中</h2></div>
+        <p id="rag-processing-count" class="queue-count" aria-label="rag 处理中数量：数据待接入">—</p>
+        <p id="rag-processing-hint" class="queue-hint">当前任务 · 工单数据未就绪</p>
+        <div class="results" role="group" aria-label="RAG 结果">
+          <div class="stats">
+            <button class="preprocessing-stat" data-rag-filter="passed" type="button" aria-pressed="false"><span>已通过</span><strong id="rag-passed-count" class="passed">—</strong></button>
+            <button class="preprocessing-stat" data-rag-filter="failed" type="button" aria-pressed="false"><span>未通过</span><strong id="rag-failed-count" class="failed">—</strong></button>
+            <button class="preprocessing-stat" data-rag-filter="unrecognized" type="button" aria-pressed="false"><span>未识别</span><strong id="rag-unrecognized-count" class="unrecognized">—</strong></button>
+          </div>
+          <p id="rag-results-hint" class="queue-hint">当前任务 · 结果暂不可用</p>
+          <section id="rag-list-panel" class="list-panel" aria-labelledby="rag-list-title" hidden>
+            <div class="list-header"><div><h3 id="rag-list-title">RAG 结果</h3><p id="rag-list-count">列表获取中</p></div><button id="rag-close-list" class="text-button" type="button">收起</button></div>
+            <div id="rag-list-message" class="list-message" hidden></div>
+            <ul id="rag-group-list" class="group-list"></ul>
+            <div id="rag-pagination" class="pagination" hidden><span id="rag-page-info"></span><div><button id="rag-previous-page" type="button">上一页</button><button id="rag-next-page" type="button">下一页</button></div></div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+      </div>
+      <aside class="card host-resources server-resources" aria-labelledby="server-resources-title">
+        <div class="host-heading">
+          <h2 id="server-resources-title">服务器资源</h2>
+          <span id="server-resources-state" role="status">连接中</span>
+        </div>
+        <p id="server-resources-scope" class="host-scope">整机占用 · 每 1 秒更新</p>
+        <div class="host-resource">
+          <div class="host-resource-heading"><span>CPU</span><strong id="server-cpu">—</strong></div>
+          <div class="host-bar" aria-hidden="true"><span id="server-cpu-bar" hidden></span></div>
+        </div>
+        <div class="host-resource">
+          <div class="host-resource-heading"><span>GPU</span><strong id="server-gpu">—</strong></div>
+          <div class="host-bar" aria-hidden="true"><span id="server-gpu-bar" hidden></span></div>
+          <p id="server-gpu-memory" class="host-detail">显存 —</p>
+        </div>
+        <div class="host-resource">
+          <div class="host-resource-heading"><span>内存</span><strong id="server-memory">—</strong></div>
+          <div class="host-bar" aria-hidden="true"><span id="server-memory-bar" hidden></span></div>
+          <p id="server-memory-size" class="host-detail">已用 —</p>
+        </div>
+      </aside>
+    </div>
+
+    <div class="nas-stage-layout">
+      <div class="nas-stage-cards">
+
+    <section class="card queue-card" aria-labelledby="waiting-nas-archive-title">
+      <div class="card-body">
+        <div class="card-heading"><h2 id="waiting-nas-archive-title">NAS 归档</h2></div>
+        <p id="waiting-nas-archive-count" class="queue-count" aria-label="NAS 归档数量：数据待接入">—</p>
+        <p id="waiting-nas-archive-hint" class="queue-hint">当前任务 · 工单数据未就绪</p>
+        <div class="results" role="group" aria-label="NAS 归档结果">
+          <div class="stats">
+            <button class="preprocessing-stat" data-nas-filter="passed" type="button" aria-pressed="false"><span>已通过</span><strong id="nas-passed-count" class="passed">—</strong></button>
+            <button class="preprocessing-stat" data-nas-filter="failed" type="button" aria-pressed="false"><span>未通过</span><strong id="nas-failed-count" class="failed">—</strong></button>
+            <button class="preprocessing-stat" data-nas-filter="unrecognized" type="button" aria-pressed="false"><span>未识别</span><strong id="nas-unrecognized-count" class="unrecognized">—</strong></button>
+          </div>
+          <p id="nas-results-hint" class="queue-hint">当前任务 · 结果暂不可用</p>
+          <section id="nas-list-panel" class="list-panel" aria-labelledby="nas-list-title" hidden>
+            <div class="list-header"><div><h3 id="nas-list-title">NAS 归档结果</h3><p id="nas-list-count">列表获取中</p></div><button id="nas-close-list" class="text-button" type="button">收起</button></div>
+            <div id="nas-list-message" class="list-message" hidden></div>
+            <ul id="nas-group-list" class="group-list"></ul>
+            <div id="nas-pagination" class="pagination" hidden><span id="nas-page-info"></span><div><button id="nas-previous-page" type="button">上一页</button><button id="nas-next-page" type="button">下一页</button></div></div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="card queue-card" aria-labelledby="cleanup-title">
+      <div class="card-body">
+        <div class="card-heading"><h2 id="cleanup-title">本机清理</h2></div>
+        <p id="cleanup-count" class="queue-count" aria-label="本机清理数量：数据待接入">—</p>
+        <p id="cleanup-hint" class="queue-hint">当前任务 · 工单数据未就绪</p>
+        <div class="results" role="group" aria-label="本机清理结果">
+          <div class="stats">
+            <button class="preprocessing-stat" data-cleanup-filter="passed" type="button" aria-pressed="false"><span>已通过</span><strong id="cleanup-passed-count" class="passed">—</strong></button>
+            <button class="preprocessing-stat" data-cleanup-filter="failed" type="button" aria-pressed="false"><span>未通过</span><strong id="cleanup-failed-count" class="failed">—</strong></button>
+            <button class="preprocessing-stat" data-cleanup-filter="unrecognized" type="button" aria-pressed="false"><span>未识别</span><strong id="cleanup-unrecognized-count" class="unrecognized">—</strong></button>
+          </div>
+          <p id="cleanup-results-hint" class="queue-hint">当前任务 · 结果暂不可用</p>
+          <section id="cleanup-list-panel" class="list-panel" aria-labelledby="cleanup-list-title" hidden>
+            <div class="list-header"><div><h3 id="cleanup-list-title">本机清理结果</h3><p id="cleanup-list-count">列表获取中</p></div><button id="cleanup-close-list" class="text-button" type="button">收起</button></div>
+            <div id="cleanup-list-message" class="list-message" hidden></div>
+            <ul id="cleanup-group-list" class="group-list"></ul>
+            <div id="cleanup-pagination" class="pagination" hidden><span id="cleanup-page-info"></span><div><button id="cleanup-previous-page" type="button">上一页</button><button id="cleanup-next-page" type="button">下一页</button></div></div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="card queue-card" aria-labelledby="completed-title">
+      <div class="card-body">
+        <div class="card-heading"><h2 id="completed-title">运行完成</h2></div>
+        <p id="completed-count" class="queue-count" aria-label="运行完成数量：数据待接入">—</p>
+        <p id="completed-hint" class="queue-hint">当前任务 · 工单数据未就绪</p>
+      </div>
+    </section>
+      </div>
+
+      <aside class="card host-resources nas-resources" aria-labelledby="nas-status-title">
+        <div class="host-heading">
+          <h2 id="nas-status-title">NAS 状态</h2>
+          <span id="nas-status-state" role="status">状态未知</span>
+        </div>
+        <p class="host-scope">归档目录 · 每 1 秒更新</p>
+        <div class="host-resource">
+          <div class="host-resource-heading"><span>存储空间</span><strong id="nas-storage">—</strong></div>
+          <div class="host-bar" aria-hidden="true"><span id="nas-storage-bar" hidden></span></div>
+          <p id="nas-storage-size" class="host-detail">已用 —</p>
+          <p id="nas-storage-free" class="host-detail">可用 —</p>
+        </div>
+        <div class="nas-speed"><span>归档写入速度</span><strong id="nas-archive-speed">—</strong></div>
+      </aside>
+    </div>
+  </main>
+  <dialog id="new-task-dialog" class="workspace-dialog" aria-labelledby="new-task-title">
+    <form id="new-task-form">
+      <h2 id="new-task-title">新建任务</h2>
+      <label for="new-task-name">任务名称</label>
+      <input id="new-task-name" type="text" maxlength="100" placeholder="例如：体育教育资料" required>
+      <label for="new-task-paths">资料文件夹路径</label>
+      <textarea id="new-task-paths" rows="3" placeholder="填写任务接口所在电脑可读取的路径，每行一个" required></textarea>
+      <p class="dialog-description">全部所选目标入库、NAS 归档并保存必要记录后，系统会清理该论文的本机原文、附件和中间产物；未归档的其他文件保留。</p>
+      <p id="new-task-message" class="dialog-message" role="status">等待依赖自检</p>
+      <ul id="preflight-checks" class="preflight-checks"></ul>
+      <div class="dialog-actions">
+        <button id="check-create-result" class="control-button" type="button" hidden>核对创建结果</button>
+        <button id="repeat-preflight" class="control-button" type="button">重新自检</button>
+        <button id="cancel-new-task" class="control-button" type="button">取消</button>
+        <button id="create-task-confirm" class="control-button control-primary" type="submit" disabled>创建</button>
+      </div>
+    </form>
+  </dialog>
+  <dialog id="local-folder-dialog" class="workspace-dialog" aria-labelledby="local-folder-title">
+    <form id="local-folder-form">
+      <h2 id="local-folder-title">选择本机资料文件夹</h2>
+      <p class="dialog-description">全部所选目标入库、NAS 归档并保存必要记录后，系统会清理这篇论文的本机原文、附件和中间产物；未归档的其他文件保留。</p>
+      <label for="local-folder-path">本机文件夹路径</label>
+      <div class="local-folder-row">
+        <input id="local-folder-path" type="text" placeholder="例如：F:\原始文件" required>
+        <button id="browse-local-folder" class="control-button" type="button">浏览</button>
+      </div>
+      <p id="local-folder-message" class="dialog-message" role="status">选择或输入路径后，程序会先统计资料组。</p>
+      <div class="dialog-actions">
+        <button id="cancel-local-folder" class="control-button" type="button">取消</button>
+        <button id="confirm-local-folder" class="control-button control-primary" type="submit">确认选择</button>
+      </div>
+    </form>
+  </dialog>
+  <dialog id="open-task-dialog" class="workspace-dialog" aria-labelledby="open-task-title">
+    <h2 id="open-task-title">打开任务</h2>
+    <p class="dialog-description">选择以前保存的任务，继续查看它的处理情况。</p>
+    <p id="task-list-message" class="dialog-message">正在读取任务列表</p>
+    <div id="task-list" class="task-list"></div>
+    <div class="dialog-actions">
+      <button id="previous-task-page" class="control-button" type="button" hidden>上一页</button>
+      <button id="next-task-page" class="control-button" type="button" hidden>下一页</button>
+      <button id="close-open-task" class="control-button" type="button">关闭</button>
+    </div>
+  </dialog>
+  <dialog id="upload-dialog" class="workspace-dialog upload-dialog" aria-labelledby="upload-title">
+    <div class="upload-header"><h2 id="upload-title">上传资料文件夹</h2><button id="close-upload" class="control-button" type="button">关闭</button></div>
+    <p id="upload-message" class="dialog-message" role="status">请选择一个资料文件夹。</p>
+    <section id="selected-folders" class="selected-folders" aria-label="已选择的文件夹" hidden>
+      <div class="folder-heading"><strong>已选择的文件夹</strong><span id="selected-folders-count"></span></div>
+      <p>任务组数将在资料分流后确定。</p>
+      <ul id="selected-folders-list" class="folder-list"></ul>
+      <div id="folder-pagination" class="pagination" hidden>
+        <span id="folder-page-info"></span>
+        <div><button id="previous-folder-page" type="button">上一页</button><button id="next-folder-page" type="button">下一页</button></div>
+      </div>
+    </section>
+    <div id="uppy-dashboard"></div>
+  </dialog>
+</body>
+</html>

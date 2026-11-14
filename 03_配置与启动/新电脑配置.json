@@ -1,0 +1,11 @@
+{
+  "prefect_api_url": "http://127.0.0.1:14200/api",
+  "qdrant_gateway_url": "http://192.168.1.120:18097",
+  "model_base_url": "http://192.168.1.120:8081/v1",
+  "text_model": "workbuddy-intl-cli-deepseek-free",
+  "wsl_distribution": "Ubuntu-22.04",
+  "archive_destination": "",
+  "test_route_prepared": false,
+  "test_gateway_storage_isolated": false,
+  "shared_gateway_probe_acknowledged": false
+}

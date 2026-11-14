@@ -1,0 +1,29 @@
+name: paperflow-migration-test
+services:
+  qdrant:
+    image: qdrant/qdrant:v1.20.0
+    restart: unless-stopped
+    environment:
+      QDRANT__SERVICE__API_KEY: ${QDRANT_API_KEY:?generate .env first}
+    volumes:
+      - ./test-data/qdrant:/qdrant/storage
+  gateway:
+    image: paperflow-qdrant-20261103-gateway
+    build:
+      context: ./gateway-source
+    restart: unless-stopped
+    ports:
+      - "18097:8097"
+    depends_on:
+      - qdrant
+    environment:
+      QDRANT_URL: http://qdrant:6333
+      QDRANT_API_KEY: ${QDRANT_API_KEY:?generate .env first}
+      QDRANT_COLLECTION: paperflow_migration_validation_v1
+      PAPERFLOW_RAG_API_KEY: ${PAPERFLOW_RAG_API_KEY:?generate .env first}
+      OBJECT_ROOT: /data/objects
+      EMBEDDING_URL: http://172.17.0.1:11436
+      EMBEDDING_CONCURRENCY: "1"
+      EMBEDDING_BATCH_SIZE: "4"
+    volumes:
+      - ./test-data/objects:/data/objects

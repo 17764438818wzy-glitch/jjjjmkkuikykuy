@@ -1,0 +1,110 @@
+{
+  "base_url": "http://192.168.1.120:8081/v1",
+  "vision_base_url": "https://api.zwjy.cc.cd/v1",
+  "text_model": "workbuddy-intl-cli-deepseek-free",
+  "vision_model": {
+    "enabled": true,
+    "primary": {
+      "base_url": "https://api.zwjy.cc.cd/v1",
+      "api_key": "",
+      "model": "workbuddy-deepseek-v4.1-flash"
+    },
+    "fallback": {
+      "enabled": false,
+      "base_url": "https://api.deepseek.com/v1",
+      "api_key": "",
+      "model": "deepseek-flash"
+    },
+    "retry": {
+      "max_tries": 3,
+      "backoff_base_seconds": 2.0
+    },
+    "circuit_breaker": {
+      "failure_threshold": 3,
+      "cooldown_seconds": 300.0,
+      "cooldown_multiplier": 2.0,
+      "max_cooldown_seconds": 3600.0
+    }
+  },
+  "timeout": 3600,
+  "attempts": 3,
+  "max_pages": 80,
+  "max_tokens": 128000,
+  "max_tokens_retry_limit": 0,
+  "auto_upload": true,
+  "auto_parse": true,
+  "dataset_map": {},
+  "legacy_dataset_map_fallback": true,
+  "work_pool_enabled": false,
+  "work_pool_auto_start": true,
+  "work_pool_queue": "E:\\uv\\ragflow_upstream\\data\\private\\universal_ingest\\queue.sqlite3",
+  "work_pool_parse_limit": 1,
+  "category_dataset_map": {
+    "教育教学类": {
+      "paper": "3e8ef88cbc4e11f1a8e165c0e34ea629",
+      "image": "ecfba144b82b11f1a8846d29005ec004"
+    }
+  },
+  "dataset_pipeline_map": {
+    "ecf88dc4b82b11f1a8846d29005ec004": "72ff5454b8f711f1a8846d29005ec004",
+    "3e8ef88cbc4e11f1a8e165c0e34ea629": "72ff5454b8f711f1a8846d29005ec004"
+  },
+  "dataset_native_parser_map": {
+    "632ddfc8bc4411f1a8e165c0e34ea629": "naive"
+  },
+  "source_receiver_command": [
+    "C:\\Python314\\python.exe",
+    "-X",
+    "utf8",
+    "-B",
+    "E:\\uv\\ragflow_upstream\\data\\private\\source_education\\v1\\host\\host_adapter.py",
+    "--config",
+    "E:\\uv\\ragflow_upstream\\data\\private\\source_education\\v1\\host-config.json"
+  ],
+  "skip_derived_upload": true,
+  "derived_redundancy_threshold": 0.95,
+  "usd_cny": "7",
+  "concurrency": {
+    "enabled": true,
+    "papers": 120,
+    "images_per_paper": 10,
+    "global_llm": 120,
+    "max_retries": 3,
+    "backoff_base_seconds": 5.0,
+    "min_start_interval_seconds": 0.0
+  },
+  "resume": {
+    "enabled": true,
+    "state_file": "processing_state.json"
+  },
+  "preprocess_routing": {
+    "enabled": false,
+    "lan_limit": 8,
+    "official_limit": 4,
+    "strategy": "lan_first"
+  },
+  "research_profile": "{'enabled': False, 'version': 'research-profile-local/1.0', 'server_parse_ceiling': 4}",
+  "preextract_limits": {
+    "base_url": "http://192.168.1.120:8081/v1",
+    "model": "workbuddy-intl-cli-deepseek-free",
+    "context_window": 1000000,
+    "max_output_tokens": 128000,
+    "supports_images": true,
+    "max_images": 600,
+    "max_total_image_bytes": 25165824,
+    "max_single_image_bytes": 6291456,
+    "max_request_bytes": 50331648,
+    "image_detail": "auto",
+    "supports_json_object": false,
+    "capacity_source": "Official CLI 168-image receipt and deployed adapter limits; single-image raw bound 6MiB corresponds to 8MiB Base64"
+  },
+  "preextract_postprocess": {
+    "workers": 4,
+    "max_waiting": 236
+  },
+  "preextract_preparation": {
+    "workers": 8,
+    "max_pending": 16,
+    "office_enabled": true
+  }
+}

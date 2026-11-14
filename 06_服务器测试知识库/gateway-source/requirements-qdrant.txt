@@ -1,0 +1,6 @@
+qdrant-haystack==13.1.0
+haystack-ai==3.4.1
+qdrant-client==1.20.0
+fastapi==0.136.3
+uvicorn==0.47.0
+httpx==0.28.1

@@ -1,0 +1,102 @@
+{
+  "schema": "profile-json-runtime/1",
+  "component": "json_repair",
+  "package": "json_repair",
+  "license": "licenses/LICENSE",
+  "source": "existing native desktop/profile_runtime/python",
+  "declared_version_in_profile_source": "0.60.1",
+  "files": [
+    {
+      "file": "json_repair/__init__.py",
+      "sha256": "b628a8b9e43ee7c9ac23a19fedcd23fd1c4faad3f13f5940277e4a838a228182"
+    },
+    {
+      "file": "json_repair/__main__.py",
+      "sha256": "09446d7ec0ac08fcdc6e07e031e1555413a9a0715aaebf54d4689b8a1f5f8850"
+    },
+    {
+      "file": "json_repair/json_parser.py",
+      "sha256": "a1760f37b298d229e9c3da1d942c76928c14334d3e86417c00e4ca78941463ac"
+    },
+    {
+      "file": "json_repair/json_repair.py",
+      "sha256": "6df32249f566c74abeab77940a64091bf9bef996688046e598070fb548afedd6"
+    },
+    {
+      "file": "json_repair/parse_array.py",
+      "sha256": "1b8e43ae1c9e05878837f5693c200ae3dafbc26c6cd32bb2c2b6061f82029793"
+    },
+    {
+      "file": "json_repair/parse_comment.py",
+      "sha256": "961d8efe23a0c58a88951a1ad36c01503c231c75bacef8953ffd185cab7bad7e"
+    },
+    {
+      "file": "json_repair/parse_number.py",
+      "sha256": "8feb584a741b5ce544364e1a24478d63ac1f0065048e02f3433e53e4d9efba3d"
+    },
+    {
+      "file": "json_repair/parse_object.py",
+      "sha256": "b9e3cac3a7202eb7c2880002d4461a7b35407621cfeffd6b314cdc77f8af58fb"
+    },
+    {
+      "file": "json_repair/parse_string.py",
+      "sha256": "284a3a74acb7edf8ae5808a87378d66ad038d824d3a76f9a8744d2c76ee80415"
+    },
+    {
+      "file": "json_repair/parse_string_helpers/__init__.py",
+      "sha256": "147c8c7c55a20ac7ff9b056c20371d94a90c01f9a69f6e1e481e6ec19ec4bfe5"
+    },
+    {
+      "file": "json_repair/parse_string_helpers/object_value_context.py",
+      "sha256": "9cb01fa1c25a396fc9c433a5ca3ebbd3d490ada544707d6972584f2b161b3dcc"
+    },
+    {
+      "file": "json_repair/parse_string_helpers/parse_boolean_or_null.py",
+      "sha256": "a46987d50013065b3bd244ef52526fe05f0d88f68159cc868512f4dec4ce9eda"
+    },
+    {
+      "file": "json_repair/parse_string_helpers/parse_json_llm_block.py",
+      "sha256": "c0f4a6fbc458df4124f07c738c290246d74bab8f827b3f8f241def3a4fef3f7c"
+    },
+    {
+      "file": "json_repair/parser_parenthesized.py",
+      "sha256": "9dd91b0d809da3a66395c7bcad97563ac9145975f7752c949d02cedc38ca67b7"
+    },
+    {
+      "file": "json_repair/parser_schema.py",
+      "sha256": "3658a2b84ebb063f87d214623f06adda240ec32c5e5c498b75e0d317d2bcfc58"
+    },
+    {
+      "file": "json_repair/schema_repair.py",
+      "sha256": "e07fcf216ab6b306ca782b1402e1501f3cefbb412c4b293deeb16eb58145c3a8"
+    },
+    {
+      "file": "json_repair/utils/__init__.py",
+      "sha256": "a60f2baac1ce87f3271604d46f939ada9f0b0ea67283bb4f1021aa0baad2cf28"
+    },
+    {
+      "file": "json_repair/utils/constants.py",
+      "sha256": "32dbf11e1702ab78e98084e12d43e3987ee755e5d2aba1e31c3c90067b635726"
+    },
+    {
+      "file": "json_repair/utils/json_context.py",
+      "sha256": "b37e94a9fc4fc6a6fbb3d2d12d77fcfa8f94a30dd241666001ae14c1703be147"
+    },
+    {
+      "file": "json_repair/utils/object_comparer.py",
+      "sha256": "78aa488bda4c8ad6774ff5f58080e566fd3e68fbaf66ac524e98632180fef32b"
+    },
+    {
+      "file": "json_repair/utils/pattern_properties.py",
+      "sha256": "f632acb87da3ae79a6d01141d3cb9675536958fe20752f7a0dbcc2ded09cfb38"
+    },
+    {
+      "file": "json_repair/utils/string_file_wrapper.py",
+      "sha256": "0bd19f6eff0e26051c21a6052cc777ef6a4a3bdf5e8f1a480bd40b74fa441eeb"
+    },
+    {
+      "file": "licenses/LICENSE",
+      "sha256": "c2b8d0a3c32136b34289c5ed31edcc1e64be7f1f00990935b9ef004308a2155f"
+    }
+  ]
+}

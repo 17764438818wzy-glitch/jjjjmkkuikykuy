@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "measured_at": "2026-09-18T22:36:40.730219+00:00",
+  "rounds": 20,
+  "levels": [
+    {
+      "concurrency": 4,
+      "total": 20,
+      "success": 20,
+      "failed": 0,
+      "429": 0,
+      "average_seconds": 8.326,
+      "elapsed_seconds": 46.737,
+      "throughput_per_second": 0.428,
+      "success_rate": 1.0,
+      "errors": []
+    },
+    {
+      "concurrency": 8,
+      "total": 20,
+      "success": 19,
+      "failed": 1,
+      "429": 1,
+      "average_seconds": 15.516,
+      "elapsed_seconds": 62.575,
+      "throughput_per_second": 0.304,
+      "success_rate": 0.95,
+      "errors": [
+        "AI HTTP 429；自动重试已用尽"
+      ]
+    },
+    {
+      "concurrency": 16,
+      "total": 20,
+      "success": 11,
+      "failed": 9,
+      "429": 1,
+      "average_seconds": 21.179,
+      "elapsed_seconds": 40.13,
+      "throughput_per_second": 0.274,
+      "success_rate": 0.55,
+      "errors": [
+        "AI HTTP 429；自动重试已用尽",
+        "AI HTTP 503；自动重试已用尽",
+        "AI HTTP 503；自动重试已用尽",
+        "AI HTTP 503；自动重试已用尽",
+        "AI HTTP 503；自动重试已用尽"
+      ]
+    },
+    {
+      "concurrency": 32,
+      "total": 20,
+      "success": 20,
+      "failed": 0,
+      "429": 0,
+      "average_seconds": 28.992,
+      "elapsed_seconds": 55.193,
+      "throughput_per_second": 0.362,
+      "success_rate": 1.0,
+      "errors": []
+    }
+  ],
+  "recommendation": 4,
+  "recommendation_reason": "最高吞吐且成功率不低于 99%"
+}

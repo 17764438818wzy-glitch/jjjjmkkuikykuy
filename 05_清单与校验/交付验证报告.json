@@ -1,0 +1,72 @@
+{
+  "prepared_at": "2026-11-14 17:59:32",
+  "bundle_root": "F:\\论文处理端迁移包",
+  "offline_packaging_checks_passed": true,
+  "copied_source_files": 64701,
+  "immutable_manifest_files": 64794,
+  "payload_gib": 11.667,
+  "total_files_including_generated_runtime": 72840,
+  "total_gib_including_generated_runtime": 11.794,
+  "original_fixed_source_files": 581,
+  "original_fixed_sources_unchanged": true,
+  "offline_import_and_path_checks": {
+    "passed": true,
+    "count": 24,
+    "network_allowed": false,
+    "child_processes_allowed": false
+  },
+  "python_syntax_files": 1327,
+  "powershell_syntax_files": 14,
+  "counter_synthetic_check": {
+    "passed": true,
+    "result": [
+      {
+        "model_tokens": 10,
+        "cl100k_tokens": 11
+      }
+    ],
+    "input": "synthetic text only",
+    "binding_id": "1022c8b1-86e3-41ad-a012-0dabcac9c609"
+  },
+  "counter_linux_manifest": {
+    "files": 141,
+    "added": 3,
+    "hashes_verified": true
+  },
+  "libreoffice_synthetic_docx_to_pdf": {
+    "passed": true,
+    "exit_code": 0,
+    "stdout": "convert F:\\���Ĵ�����Ǩ�ư�\\��������\\�ϳ��ĵ����\\synthetic.docx as a Writer document -> F:\\���Ĵ�����Ǩ�ư�\\��������\\�ϳ��ĵ����\\synthetic.pdf using filter : writer_pdf_Export\n",
+    "stderr": "Could not find platform independent libraries <prefix>\n",
+    "input": "synthetic generated docx",
+    "isolated_profile": "F:\\论文处理端迁移包\\运行数据\\合成文档检查\\lo-profile",
+    "real_papers": 0
+  },
+  "execution_enabled": false,
+  "credentials_copied": false,
+  "real_papers_processed": 0,
+  "business_services_started": false,
+  "server_test_gateway_deployed": false,
+  "model_or_account_probes_executed": false,
+  "production_knowledge_base_written": false,
+  "known_limits": [
+    "target Windows/GPU/Office/WSL not validated",
+    "test gateway and dedicated route still require preparation",
+    "main start probes all enabled domestic accounts on shared gateway; dedicated business key does not isolate these probes",
+    "local archive is not NAS acceptance",
+    "LibreOffice synthetic conversion succeeded with prefix warning on stderr"
+  ],
+  "integrity_manifest_exclusions": [
+    "运行数据",
+    "main project rebuilt .venv",
+    "manifest itself",
+    "delivery report and directory overview"
+  ],
+  "acceptance_level": "copied, offline source/dependency/path checks, synthetic local counter and conversion only",
+  "payload_integrity_recheck": {
+    "passed": true,
+    "files": 64794,
+    "failures": 0,
+    "method": "delivered PowerShell wrapper and bundled Python SHA256 verifier"
+  }
+}

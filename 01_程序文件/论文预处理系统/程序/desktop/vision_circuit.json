@@ -1,0 +1,14 @@
+{
+  "circuit": {
+    "primary": {
+      "state": "closed",
+      "consecutive_failures": 0,
+      "opened_at": null,
+      "cooldown_seconds": 0,
+      "next_probe_at": null,
+      "probe_in_flight": false,
+      "probe_expires_at": null,
+      "probe_id": null
+    }
+  }
+}

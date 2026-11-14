@@ -1,0 +1,96 @@
+{
+  "expected_changes": [
+    {
+      "path": "01_程序文件\\论文预处理系统\\预处理系统2\\candidates\\parent-child-v3-20261102\\paperflow_v3\\control\\preflight.py",
+      "original_sha256": "d6d3f0d11ba46bdd1c454caa1b8a06461d1efabae481c45cfae39a03664843cd",
+      "final_sha256": "1758a120a95630f4d03629ab2279341db5fb9c15482c23188a415bcf3e8a54c9",
+      "expected_migration_change": true
+    },
+    {
+      "path": "01_程序文件\\论文预处理系统\\预处理系统2\\prefect-paperflow\\paperflow_prefect\\group_evidence.py",
+      "original_sha256": "1ff20875b763c44ffe46864d1b494ce12ad4c299a1571b8819efe8f2e45e8afa",
+      "final_sha256": "efa79536a7f2e4379baf598f71fdc38f8b370cbc5f1b7834f3df116ba0ae3176",
+      "expected_migration_change": true
+    },
+    {
+      "path": "01_程序文件\\论文预处理系统\\预处理系统2\\prefect-paperflow\\paperflow_prefect\\clean_overlay\\direct_source.py",
+      "original_sha256": "8b44db4e8664f3c54691814c73ff2e2ef0e656d5818d0cf3a7f3b2662445b664",
+      "final_sha256": "120648cf3d1eb435f4f6f66840d15070ce14ada8ad90ff53fabbe2456175b5f4",
+      "expected_migration_change": true
+    },
+    {
+      "path": "01_程序文件\\论文预处理系统\\预处理系统2\\candidates\\first-step-control-20261029\\config.json",
+      "original_sha256": "dc8bd18ce1f054132e6fdf42fc7c88e65b3a138952c81baf9f57f94d15d94d5c",
+      "final_sha256": "25de8a4ed91cd89296df9b0db90de1da210ebf012646f40e65c2e20d5c711f8c",
+      "expected_migration_change": true
+    },
+    {
+      "path": "01_程序文件\\论文预处理系统\\预处理系统2\\candidates\\first-step-control-20261029\\model-config.json",
+      "original_sha256": "790020ccdc3979534ef245d3a5ebc68d995466d8bf18c305fadeb06318b91ae1",
+      "final_sha256": "bac74273745a62d6bf86d4b41bd8266e640f35f7a280d64c7ae55f1fdb94257b",
+      "expected_migration_change": true
+    },
+    {
+      "path": "01_程序文件\\论文预处理系统\\预处理系统2\\candidates\\first-step-control-20261029\\runtime-config.json",
+      "original_sha256": "07589cafa34fc3e943754d54cd6e7ec6eaa8acb4350ea9f9c7285c66cb0072d0",
+      "final_sha256": "69e019a2167e0d8898948b00c95c45c886ec3589e0bed8e57779b80d7fe6c6b0",
+      "expected_migration_change": true
+    },
+    {
+      "path": "01_程序文件\\论文预处理系统\\预处理系统2\\candidates\\first-step-control-20261029\\paperflow_prefect\\group_evidence.py",
+      "original_sha256": "ca5d271f4acda60ddd64efc0d36a265968715f11e27306a88313c145eda28512",
+      "final_sha256": "761934c134e441f7051d20b29902995d70189f47a13b3ebc6e4bb11aabbfc5d5",
+      "expected_migration_change": true
+    },
+    {
+      "path": "01_程序文件\\论文预处理系统\\预处理系统2\\candidates\\first-step-control-20261029\\paperflow_prefect\\nimble_dependency.py",
+      "original_sha256": "660394d4183faf8632fac38fe6f56ca04899c7f05451194cbaba6d8338d3f47d",
+      "final_sha256": "57c22e39b8840c5ded99c23f6e1abf935fbe74c20a9227253276460bc5516cec",
+      "expected_migration_change": true
+    },
+    {
+      "path": "01_程序文件\\论文预处理系统\\预处理系统2\\candidates\\first-step-control-20261029\\paperflow_prefect_v2\\nimble_dependency.py",
+      "original_sha256": "45ef5819688165feec741cb5c7bfc84857df7f298ca9ccc19034d461afc55bc1",
+      "final_sha256": "b175560aa8c3879bf0faba6cf0065a945e4969c97fca1480b91f5629cc1a088e",
+      "expected_migration_change": true
+    },
+    {
+      "path": "01_程序文件\\论文预处理系统\\程序\\desktop\\archive_input.py",
+      "original_sha256": "316daea3575313e76368b838045df78b22384d9dd81d7a6aff88bbf27ad865db",
+      "final_sha256": "0bcb5b3b5917af63d2a75d6d499b6e9be05fce89b79016324572ec000a5daf99",
+      "expected_migration_change": true
+    },
+    {
+      "path": "01_程序文件\\论文预处理系统\\预处理系统2\\candidates\\parent-child-v3-20261102\\runtime\\panel-monitor\\panel_service.py",
+      "original_sha256": "e0de9328c672d2afe51fc30d23cbf42bd47e3faea553f447969a554bc05ffb5c",
+      "final_sha256": "3c6378f2cb3ecf9dc6e5c522481bb716b0cc01c6002ce4c5b27ac5917f14c2f7",
+      "expected_migration_change": true
+    },
+    {
+      "path": "01_程序文件\\论文预处理系统\\预处理系统2\\candidates\\first-step-preview-8795\\workbuddy_monitor.py",
+      "original_sha256": "cfe7d554833f1a959bf0e554f41f2d8e98d8166797f0b7d07020a27fc8dd0380",
+      "final_sha256": "27a132f495031184c2483da834ea5a71de247c6164ab16b2553c8c650d88fb32",
+      "expected_migration_change": true
+    },
+    {
+      "path": "01_程序文件\\论文预处理系统\\预处理系统2\\prefect-paperflow\\catalog.json",
+      "original_sha256": "6394b6dc7376cfd2cea64451e5d4b00a616999327b4424dea734f04977a9746b",
+      "final_sha256": "1b85356fa252a338f3fd8aa7148cec151557f7464743e4de99722b0bc30cd697",
+      "expected_migration_change": true
+    },
+    {
+      "path": "01_程序文件\\论文预处理系统\\预处理系统2\\prefect-paperflow\\runtime-config.json",
+      "original_sha256": "07589cafa34fc3e943754d54cd6e7ec6eaa8acb4350ea9f9c7285c66cb0072d0",
+      "final_sha256": "69e019a2167e0d8898948b00c95c45c886ec3589e0bed8e57779b80d7fe6c6b0",
+      "expected_migration_change": true
+    },
+    {
+      "path": "01_程序文件\\论文预处理系统\\预处理系统2\\prefect-paperflow\\model-config.json",
+      "original_sha256": "790020ccdc3979534ef245d3a5ebc68d995466d8bf18c305fadeb06318b91ae1",
+      "final_sha256": "bac74273745a62d6bf86d4b41bd8266e640f35f7a280d64c7ae55f1fdb94257b",
+      "expected_migration_change": true
+    }
+  ],
+  "missing": [],
+  "unexplained_changes": []
+}

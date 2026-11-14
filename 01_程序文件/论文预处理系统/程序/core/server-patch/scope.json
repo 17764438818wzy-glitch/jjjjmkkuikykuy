@@ -1,0 +1,10 @@
+{
+  "dataset_ids": [
+    "96a303f6ca7211f1976597633927b55c",
+    "9767e7acca7211f1976597633927b55c",
+    "982b820cca7211f1976597633927b55c",
+    "98f1f8ceca7211f1976597633927b55c"
+  ],
+  "token": "1c235d0893fe",
+  "deployment": "v0.27.2 isolated stage8 candidate; original 8088 unchanged"
+}

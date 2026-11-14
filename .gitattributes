@@ -1,0 +1,2 @@
+# Preserve exact bytes: the application verifies source files with SHA256.
+* -text

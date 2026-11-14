@@ -1,0 +1,2 @@
+# Additional runtime dependency for the existing Prefect 3.9.0 environment.
+async-lru==2.4.0

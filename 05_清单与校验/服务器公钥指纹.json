@@ -1,0 +1,17 @@
+{
+  "host": "192.168.1.120",
+  "public_key_fingerprints": [
+    {
+      "type": "ssh-ed25519",
+      "SHA256": "OQcOOc12JAWQx/16Q64WlsspT8PgcPOm0wgYHO206sc"
+    },
+    {
+      "type": "ssh-rsa",
+      "SHA256": "2yPpG5QxidjYdKUtfoUvmP/VCAPhvoUJBIMyG5Xz4Vw"
+    },
+    {
+      "type": "ecdsa-sha2-nistp256",
+      "SHA256": "vXAXHDrE/dHWbP6P86osDcxwrosk1FjwwDRqokpHE80"
+    }
+  ]
+}

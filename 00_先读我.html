@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>00_先读我</title><style>body{font-family:"Microsoft YaHei",system-ui,sans-serif;max-width:1050px;margin:32px auto;padding:0 24px;color:#17202a;line-height:1.8}h1,h2{line-height:1.4;color:#16334a}h2{margin-top:2.1em;padding-bottom:.3em;border-bottom:1px solid #dce5eb}table{border-collapse:collapse;width:100%;margin:20px 0;font-size:14px}th,td{border:1px solid #dce5eb;padding:9px 12px;text-align:left;vertical-align:top}th{background:#edf3f7}pre{background:#eef3f6;padding:16px;overflow:auto}code{font-family:Consolas,monospace;font-size:.93em}a{color:#075d9c}strong{color:#704b0b}@media print{body{max-width:none;margin:0}h2{page-break-after:avoid}pre,table{break-inside:auto}}</style></head><body><h1>论文处理端迁移包</h1>
+<p>把整个文件夹复制到新Windows电脑的本地磁盘，按《新电脑部署交接文档》配置。迁移的是论文处理端；原局域网的模型路由和嵌入服务继续使用。</p>
+<ol>
+<li>查看《新电脑配置清单.csv》，准备WSL Ubuntu 22.04、测试专用模型线路和独立测试知识库。</li>
+<li>编辑 <code>03_配置与启动/新电脑配置.json</code>；先保留三个确认项为false。</li>
+<li>在PowerShell中依次执行00初始化、01离线检查、02保存凭据、合并服务器公钥、03计数器检查。SSH及网关管理密码也是开始主流程的必需项。</li>
+<li>独立测试网关按 <code>06_服务器测试知识库/README.md</code> 另行部署；申请专用模型业务Key。页面“开始”仍会探测共享网关的国内账号，需提前协调影响，然后调整测试Key的账号范围。</li>
+<li>配置核实后把三个确认项改为true，再执行04启动测试Prefect、05允许测试运行、启动本地Nimble、06启动处理端。</li>
+<li>打开 <code>http://127.0.0.1:8796/</code>，使用一篇论文的<strong>副本</strong>创建新测试任务，按交接文档验收。</li>
+</ol>
+<p>重要：流程成功后会清理输入副本。原件务必另存。默认归档到本包 <code>运行数据/测试归档</code>，这能验证归档流程，尚不代表NAS验收。</p>
+<p>本包提供代码、Python及依赖快照、Nimble模型、WSL计数资源、7z、LibreOffice和配置脚本；WSL发行版、GPU驱动、Word/WPS的COM组件需要新电脑另行安装。凭据需在新Windows用户下重新保存。</p>
+<p>已做与尚未做的检查，以 <code>05_清单与校验/交付验证报告.json</code> 为准。没有在整理期间启动业务服务、部署服务器测试库或处理真实论文。</p>
+</body></html>
