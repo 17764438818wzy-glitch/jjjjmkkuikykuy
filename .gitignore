@@ -1,6 +1,5 @@
 # Portable runtimes and generated task data stay in the migration folder.
-/02_运行环境/
-/运行数据/
+02_运行环境/
 .venv/
 venv/
 node_modules/

@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "result": [
+    {
+      "model_tokens": 10,
+      "cl100k_tokens": 11
+    }
+  ],
+  "input": "synthetic text only",
+  "binding_id": "1022c8b1-86e3-41ad-a012-0dabcac9c609"
+}

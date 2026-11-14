@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "exit_code": 0,
+  "stdout": "convert F:\\���Ĵ�����Ǩ�ư�\\��������\\�ϳ��ĵ����\\synthetic.docx as a Writer document -> F:\\���Ĵ�����Ǩ�ư�\\��������\\�ϳ��ĵ����\\synthetic.pdf using filter : writer_pdf_Export\n",
+  "stderr": "Could not find platform independent libraries <prefix>\n",
+  "input": "synthetic generated docx",
+  "isolated_profile": "F:\\论文处理端迁移包\\运行数据\\合成文档检查\\lo-profile",
+  "real_papers": 0
+}

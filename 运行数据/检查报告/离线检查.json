@@ -1,0 +1,170 @@
+{
+  "mode": "offline",
+  "passed": true,
+  "checks": [
+    {
+      "name": "python_version",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "name": "interpreter_in_bundle",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "name": "import_prefect",
+      "ok": true,
+      "detail": "F:\\论文处理端迁移包\\01_程序文件\\论文预处理系统\\预处理系统2\\prefect-paperflow\\.venv\\Lib\\site-packages\\prefect\\__init__.py"
+    },
+    {
+      "name": "import_fastapi",
+      "ok": true,
+      "detail": "F:\\论文处理端迁移包\\01_程序文件\\论文预处理系统\\预处理系统2\\prefect-paperflow\\.venv\\Lib\\site-packages\\fastapi\\__init__.py"
+    },
+    {
+      "name": "import_uvicorn",
+      "ok": true,
+      "detail": "F:\\论文处理端迁移包\\01_程序文件\\论文预处理系统\\预处理系统2\\prefect-paperflow\\.venv\\Lib\\site-packages\\uvicorn\\__init__.py"
+    },
+    {
+      "name": "import_paramiko",
+      "ok": true,
+      "detail": "F:\\论文处理端迁移包\\02_运行环境\\user-site-packages\\paramiko\\__init__.py"
+    },
+    {
+      "name": "import_win32crypt",
+      "ok": true,
+      "detail": "F:\\论文处理端迁移包\\01_程序文件\\论文预处理系统\\预处理系统2\\prefect-paperflow\\.venv\\Lib\\site-packages\\win32\\win32crypt.pyd"
+    },
+    {
+      "name": "import_fitz",
+      "ok": true,
+      "detail": "F:\\论文处理端迁移包\\02_运行环境\\Python314\\Lib\\site-packages\\fitz\\__init__.py"
+    },
+    {
+      "name": "import_docx",
+      "ok": true,
+      "detail": "F:\\论文处理端迁移包\\02_运行环境\\Python314\\Lib\\site-packages\\docx\\__init__.py"
+    },
+    {
+      "name": "import_pypdf",
+      "ok": true,
+      "detail": "F:\\论文处理端迁移包\\02_运行环境\\Python314\\Lib\\site-packages\\pypdf\\__init__.py"
+    },
+    {
+      "name": "import_PIL",
+      "ok": true,
+      "detail": "F:\\论文处理端迁移包\\02_运行环境\\Python314\\Lib\\site-packages\\PIL\\__init__.py"
+    },
+    {
+      "name": "import_psutil",
+      "ok": true,
+      "detail": "F:\\论文处理端迁移包\\02_运行环境\\user-site-packages\\psutil\\__init__.py"
+    },
+    {
+      "name": "import_async_lru",
+      "ok": true,
+      "detail": "F:\\论文处理端迁移包\\01_程序文件\\论文预处理系统\\预处理系统2\\prefect-paperflow\\.venv\\Lib\\site-packages\\async_lru\\__init__.py"
+    },
+    {
+      "name": "import_paperflow_qdrant.delivery",
+      "ok": true,
+      "detail": "F:\\论文处理端迁移包\\01_程序文件\\论文预处理系统\\预处理系统2\\candidates\\parent-child-v3-20261102\\paperflow_qdrant\\delivery.py"
+    },
+    {
+      "name": "project_settings",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "name": "prefect_limit_schemas",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "name": "native_modules_and_paths",
+      "ok": true,
+      "detail": {
+        "mode": "connection-check",
+        "execution_enabled": false,
+        "modules": {
+          "preextract_material": "F:\\论文处理端迁移包\\01_程序文件\\论文预处理系统\\预处理系统2\\prefect-paperflow\\paperflow_prefect\\clean_overlay\\preextract_material.py",
+          "preextract_contract": "F:\\论文处理端迁移包\\01_程序文件\\论文预处理系统\\预处理系统2\\prefect-paperflow\\paperflow_prefect\\clean_overlay\\preextract_contract.py",
+          "preextract_request": "F:\\论文处理端迁移包\\01_程序文件\\论文预处理系统\\程序\\updates\\unified-prefect-20261029-material-r02\\desktop\\preextract_request.py",
+          "preextract_images": "F:\\论文处理端迁移包\\01_程序文件\\论文预处理系统\\预处理系统2\\prefect-paperflow\\paperflow_prefect\\clean_overlay\\preextract_images.py",
+          "preextract_partition_run": "F:\\论文处理端迁移包\\01_程序文件\\论文预处理系统\\预处理系统2\\prefect-paperflow\\paperflow_prefect\\clean_overlay\\preextract_partition_run.py",
+          "preextract_publish": "F:\\论文处理端迁移包\\01_程序文件\\论文预处理系统\\预处理系统2\\prefect-paperflow\\paperflow_prefect\\clean_overlay\\preextract_publish.py",
+          "paperflow.embedding_counter": "F:\\论文处理端迁移包\\01_程序文件\\论文预处理系统\\程序\\updates\\unified-prefect-20261029-material-r02\\core\\paperflow\\embedding_counter.py",
+          "paperflow.rag": "F:\\论文处理端迁移包\\01_程序文件\\论文预处理系统\\程序\\updates\\unified-prefect-20261029-material-r02\\core\\paperflow\\rag.py",
+          "paperflow.original_archive.archive": "F:\\论文处理端迁移包\\01_程序文件\\论文预处理系统\\程序\\updates\\unified-prefect-20261029-material-r02\\core\\paperflow\\original_archive\\archive.py",
+          "paperflow.original_archive.lifecycle": "F:\\论文处理端迁移包\\01_程序文件\\论文预处理系统\\程序\\updates\\unified-prefect-20261029-material-r02\\core\\paperflow\\original_archive\\lifecycle.py"
+        },
+        "counter_paths": {
+          "model_path": true,
+          "library_path": true,
+          "cache_dir": true,
+          "python_path": true,
+          "runtime_manifest": true
+        },
+        "template_exists": true,
+        "catalog_exists": true,
+        "configured_limits": {
+          "body_llm": 1,
+          "attachment_llm": 1,
+          "total_llm": 1,
+          "local": 1,
+          "package": 1,
+          "rag": 1,
+          "nas": 1,
+          "cleanup": 1
+        },
+        "credentials_loaded": false,
+        "real_papers_read": 0,
+        "business_external_calls": 0,
+        "nas_probed": false,
+        "production_acceptance": false,
+        "local_retention": true
+      }
+    },
+    {
+      "name": "paperflow_v3.control.flows",
+      "ok": true,
+      "detail": "F:\\论文处理端迁移包\\01_程序文件\\论文预处理系统\\预处理系统2\\candidates\\parent-child-v3-20261102\\paperflow_v3\\control\\flows.py"
+    },
+    {
+      "name": "paperflow_v3.control.server",
+      "ok": true,
+      "detail": "F:\\论文处理端迁移包\\01_程序文件\\论文预处理系统\\预处理系统2\\candidates\\parent-child-v3-20261102\\paperflow_v3\\control\\server.py"
+    },
+    {
+      "name": "paperflow_v3.stages.pipeline",
+      "ok": true,
+      "detail": "F:\\论文处理端迁移包\\01_程序文件\\论文预处理系统\\预处理系统2\\candidates\\parent-child-v3-20261102\\paperflow_v3\\stages\\pipeline.py"
+    },
+    {
+      "name": "paperflow_v3.delivery.runtime",
+      "ok": true,
+      "detail": "F:\\论文处理端迁移包\\01_程序文件\\论文预处理系统\\预处理系统2\\candidates\\parent-child-v3-20261102\\paperflow_v3\\delivery\\runtime.py"
+    },
+    {
+      "name": "7zip_binary",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "name": "libreoffice_binary",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "name": "nimble_binary_and_model",
+      "ok": true,
+      "detail": true
+    }
+  ],
+  "binding_id": "1022c8b1-86e3-41ad-a012-0dabcac9c609",
+  "network_allowed": false,
+  "child_processes_allowed": false,
+  "real_papers_processed": 0
+}

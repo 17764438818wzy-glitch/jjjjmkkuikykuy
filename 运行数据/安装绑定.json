@@ -1,0 +1,21 @@
+{
+  "root": "F:\\论文处理端迁移包",
+  "app": "F:\\论文处理端迁移包\\01_程序文件\\论文预处理系统",
+  "environment": "F:\\论文处理端迁移包\\02_运行环境",
+  "embedding": "F:\\论文处理端迁移包\\02_运行环境\\embedding",
+  "configured_at": "2026-11-14 17:55:23",
+  "binding_id": "1022c8b1-86e3-41ad-a012-0dabcac9c609",
+  "source_files": 581,
+  "patched_files": [
+    "01_程序文件\\论文预处理系统\\程序\\desktop\\archive_input.py",
+    "01_程序文件\\论文预处理系统\\预处理系统2\\candidates\\first-step-control-20261029\\paperflow_prefect\\group_evidence.py",
+    "01_程序文件\\论文预处理系统\\预处理系统2\\candidates\\first-step-control-20261029\\paperflow_prefect\\nimble_dependency.py",
+    "01_程序文件\\论文预处理系统\\预处理系统2\\candidates\\first-step-control-20261029\\paperflow_prefect_v2\\nimble_dependency.py",
+    "01_程序文件\\论文预处理系统\\预处理系统2\\candidates\\first-step-preview-8795\\workbuddy_monitor.py",
+    "01_程序文件\\论文预处理系统\\预处理系统2\\candidates\\parent-child-v3-20261102\\paperflow_v3\\control\\preflight.py",
+    "01_程序文件\\论文预处理系统\\预处理系统2\\candidates\\parent-child-v3-20261102\\runtime\\panel-monitor\\panel_service.py",
+    "01_程序文件\\论文预处理系统\\预处理系统2\\prefect-paperflow\\paperflow_prefect\\clean_overlay\\direct_source.py",
+    "01_程序文件\\论文预处理系统\\预处理系统2\\prefect-paperflow\\paperflow_prefect\\group_evidence.py"
+  ],
+  "business_execution_enabled": false
+}
