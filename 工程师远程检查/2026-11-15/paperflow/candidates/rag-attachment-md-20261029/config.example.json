@@ -1,0 +1,30 @@
+{
+  "schema": "prefect-paperflow-config/1",
+  "execution_enabled": false,
+  "prefect_api_url": "http://192.168.1.120:4200/api",
+  "library_root": "F:\\论文预处理系统\\预处理系统2\\candidates\\rag-attachment-md-20261029\\runtime\\disabled-library_root",
+  "data_root": "F:\\论文预处理系统\\预处理系统2\\candidates\\rag-attachment-md-20261029\\runtime\\disabled-data_root",
+  "program_root": "F:\\论文预处理系统\\程序",
+  "release_root": "F:\\论文预处理系统\\程序\\updates\\unified-AB-20261026-r05-rag600-nas-20261027-c03-normal59-llm140-r01",
+  "settings_root": "F:\\论文预处理系统\\预处理系统2\\candidates\\rag-attachment-md-20261029\\runtime\\disabled-settings_root",
+  "template_path": "F:\\论文预处理系统\\程序\\resources\\论文预提取_空白模板_v1.md",
+  "catalog_path": "F:\\论文预处理系统\\预处理系统2\\candidates\\rag-attachment-md-20261029\\catalog.json",
+  "runtime_config": "F:\\论文预处理系统\\预处理系统2\\candidates\\rag-attachment-md-20261029\\runtime-config.json",
+  "model_config": "F:\\论文预处理系统\\预处理系统2\\prefect-paperflow\\model-config.json",
+  "source_manifest": "F:\\论文预处理系统\\预处理系统2\\candidates\\rag-attachment-md-20261029\\source-manifest.json",
+  "nas_destination": "\\\\zwjy-nas\\paper_ai\\论文原件库\\Prefect五步\\desktop100-20261028-171452",
+  "rag_url": "http://127.0.0.1:9",
+  "max_pages": 160,
+  "max_live_papers": 160,
+  "limits": {
+    "body_llm": 100,
+    "attachment_llm": 20,
+    "total_llm": 120,
+    "local": 4,
+    "package": 2,
+    "rag": 4,
+    "nas": 2
+  },
+  "nas_reserve_bytes": 1073741824,
+  "nas_root": "F:\\论文预处理系统\\预处理系统2\\candidates\\rag-attachment-md-20261029\\runtime\\disabled-nas_root"
+}

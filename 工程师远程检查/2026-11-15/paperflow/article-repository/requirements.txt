@@ -1,0 +1,2 @@
+psycopg[binary]==3.3.3
+smbprotocol==1.17.0

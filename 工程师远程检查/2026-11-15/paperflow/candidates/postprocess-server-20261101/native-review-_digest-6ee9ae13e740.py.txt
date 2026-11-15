@@ -1,0 +1,2 @@
+def _digest(raw):
+    return hashlib.sha256(raw).hexdigest()

@@ -1,0 +1,13 @@
+.venv/
+.cache/
+.tmp/
+__pycache__/
+.pytest_cache/
+runtime/
+*.dpapi
+*.sqlite3*
+*.log
+pytest-of-*/
+**/.credentials.yaml
+**/harness-*/
+*.egg-info/

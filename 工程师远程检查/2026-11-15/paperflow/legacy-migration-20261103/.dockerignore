@@ -1,0 +1,10 @@
+*
+!Dockerfile
+!library.py
+!legacy_migration.py
+!migrate.py
+!catalog.py
+!sync.py
+!nas_transfer.py
+!attachment_notes.py
+!repair_attachments.py

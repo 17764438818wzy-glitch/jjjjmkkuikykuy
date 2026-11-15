@@ -1,0 +1,55 @@
+Nimble 本地部署（Ollama）
+
+目录：F:\nimble
+模型：nimble:9b-q4_K_M（官方 9B Q4_K_M 量化版，约 5.6 GB）
+本地快捷名称：nimble（指向上面的同一模型，不是另一个版本）
+API 地址：http://127.0.0.1:11434
+决策接口：POST http://127.0.0.1:11434/v1/systemone
+
+日常使用
+1. 双击 Open-Nimble.cmd：启动后台服务并进入 Ollama 交互终端。
+   先输入待判断的文本，再输入关于这段文本的是非问题。
+   /clear 可以开始判断新的文本。
+2. 双击 Run-Example.cmd：运行中文示例，返回部门分类、退款概率、紧急程度。
+3. 双击 Start-Nimble.cmd：仅启动后台 API。
+4. 双击 Stop-Nimble.cmd：卸载已加载模型并停止本目录的服务；保留模型文件。
+
+PowerShell 命令示例（先启动服务）
+& 'F:\nimble\Start-Nimble.ps1'
+& 'F:\nimble\ollama.cmd' list
+& 'F:\nimble\ollama.cmd' ps
+& 'F:\nimble\ollama.cmd' run nimble '我的订单被重复扣款，请退款。' --ask '用户是否要求退款？'
+
+API 请求示例
+curl.exe -sS -H 'Content-Type: application/json' --data-binary '@F:\nimble\examples\classification-zh.json' http://127.0.0.1:11434/v1/systemone
+
+调整示例输入
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File F:\nimble\Run-Example.ps1 -Text '这里填写需要分类的文本'
+可以编辑 examples\classification-zh.json 中的文本、问题和选项。
+上一次示例结果保存在 examples\last-result.json。
+
+运行设置
+- 本机监听 127.0.0.1:11434；局域网其他设备不能直接访问。
+- 模型、运行文件、日志都存放在 F:\nimble。
+- 上下文设置为 4096 token；并行请求数 1，同时加载模型数 1。
+- 模型空闲 5 分钟后卸载以释放显存，后台 API 继续运行；下次调用会重新加载。
+- 当前提供手动启动入口，没有配置开机自启。
+- 使用官方本地模型，不需要 API key。已关闭 Ollama 云端能力。
+
+用途与边界
+Nimble 用于文本分类、是非判断和分级评分；不是自由聊天或文章生成模型。
+choice 返回候选项及其概率；noul 返回“true”的概率；score 返回等级的概率加权分数。
+概率和 confidence 不能直接视为任务准确率。量化版可能与未量化版存在差异。
+此部署不使用 Mac 专属 MLX，也不启动需要云端密钥的官方多模型比较网页。
+
+证据
+logs\verification.json：真实中文正反例请求、响应、耗时与模型加载状态（验收通过后生成）。
+logs\runtime-integrity.json：Ollama 官方安装包 SHA-256 校验记录（校验后生成）。
+logs\service.json：本服务的进程标识、地址和日志路径。
+source：官方 Nimble 源码，仅作为本地参考，不改动原始代码。
+
+官方资料
+https://github.com/bespokelabsai/nimble
+https://ollama.com/library/nimble:9b-q4_K_M
+https://docs.ollama.com/capabilities/decision
+https://docs.ollama.com/api/systemone

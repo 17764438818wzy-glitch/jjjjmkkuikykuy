@@ -1,0 +1,11 @@
+def load_config(path, expected_sha256):
+    try:
+        raw = _read(path, max_bytes=65536)
+        _require(_digest(raw) == expected_sha256, 'independently pinned service configuration changed')
+        value = json.loads(raw)
+        _config(value)
+        return value
+    except (OSError, ValueError, TypeError, RuntimeError) as exc:
+        if isinstance(exc, ServiceError):
+            raise
+        raise ServiceError('service configuration cannot be verified') from exc

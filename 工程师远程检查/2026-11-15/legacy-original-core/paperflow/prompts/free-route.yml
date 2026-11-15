@@ -1,0 +1,15 @@
+- id: llm-pi-ai
+  name: '@deepseek-ai/dsh-llm-pi-ai'
+  config:
+    providers:
+      free:
+        apiKeyEnv: FREE_API_KEY
+        api: openai-completions
+        baseURL: http://192.168.1.120:8081/v1
+        maxRequestImageBytes: 2097152
+        models:
+          - id: deepseek-v4-pro
+            name: deepseek-v4-pro
+          - id: deepseek-v4.1-flash
+            name: deepseek-v4.1-flash
+            input: [text, image]

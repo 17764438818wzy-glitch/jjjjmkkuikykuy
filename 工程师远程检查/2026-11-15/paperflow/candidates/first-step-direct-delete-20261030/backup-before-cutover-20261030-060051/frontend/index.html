@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>资料预处理</title>
+  <link rel="stylesheet" href="styles.css?v=20261030-6">
+  <link rel="stylesheet" href="vendor/uppy/uppy.min.css">
+  <script src="app.js?v=20261030-5" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <span class="brand-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 3.75h7l4 4v12.5H7a1 1 0 0 1-1-1V4.75a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M14 3.75v4h4M9 12h6M9 15.5h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span>论文预处理系统</span>
+    </div>
+  </header>
+  <main>
+    <p class="eyebrow">第一步 / 资料预处理</p>
+    <h1>资料预处理</h1>
+    <p class="subtitle">查看资料处理进度和处理结果。</p>
+
+    <section class="workspace-bar" aria-label="工作间">
+      <div class="workspace-actions">
+        <button id="new-task-button" class="control-button control-primary" type="button">新建任务</button>
+        <button id="open-task-button" class="control-button" type="button">打开任务</button>
+        <button id="save-task-button" class="control-button" type="button" disabled>保存</button>
+      </div>
+      <span id="save-state" class="save-state" role="status">未选择任务</span>
+    </section>
+
+    <section class="card" aria-labelledby="card-title">
+      <div class="card-body">
+        <div class="card-heading">
+          <h2 id="card-title">当前任务</h2>
+          <span id="task-state" class="status">连接中</span>
+        </div>
+        <p id="task-name" class="task-name">尚未选择任务</p>
+        <div class="task-controls" aria-label="任务操作">
+          <button id="upload-button" class="control-button" type="button" disabled>上传</button>
+          <button id="start-button" class="control-button control-primary" type="button" disabled>开始</button>
+          <button id="pause-button" class="control-button" type="button" disabled>暂停</button>
+          <span id="control-message" class="control-message" role="status">上传、开始和暂停尚未接入</span>
+        </div>
+        <div class="metric">
+          <p class="metric-label">任务总数</p>
+          <div id="task-total" class="metric-value">暂未确定</div>
+          <p id="discovered" class="discovered">正在读取任务状态</p>
+        </div>
+
+        <section id="processing" class="processing" aria-label="工作处理进度" hidden>
+          <div class="progress-heading"><span>工作处理进度</span><span id="progress-caption">正在处理</span></div>
+          <div class="progress" role="progressbar" aria-label="工作正在处理，任务总数尚未确定"><span class="progress-fill"></span></div>
+          <p id="progress-hint" class="progress-hint">正在识别和分流资料，请稍候。</p>
+        </section>
+
+        <details id="ungrouped" class="ungrouped" hidden>
+          <summary>待核对的未归组资料 <span id="ungrouped-count"></span></summary>
+          <p>这些文件暂时无法归入资料组。</p>
+          <ul id="ungrouped-list"></ul>
+        </details>
+
+        <div id="results" class="results" hidden>
+          <div class="stats" aria-label="处理结果">
+            <button class="stat" data-filter="passed" type="button" aria-pressed="false"><span>已通过</span><strong id="passed-count" class="passed">0</strong></button>
+            <button class="stat" data-filter="failed" type="button" aria-pressed="false"><span>失败</span><strong id="failed-count" class="failed">0</strong></button>
+            <button class="stat" data-filter="unrecognized" type="button" aria-pressed="false"><span>未识别</span><strong id="unrecognized-count" class="unrecognized">0</strong></button>
+            <button id="unknown-stat" class="stat" data-filter="unknown" type="button" aria-pressed="false" hidden><span>结果未知</span><strong id="unknown-count" class="unknown">0</strong></button>
+          </div>
+          <section id="list-panel" class="list-panel" aria-labelledby="list-title" hidden>
+            <div class="list-header"><div><h3 id="list-title">已通过</h3><p id="list-count">列表获取中</p></div><button id="close-list" class="text-button" type="button">收起</button></div>
+            <div id="list-message" class="list-message" hidden></div>
+            <ul id="group-list" class="group-list"></ul>
+            <div id="pagination" class="pagination" hidden><span id="page-info"></span><div><button id="previous-page" type="button">上一页</button><button id="next-page" type="button">下一页</button></div></div>
+          </section>
+        </div>
+      </div>
+      <div class="notice"><span class="notice-dot" aria-hidden="true"></span><span id="notice-text">正在连接后端。</span><button id="demo-toggle" type="button" hidden>查看完成状态 →</button></div>
+    </section>
+  </main>
+  <dialog id="new-task-dialog" class="workspace-dialog" aria-labelledby="new-task-title">
+    <form id="new-task-form">
+      <h2 id="new-task-title">新建任务</h2>
+      <label for="new-task-name">任务名称</label>
+      <input id="new-task-name" type="text" maxlength="100" placeholder="例如：体育教育资料" required>
+      <p id="new-task-message" class="dialog-message">后端接口准备中</p>
+      <div class="dialog-actions">
+        <button id="cancel-new-task" class="control-button" type="button">取消</button>
+        <button id="create-task-confirm" class="control-button control-primary" type="submit" disabled>创建</button>
+      </div>
+    </form>
+  </dialog>
+  <dialog id="open-task-dialog" class="workspace-dialog" aria-labelledby="open-task-title">
+    <h2 id="open-task-title">打开任务</h2>
+    <p class="dialog-description">选择以前保存的任务，继续查看它的处理情况。</p>
+    <p id="task-list-message" class="dialog-message">正在读取任务列表</p>
+    <div id="task-list" class="task-list"></div>
+    <div class="dialog-actions">
+      <button id="previous-task-page" class="control-button" type="button" hidden>上一页</button>
+      <button id="next-task-page" class="control-button" type="button" hidden>下一页</button>
+      <button id="close-open-task" class="control-button" type="button">关闭</button>
+    </div>
+  </dialog>
+  <dialog id="upload-dialog" class="workspace-dialog upload-dialog" aria-labelledby="upload-title">
+    <div class="upload-header"><h2 id="upload-title">上传资料文件夹</h2><button id="close-upload" class="control-button" type="button">关闭</button></div>
+    <p id="upload-message" class="dialog-message" role="status">请选择一个资料文件夹。</p>
+    <section id="selected-folders" class="selected-folders" aria-label="已选择的文件夹" hidden>
+      <div class="folder-heading"><strong>已选择的文件夹</strong><span id="selected-folders-count"></span></div>
+      <p>任务组数将在资料分流后确定。</p>
+      <ul id="selected-folders-list" class="folder-list"></ul>
+      <div id="folder-pagination" class="pagination" hidden>
+        <span id="folder-page-info"></span>
+        <div><button id="previous-folder-page" type="button">上一页</button><button id="next-folder-page" type="button">下一页</button></div>
+      </div>
+    </section>
+    <div id="uppy-dashboard"></div>
+  </dialog>
+</body>
+</html>

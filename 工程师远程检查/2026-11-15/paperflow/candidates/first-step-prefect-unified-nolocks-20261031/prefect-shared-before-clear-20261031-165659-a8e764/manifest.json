@@ -1,0 +1,11 @@
+{
+  "server": "http://192.168.1.120:4200/api",
+  "snapshot_at": "2026-10-31T16:57:04.635799-07:00",
+  "counts": {
+    "flow_runs": 1768,
+    "task_runs": 5966,
+    "deployments": 7
+  },
+  "scope": "Prefect run and deployment metadata only; no logs or paper files",
+  "reason": "before user-authorized shared Prefect run-history clear"
+}

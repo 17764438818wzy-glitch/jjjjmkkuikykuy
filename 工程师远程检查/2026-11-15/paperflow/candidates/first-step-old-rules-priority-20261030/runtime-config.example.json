@@ -1,0 +1,49 @@
+{
+  "embedding_admission": {
+    "policy": {
+      "model_sha256": "daec91ffb5dd0c27411bd71f29932917c49cf529a641d0168496c3a501e3062c",
+      "libllama_sha256": "af4d01b0a315516b61facc7ff9df13c65e3409162cf7bed3d5a48bb7fef83a0e",
+      "cl100k_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+      "path_fingerprint": "e1d8fb21d497116e256b9f4682628eb9d0bbb43621f4c47acd1357584e93c290",
+      "renderer_fingerprint": "abee01c40e8b93d0fba9980d54d73a51626cd12da46c6255106a0d3d09eeffd4",
+      "physical_capacity": 2048,
+      "pipeline_limit": 2038,
+      "adapter_limit": 8191,
+      "special_tokens": "add_special=true;parse_special=true",
+      "schema": "paperflow-embedding-admission/1",
+      "counter_runtime_sha256": "4b8185657b4c84e04e209c464cea18d699b7dfcd36599195a85a903a3c9d949b"
+    },
+    "path_evidence": {
+      "stage_a_snapshot_id": "stage-a-1792415228677793600",
+      "stage_a_snapshot_sha256": "4da6b4f0a2280381366ff09d9fe65a28d0ac3ab7b8c8c85a941da1c172d2992a",
+      "stage_a_policy_sha256": "a30be1ec69e566fd5ee98a911fa2ed911f49f5017447070a8638e187a12dfcb2",
+      "generated_questions": false,
+      "generated_summary": false,
+      "native_fields": [
+        "text"
+      ],
+      "model": "bge-m3",
+      "ragflow_version": "0.27.2",
+      "ollama_version": "0.34.0"
+    },
+    "counter": {
+      "model_path": "E:\\rag mid\\deployments\\workbench-8089-20261018\\runtime\\embedding\\model\\sha256-daec91ffb5dd0c27411bd71f29932917c49cf529a641d0168496c3a501e3062c",
+      "library_path": "E:\\rag mid\\deployments\\workbench-8089-20261018\\runtime\\embedding\\model\\libllama.so.0",
+      "cache_dir": "E:\\rag mid\\deployments\\workbench-8089-20261018\\runtime\\embedding\\cache",
+      "python_path": "E:\\rag mid\\deployments\\workbench-8089-20261018\\runtime\\embedding\\linux",
+      "runtime_manifest": "E:\\rag mid\\deployments\\workbench-8089-20261018\\runtime\\embedding\\linux-runtime-manifest.json",
+      "command": [
+        "wsl.exe",
+        "--distribution",
+        "Ubuntu-22.04",
+        "--exec",
+        "env",
+        "LD_LIBRARY_PATH=/mnt/e/rag mid/deployments/workbench-8089-20261018/runtime/embedding/model",
+        "python3",
+        "-B"
+      ],
+      "timeout": 30
+    }
+  },
+  "embedding_model_budget": 2000
+}

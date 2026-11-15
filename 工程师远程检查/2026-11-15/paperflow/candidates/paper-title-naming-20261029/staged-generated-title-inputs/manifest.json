@@ -1,0 +1,103 @@
+{
+  "schema": "generated-title-staged-inputs/1",
+  "scope": "12 authorized bodies",
+  "installed_in_running_program": false,
+  "records": [
+    {
+      "group": "刘习之_201813137124",
+      "paper_id": "PF_e5599874f5184480a16b9443",
+      "source_sha256": "e048251e23a4cae4058d80ceda6d96d24eeb64d3fccc5a2b94c9a0b918251f37",
+      "original": "C:\\Users\\Administrator\\Desktop\\108清单\\刘习之_201813137124\\主修-计算机科学与技术-计算机科学与技术-201813137124-刘习之.docx",
+      "named_copy": "F:\\论文预处理系统\\预处理系统2\\candidates\\paper-title-naming-20261029\\staged-generated-title-inputs\\papers\\PF_e5599874f5184480a16b9443\\named-input\\基于彩色椭球先验的图像去雾方法研究.docx",
+      "title_origin": "model_generated"
+    },
+    {
+      "group": "刘伟康_201913137050",
+      "paper_id": "PF_d35d6551f2954a49a442e793",
+      "source_sha256": "431ef841f07c89efe06455099dd1a6040622cb866ce32a6fc4045dd157dec4d5",
+      "original": "C:\\Users\\Administrator\\Desktop\\108清单\\刘伟康_201913137050\\主修_计算机科学与技术学院_计算机科学与技术_201913137050_刘伟康.docx",
+      "named_copy": "F:\\论文预处理系统\\预处理系统2\\candidates\\paper-title-naming-20261029\\staged-generated-title-inputs\\papers\\PF_d35d6551f2954a49a442e793\\named-input\\基于XGBoost与LightGBM的商品推荐模型研究.docx",
+      "title_origin": "model_generated"
+    },
+    {
+      "group": "刘轶龙_201913137016",
+      "paper_id": "PF_d61f8ce58d7b4e4180958a05",
+      "source_sha256": "e92d2ff12149082db2d47b885cb529a607122840422086e810198e85333785ff",
+      "original": "C:\\Users\\Administrator\\Desktop\\108清单\\刘轶龙_201913137016\\主修_计算机科学与技术学院_计算机科学与技术专业_201913137016_刘轶龙.doc",
+      "named_copy": "F:\\论文预处理系统\\预处理系统2\\candidates\\paper-title-naming-20261029\\staged-generated-title-inputs\\papers\\PF_d61f8ce58d7b4e4180958a05\\named-input\\基于SpringBoot的酒店点餐系统设计与实现.doc",
+      "title_origin": "model_generated"
+    },
+    {
+      "group": "崔书闻_201902131007",
+      "paper_id": "PF_1f24a3ded6d54b10a14b6c7d",
+      "source_sha256": "9ea62af5bb5a4ffa461348e232e76d8e9e7c91bfcc18a671fc93125461581558",
+      "original": "C:\\Users\\Administrator\\Desktop\\108清单\\崔书闻_201902131007\\主修_计算机科学与技术学院_计算机科学与技术_201902131007_崔书闻.doc",
+      "named_copy": "F:\\论文预处理系统\\预处理系统2\\candidates\\paper-title-naming-20261029\\staged-generated-title-inputs\\papers\\PF_1f24a3ded6d54b10a14b6c7d\\named-input\\基于EMD-ARIMA模型的天气预测研究.doc",
+      "title_origin": "model_generated"
+    },
+    {
+      "group": "廖安柏_201913137008",
+      "paper_id": "PF_e32105bd7a844d57a2928396",
+      "source_sha256": "2725d712f0e50bd5fd67b172ccb97830be5f0e138de11b818170362721b0693a",
+      "original": "C:\\Users\\Administrator\\Desktop\\108清单\\廖安柏_201913137008\\廖安柏 毕业论文 正文.doc",
+      "named_copy": "F:\\论文预处理系统\\预处理系统2\\candidates\\paper-title-naming-20261029\\staged-generated-title-inputs\\papers\\PF_e32105bd7a844d57a2928396\\named-input\\基于Vue与Springboot的宿舍信息管理系统设计与实现.doc",
+      "title_origin": "model_generated"
+    },
+    {
+      "group": "张智梁_201913137135",
+      "paper_id": "PF_08a12cc374b84fa18234a41c",
+      "source_sha256": "2a3ab45ae6bfcbf86a003be21ac74c9be1f1c042d3a500bf43a85ac6fd6ddfec",
+      "original": "C:\\Users\\Administrator\\Desktop\\108清单\\张智梁_201913137135\\主修_计算机科学与技术学院_计算机科学与技术_201913137135_张智梁.docx",
+      "named_copy": "F:\\论文预处理系统\\预处理系统2\\candidates\\paper-title-naming-20261029\\staged-generated-title-inputs\\papers\\PF_08a12cc374b84fa18234a41c\\named-input\\基于SpringCloud、FFMPEG和OpenSLES的音视频播放器设计与实现.docx",
+      "title_origin": "model_generated"
+    },
+    {
+      "group": "徐义威_201901124023",
+      "paper_id": "PF_0566335c57a5427aacce84db",
+      "source_sha256": "da2a585295574edcf6ba9b64477e3cae5da9bbe56e2a268d909c71fd562e5793",
+      "original": "C:\\Users\\Administrator\\Desktop\\108清单\\徐义威_201901124023\\8 徐义威 毕业论文 正文.docx",
+      "named_copy": "F:\\论文预处理系统\\预处理系统2\\candidates\\paper-title-naming-20261029\\staged-generated-title-inputs\\papers\\PF_0566335c57a5427aacce84db\\named-input\\基于粒子群算法与遗传算法优化LSTM的股票价格预测研究.docx",
+      "title_origin": "model_generated"
+    },
+    {
+      "group": "李必亿_201913137120",
+      "paper_id": "PF_c2498622441c4423abebec02",
+      "source_sha256": "8939ae312b0c0fc126ea6f64a876906e533b1aa7cf2903a5070308e625491b9e",
+      "original": "C:\\Users\\Administrator\\Desktop\\108清单\\李必亿_201913137120\\主修_计算机科学与技术学院_计算机科学与技术_201913137120_李必亿.doc",
+      "named_copy": "F:\\论文预处理系统\\预处理系统2\\candidates\\paper-title-naming-20261029\\staged-generated-title-inputs\\papers\\PF_c2498622441c4423abebec02\\named-input\\基于Spring Boot的定制化在线学习平台设计与实现.doc",
+      "title_origin": "model_generated"
+    },
+    {
+      "group": "杨超_201913137100",
+      "paper_id": "PF_7979c136f4274bc2817c0fa6",
+      "source_sha256": "5f9f59178defc9763a5d840dfcf96b011124d5c9d31dcc9d7265202fe1bf6b0f",
+      "original": "C:\\Users\\Administrator\\Desktop\\108清单\\杨超_201913137100\\主修_计算机科学与技术学院_计算机科学与技术_201913137100_杨超 .doc",
+      "named_copy": "F:\\论文预处理系统\\预处理系统2\\candidates\\paper-title-naming-20261029\\staged-generated-title-inputs\\papers\\PF_7979c136f4274bc2817c0fa6\\named-input\\基于.NET Core和三菱MC协议的工业数据采集监控系统设计与实现.doc",
+      "title_origin": "model_generated"
+    },
+    {
+      "group": "王梓琦_201913136075",
+      "paper_id": "PF_3c216c255f2d489094b634b1",
+      "source_sha256": "dee707683464c64f61ffe0afbf2cdc686bfe62a7dfd01f372dab2720125c108b",
+      "original": "C:\\Users\\Administrator\\Desktop\\108清单\\王梓琦_201913136075\\主修_计算机科学与技术学院_网络工程_201913136075_王梓琦_LW.docx",
+      "named_copy": "F:\\论文预处理系统\\预处理系统2\\candidates\\paper-title-naming-20261029\\staged-generated-title-inputs\\papers\\PF_3c216c255f2d489094b634b1\\named-input\\基于UE4的3D冒险闯关游戏设计与实现.docx",
+      "title_origin": "model_generated"
+    },
+    {
+      "group": "赵伟淇_201913137079",
+      "paper_id": "PF_8a4b1adea40040e780b442e2",
+      "source_sha256": "7411710959bdfe957216afe2689d027dac66b7536d94f282921b19ec86d6173e",
+      "original": "C:\\Users\\Administrator\\Desktop\\108清单\\赵伟淇_201913137079\\4 赵伟淇 毕业论文 正文.doc",
+      "named_copy": "F:\\论文预处理系统\\预处理系统2\\candidates\\paper-title-naming-20261029\\staged-generated-title-inputs\\papers\\PF_8a4b1adea40040e780b442e2\\named-input\\基于OpenCV和PFLD的驾驶员疲劳检测系统设计与实现.doc",
+      "title_origin": "model_generated"
+    },
+    {
+      "group": "高鹏飞_201913137089",
+      "paper_id": "PF_20b57a70f8154757a4e617f1",
+      "source_sha256": "36ca8327a5758a417f26c30dd91e4f59dbf61e0431322029d87b455510446152",
+      "original": "C:\\Users\\Administrator\\Desktop\\108清单\\高鹏飞_201913137089\\高鹏飞    毕业论文    正文.docx",
+      "named_copy": "F:\\论文预处理系统\\预处理系统2\\candidates\\paper-title-naming-20261029\\staged-generated-title-inputs\\papers\\PF_20b57a70f8154757a4e617f1\\named-input\\基于SpringBoot的健身管理系统设计与实现.docx",
+      "title_origin": "model_generated"
+    }
+  ]
+}

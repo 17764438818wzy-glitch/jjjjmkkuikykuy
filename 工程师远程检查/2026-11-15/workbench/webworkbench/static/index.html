@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>论文知识库 · 链路控制工作台</title><link rel="stylesheet" href="/static/style.css"><link rel="stylesheet" href="/static/managed.css"><script defer src="/static/app.js"></script></head>
+<body>
+<a class="skip-link" href="#workspace">跳到工作区</a>
+<section id="login-view" class="login-view" hidden>
+  <div class="login-intro">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">文</span><strong>论文知识库</strong></div>
+    <div class="login-story"><h2>从原稿到知识，<br>每一步都看得见。</h2><p>复用原来的工作台，连接现有的处理和投递链路。</p>
+      <ol class="login-stages"><li><span>01</span><div><strong>选择原稿</strong><p>正文与附件逐文件处理，所需图片随文保存。</p></div></li><li><span>02</span><div><strong>自动处理</strong><p>三轮 LLM、阶段缓存与封包交接。</p></div></li><li><span>03</span><div><strong>跟踪入库</strong><p>查看进程、投递结果与实际耗时。</p></div></li></ol>
+    </div><p class="login-footnote">自动分类选库 · 启动工作台后默认暂停</p>
+  </div>
+  <form id="login-form" class="login-form">
+    <h1>登录工作台</h1><p class="login-description">选择原稿，查看和控制处理进度。</p>
+    <label>用户名<input name="username" autocomplete="username" value="admin" required></label>
+    <label>密码<input name="password" type="password" autocomplete="current-password" required></label>
+    <button class="primary" type="submit">登录工作台</button><p id="login-error" class="error" role="alert"></p><p class="login-form-note">论文知识库 · 链路控制工作台</p>
+  </form>
+</section>
+<div id="app" hidden>
+  <header class="app-header"><div class="header-context"><span>链路控制工作台</span><span class="header-divider" aria-hidden="true">/</span><strong id="section-title">选择与处理</strong></div><div class="header-right"><span id="environment-tag" class="environment-tag">正在连接</span><span id="service-state" class="connection-state">正在连接管理进程</span><button id="pause-global" class="danger" disabled>暂停全部</button><button id="logout" class="quiet">退出登录</button></div></header>
+  <nav class="navigation" aria-label="工作台页面">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">文</span><div><strong>论文知识库</strong><span>链路控制工作台</span></div></div>
+    <div class="primary-nav"><button data-page="work" class="active"><span class="stage-number" aria-hidden="true">01</span>选择与处理</button><button data-page="processes"><span class="stage-number" aria-hidden="true">02</span>进程监控</button><button data-page="history"><span class="stage-number" aria-hidden="true">03</span>批次记录</button></div>
+    <div class="nav-note"><span class="server-symbol" aria-hidden="true"></span><div>现有调度器<small>逐动作准入 · 暂停可继续</small></div></div>
+  </nav>
+  <div id="notice" class="notice" role="status" hidden><span id="notice-text"></span><button id="notice-close" aria-label="关闭提示">×</button></div>
+  <main class="main-layout"><div id="workspace" tabindex="-1">
+    <section id="work-page">
+      <div class="page-heading"><div><p class="eyebrow">PAPERFLOW WORKBENCH</p><h1>选择与处理</h1><p class="muted">选好原稿后，程序自动完成处理、封包和投递；在这里查看每篇的进度。</p></div><div><button id="current-batch" hidden>返回当前批次</button><button id="refresh">刷新状态</button></div></div>
+      <div class="control-strip"><div><span id="manager-badge" class="status-badge">连接中</span><span id="manager-description">正在读取真实控制状态</span></div><div class="control-buttons"><button id="start" class="primary" disabled>开始选中的原稿</button><button id="pause" class="danger" disabled>暂停</button><button id="continue" disabled>继续当前批次</button></div></div>
+      <div class="summary-grid" aria-label="当前批次概览"><div><span>当前批次</span><strong id="total-count">0</strong><small>篇 / 份材料</small></div><div><span>运行中</span><strong id="running-count">0</strong><small>受管工作进程</small></div><div><span>已完成入库</span><strong id="complete-count">0</strong><small>以投递台账确认为准</small></div><div><span>待处理 / 未完成</span><strong id="pending-count">0</strong><small>失败原因可展开查看</small></div></div>
+      <details id="run-settings" class="setup" open><summary class="setup-summary"><strong>本次运行设置</strong><span>使用已有链路配置</span></summary><div class="setup-fields"><div id="settings-summary" class="settings-summary"></div><p class="muted">论文库与资料库分别保存；Graph、Wiki 后续单独处理。当前每批最多选择 10 个文件。</p></div></details>
+      <details id="input-section" class="result-panel input-section" open><summary class="setup-summary"><strong>原稿选择</strong><span>准备输入副本；开始后自动收起</span></summary><div class="table-toolbar"><div><h2 id="input-heading">选择原稿</h2><p class="muted">选择文件只保存输入副本，点击“开始”才会执行任务。</p></div><button id="choose-files" class="upload-button">选择电脑里的文件</button><input id="file-picker" type="file" multiple hidden></div><p id="upload-state" class="muted" role="status"></p><div class="table-scroll"><table><thead><tr><th><input id="select-all" type="checkbox" aria-label="选择全部待处理文件"></th><th>原稿 / 附件</th><th>大小</th><th>选择时间</th></tr></thead><tbody id="input-body"></tbody></table></div><p id="input-empty" class="empty-message">还没有选择原稿。支持 PDF、Word、WPS、文本、图纸与程序附件。</p><p class="muted input-footnote">按原来的逐文件流程处理，正文自动分类选库；同内容材料去重，压缩附件按原件保留。每批最多选择 10 个文件。</p></details>
+      <section class="result-panel" aria-labelledby="article-heading"><div class="table-toolbar"><div><h2 id="article-heading">当前批次处理进度</h2><p id="batch-caption" class="muted">尚未开始批次</p></div><label>搜索文章<input id="search" type="search" placeholder="文件名或任务编号"></label></div><div class="table-scroll"><table><thead><tr><th>原稿 / 附件</th><th>当前阶段</th><th>状态</th><th>进程</th><th>程序历时</th><th>入库耗时</th><th>详情</th></tr></thead><tbody id="article-body"></tbody></table></div><p id="article-empty" class="empty-message">选好原稿并开始后，进度会自动显示。</p></section>
+    </section>
+    <section id="processes-page" hidden><div class="page-heading"><div><h1>进程监控</h1><p class="muted">每个工作进程对应的文章、当前动作、心跳和退出确认。</p></div></div><section class="result-panel"><div class="table-scroll"><table><thead><tr><th>关联文章</th><th>进程 PID</th><th>类型 / 所属进程组</th><th>当前动作</th><th>心跳距今</th><th>执行耗时</th><th>状态</th></tr></thead><tbody id="process-body"></tbody></table></div><p id="process-empty" class="empty-message">当前批次还没有启动工作进程。</p></section><p class="muted">暂停中表示已关闭新动作准入，正在等待在途操作和进程树退出。已暂停才表示收束完成。</p></section>
+    <section id="history-page" hidden><div class="page-heading"><div><h1>批次记录</h1><p class="muted">查看本工作台登记过的批次；查看记录不会重新执行。</p></div></div><section class="result-panel"><table><thead><tr><th>创建时间</th><th>文件数</th><th>批次编号</th><th>查看</th></tr></thead><tbody id="history-body"></tbody></table><p id="history-empty" class="empty-message">暂无批次记录。</p></section></section>
+    <section class="result-panel runtime-health" aria-labelledby="queue-heading"><h2 id="queue-heading">排队与资源</h2><p id="queue-summary" class="muted">正在读取现有调度器状态</p><div id="resource-summary" class="settings-summary"></div><p id="attachment-config" class="muted"></p></section>
+    <details id="logs" class="managed-logs"><summary>运行记录与错误</summary><pre id="log-text">暂无记录。</pre></details>
+  </div></main>
+  <footer class="app-footer"><span>关闭网页不停止后台；电脑与服务器上的工作进程都须确认退出。远端未确认写入需核对。Graph、Wiki 后续再做。</span><span id="last-update"></span></footer>
+</div>
+<dialog id="detail-dialog"><div class="detail-heading"><h2 id="detail-title">文章详情</h2><button id="close-detail" aria-label="关闭详情">关闭</button></div><div id="detail-content"></div></dialog>
+</body></html>

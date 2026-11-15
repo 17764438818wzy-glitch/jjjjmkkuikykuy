@@ -1,0 +1,31 @@
+{
+  "created_at": "2026-10-31T15:29:33.186825",
+  "source": "F:\\论文预处理系统\\预处理系统2\\candidates\\first-step-control-20261029",
+  "candidate": "F:\\论文预处理系统\\预处理系统2\\candidates\\nimble-first-step-binding-20261031",
+  "hashes": {
+    "first_step_flow.py": [
+      "06286e5e1613ecd0185302f6513ae01473e759e58c6c734aeddc7c85c0a231d2",
+      "7c04d524a4cd6dfe4e5ea5067588fe98da9f2dcb4222603890dde5d03be8f661"
+    ],
+    "paperflow_prefect/first_step_control.py": [
+      "31597c5c3b5e6d4572ec0ddad8cc674335a71d02106e52e392d75cfdbb13a059",
+      "317b0065a39a3f7246f7867f02b6661f5e197daabb4d41559a350243d6006365"
+    ],
+    "paperflow_prefect/controlled_first_step.py": [
+      "1b2412c330af3782c990a88ce5f667d040b8035b67485abce13bc76a285f35dc",
+      "1f4e9deeb0aa764b6a667f491928f1d19792165ef9e0aa03616479462b89224b"
+    ],
+    "paperflow_prefect/controlled_nimble.py": [
+      "2415fbc23c973edb96e3ca6654eb08acfe5350a4dc6834aae82b45f8cb7c39b2",
+      "60cb3dc922d4271b51841bbe111c636c412c87b6ba705c5f69a85a4f4799b5fc"
+    ],
+    "paperflow_prefect/nimble_group.py": [
+      "2b115075925aac6aa7a5e50bc8f903075dac4fcac7fff070d9dc6fbd1b632078",
+      "ec31a0a1ac0dea0b56569acf97e7efee26fc0c238d9921d800adbea0a21576c7"
+    ],
+    "paperflow_prefect/nimble_dependency.py": [
+      null,
+      "660394d4183faf8632fac38fe6f56ca04899c7f05451194cbaba6d8338d3f47d"
+    ]
+  }
+}

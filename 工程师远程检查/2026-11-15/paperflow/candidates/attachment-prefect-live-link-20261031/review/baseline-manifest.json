@@ -1,0 +1,38 @@
+{
+  "local_prepare.py": {
+    "baseline_path": "F:\\论文预处理系统\\预处理系统2\\candidates\\local-cleaned-material-20261031-user-four\\local_prepare.py",
+    "baseline_sha256": "968e22c99f9f36843a1cc0987b0b4a29ebd486217b74b8cdb29780dc4f0a964b"
+  },
+  "paperflow_prefect/attachment_input.py": {
+    "baseline_path": "F:\\论文预处理系统\\预处理系统2\\candidates\\first-step-control-20261029\\paperflow_prefect\\attachment_input.py",
+    "baseline_sha256": "68b03eedf8a21193dd41b87b3d04ecba8d27519b733aff599f3465b53c4d618e"
+  },
+  "paperflow_prefect/attachments.py": {
+    "baseline_path": "F:\\论文预处理系统\\预处理系统2\\candidates\\first-step-control-20261029\\paperflow_prefect\\attachments.py",
+    "baseline_sha256": "23bf3a8066a4cc3c61fe8c9e82ce9df7ae963a9cf6b617f32b2a96045aaa38b1"
+  },
+  "paperflow_prefect/backend.py": {
+    "baseline_path": "F:\\论文预处理系统\\预处理系统2\\candidates\\first-step-control-20261029\\paperflow_prefect\\backend.py",
+    "baseline_sha256": "8e9c8de13618ca2833ba4e7f63dc2690871306b1bb41a4f9df0e0eb8f3711c64"
+  },
+  "paperflow_prefect/flows.py": {
+    "baseline_path": "F:\\论文预处理系统\\预处理系统2\\candidates\\first-step-control-20261029\\paperflow_prefect\\flows.py",
+    "baseline_sha256": "cb015a3d4574ad57824baa20814edde583b8b3c03a82b43ffa411e3a9e2e2957"
+  },
+  "paperflow_prefect/stage3_handoff.py": {
+    "baseline_path": "F:\\论文预处理系统\\预处理系统2\\candidates\\first-step-control-20261029\\paperflow_prefect\\stage3_handoff.py",
+    "baseline_sha256": "3b04a71cf57c1a4bd5c9135aadb67a67e2d81cb55581ea2ac1da582215ae2ee9"
+  },
+  "paperflow_prefect/unified.py": {
+    "baseline_path": "F:\\论文预处理系统\\预处理系统2\\candidates\\first-step-control-20261029\\paperflow_prefect\\unified.py",
+    "baseline_sha256": "d4665b24ba64b4bbaaa7e2ef2824005c4892f062c9488bf8762012ade6b9873e"
+  },
+  "paperflow_prefect/workflow.py": {
+    "baseline_path": "F:\\论文预处理系统\\预处理系统2\\candidates\\first-step-control-20261029\\paperflow_prefect\\workflow.py",
+    "baseline_sha256": "52b752f4059b36c59497d914f6eb8f841fbf99fed4c40c9c4433376870055694"
+  },
+  "attachment_handoff.py": {
+    "baseline_path": null,
+    "baseline_sha256": null
+  }
+}

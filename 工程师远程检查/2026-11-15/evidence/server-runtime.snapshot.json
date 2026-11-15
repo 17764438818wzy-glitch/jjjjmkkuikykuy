@@ -1,0 +1,288 @@
+{
+  "snapshot_date": "2026-11-15",
+  "timezone": "Asia/Shanghai",
+  "observed_window": "20:58–21:08 +08:00",
+  "host": "192.168.1.120",
+  "mode": "read-only SSH, docker ps/inspect/compose ls and findmnt",
+  "containers": [
+    {
+      "name": "paperflow-article-repository",
+      "image_label": "paperflow-article-repository-repository",
+      "ports": "192.168.1.120:8098->8098/tcp",
+      "status": "Up 2 days"
+    },
+    {
+      "name": "1Panel-sub2api-uObp",
+      "image_label": "local/codex-route-isolation-router:859b963956b1",
+      "ports": "0.0.0.0:8081->8080/tcp, [::]:8081->8080/tcp",
+      "status": "Up 3 days (healthy)"
+    },
+    {
+      "name": "workbuddy-node-hub-20261022",
+      "image_label": "local/codex-route-isolation-hub:e92fa36f08f2",
+      "ports": "3080/tcp, 192.168.1.120:8789->8788/tcp",
+      "status": "Up 3 days (healthy)"
+    },
+    {
+      "name": "paperflow-article-postgres",
+      "image_label": "postgres:18.6-alpine",
+      "ports": "5432/tcp",
+      "status": "Up 11 days (healthy)"
+    },
+    {
+      "name": "paperflow-qdrant-gateway",
+      "image_label": "paperflow-qdrant-20261103-gateway",
+      "ports": "192.168.1.120:8097->8097/tcp",
+      "status": "Up 12 days"
+    },
+    {
+      "name": "paperflow-qdrant",
+      "image_label": "qdrant/qdrant:v1.20.0",
+      "ports": "127.0.0.1:6333->6333/tcp, 6334/tcp",
+      "status": "Up 12 days"
+    },
+    {
+      "name": "paperflow-prefect-preview-demo-runner-1",
+      "image_label": "prefecthq/prefect:3.9.0-python3.12",
+      "ports": "",
+      "status": "Up 12 days"
+    },
+    {
+      "name": "paperflow-prefect-preview-server-1",
+      "image_label": "prefecthq/prefect:3.9.0-python3.12",
+      "ports": "192.168.1.120:4200->4200/tcp",
+      "status": "Up 12 days (healthy)"
+    },
+    {
+      "name": "paperflow-prefect-preview-postgres-1",
+      "image_label": "postgres:18.6-alpine",
+      "ports": "5432/tcp",
+      "status": "Up 12 days (healthy)"
+    },
+    {
+      "name": "ragflow-server-ragflow-1",
+      "image_label": "local/ragflow-recovery-preserved:20260923",
+      "ports": "192.168.1.120:8088->80/tcp",
+      "status": "Up 12 days"
+    }
+  ],
+  "mounts": [
+    {
+      "name": "paperflow-article-repository",
+      "image_label": "paperflow-article-repository-repository",
+      "mounts": [],
+      "compose_working_dir": "/opt/paperflow-article-repository",
+      "compose_files": "/opt/paperflow-article-repository/compose.yaml"
+    },
+    {
+      "name": "1Panel-sub2api-uObp",
+      "image_label": "local/codex-route-isolation-router:859b963956b1",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "/opt/1panel/apps/sub2api/sub2api/data",
+          "Destination": "/app/data",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": "rprivate"
+        }
+      ],
+      "compose_working_dir": "/opt/1panel/apps/sub2api/sub2api",
+      "compose_files": "/opt/1panel/apps/sub2api/sub2api/docker-compose.yml"
+    },
+    {
+      "name": "workbuddy-node-hub-20261022",
+      "image_label": "local/codex-route-isolation-hub:e92fa36f08f2",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "/opt/workbuddy-node-hub-20261022/data",
+          "Destination": "/data",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "/opt/workbuddy-node-hub-20261022/data/source-credentials",
+          "Destination": "/data/source-credentials",
+          "Mode": "ro",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ],
+      "compose_working_dir": "",
+      "compose_files": ""
+    },
+    {
+      "name": "paperflow-article-postgres",
+      "image_label": "postgres:18.6-alpine",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "paperflow-article-repository_article_pgdata",
+          "Source": "/var/lib/docker/volumes/paperflow-article-repository_article_pgdata/_data",
+          "Destination": "/var/lib/postgresql",
+          "Driver": "local",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": ""
+        }
+      ],
+      "compose_working_dir": "/opt/paperflow-article-repository",
+      "compose_files": "/opt/paperflow-article-repository/compose.yaml"
+    },
+    {
+      "name": "paperflow-qdrant-gateway",
+      "image_label": "paperflow-qdrant-20261103-gateway",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "/opt/paperflow-qdrant-20261103/objects",
+          "Destination": "/data/objects",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": "rprivate"
+        }
+      ],
+      "compose_working_dir": "/opt/paperflow-qdrant-20261103",
+      "compose_files": "/opt/paperflow-qdrant-20261103/compose.yaml"
+    },
+    {
+      "name": "paperflow-qdrant",
+      "image_label": "qdrant/qdrant:v1.20.0",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "/opt/paperflow-qdrant-20261103/qdrant-data",
+          "Destination": "/qdrant/storage",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": "rprivate"
+        }
+      ],
+      "compose_working_dir": "/opt/paperflow-qdrant-20261103",
+      "compose_files": "/opt/paperflow-qdrant-20261103/compose.yaml"
+    },
+    {
+      "name": "paperflow-prefect-preview-demo-runner-1",
+      "image_label": "prefecthq/prefect:3.9.0-python3.12@sha256:9f4fb20a431f0aba81bbcede83d5c08648aa769faf0ec47e989e9d370270129e",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "/home/wzy/prefect-preview/demo-output",
+          "Destination": "/demo-output",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "/home/wzy/prefect-preview/demo.py",
+          "Destination": "/demo/demo.py",
+          "Mode": "ro",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "volume",
+          "Name": "paperflow-prefect-preview_demo_data",
+          "Source": "/var/lib/docker/volumes/paperflow-prefect-preview_demo_data/_data",
+          "Destination": "/opt/prefect-demo",
+          "Driver": "local",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": ""
+        }
+      ],
+      "compose_working_dir": "/home/wzy/prefect-preview",
+      "compose_files": "/home/wzy/prefect-preview/compose.yaml"
+    },
+    {
+      "name": "paperflow-prefect-preview-server-1",
+      "image_label": "prefecthq/prefect:3.9.0-python3.12@sha256:9f4fb20a431f0aba81bbcede83d5c08648aa769faf0ec47e989e9d370270129e",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "paperflow-prefect-preview_prefect_data",
+          "Source": "/var/lib/docker/volumes/paperflow-prefect-preview_prefect_data/_data",
+          "Destination": "/opt/prefect",
+          "Driver": "local",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": ""
+        }
+      ],
+      "compose_working_dir": "/home/wzy/prefect-preview",
+      "compose_files": "/home/wzy/prefect-preview/compose.yaml"
+    },
+    {
+      "name": "paperflow-prefect-preview-postgres-1",
+      "image_label": "postgres:18.6-alpine",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "paperflow-prefect-preview_postgres_data",
+          "Source": "/var/lib/docker/volumes/paperflow-prefect-preview_postgres_data/_data",
+          "Destination": "/var/lib/postgresql",
+          "Driver": "local",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": ""
+        }
+      ],
+      "compose_working_dir": "/home/wzy/prefect-preview",
+      "compose_files": "/home/wzy/prefect-preview/compose.yaml"
+    },
+    {
+      "name": "ragflow-server-ragflow-1",
+      "image_label": "local/ragflow-recovery-preserved:20260923",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "/opt/ragflow/config/entrypoint.sh",
+          "Destination": "/ragflow/entrypoint.sh",
+          "Mode": "ro",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "/opt/ragflow/recovery-20260923-1522/lightweight-artifacts",
+          "Destination": "/ragflow/lightweight-artifacts",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "/opt/ragflow/ragflow-logs",
+          "Destination": "/ragflow/logs",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "/opt/ragflow/config/service_conf.yaml.template",
+          "Destination": "/ragflow/conf/service_conf.yaml.template",
+          "Mode": "ro",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "/opt/ragflow/config/task_executor_limiter.py",
+          "Destination": "/ragflow/rag/svr/task_executor_limiter.py",
+          "Mode": "ro",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ],
+      "compose_working_dir": "/opt/ragflow",
+      "compose_files": "/opt/ragflow/compose.yaml"
+    }
+  ],
+  "cifs_nfs_findmnt_output_empty": true,
+  "interpretation": "Mount absence does not disprove direct smbclient NAS access. Image labels are not a full immutable image digest inventory. Source directories were not fully compared with running container files."
+}

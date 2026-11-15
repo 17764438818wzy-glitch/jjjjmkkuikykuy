@@ -1,0 +1,31 @@
+def _config(value):
+    _require(isinstance(value, dict) and value.get('schema') == 'paperflow-job-service/1',
+             'explicit single-job service configuration required')
+    identity = value['server_identity']
+    _require(set(identity) == {'server_id', 'ledger_id'} and isinstance(identity['server_id'], str)
+             and identity['server_id'] and _uuid(identity['ledger_id']), 'pinned server/ledger identity required')
+    for field in ('jobs_root', 'staging_root', 'base', 'native_manifest'):
+        _absolute(value[field])
+    jobs, staging = Path(value['jobs_root']), Path(value['staging_root'])
+    _require(not jobs.is_relative_to(staging) and not staging.is_relative_to(jobs),
+             'service jobs and original staging roots must not overlap')
+    _require(value.get('initialize_delegation') is True, 'explicit private-service delegation initialization required')
+    for field in ('code_root', 'code_manifest', 'template', 'template_manifest'):
+        _absolute(value['release'][field])
+    _absolute(value['ledger']['database'])
+    _require(type(value['ledger']['capacity']) is int and 1 <= value['ledger']['capacity'] <= 8,
+             'server capacity cannot exceed eight')
+    for field in ('worker_uid', 'worker_gid'):
+        _require(type(value[field]) is int and value[field] > 0, 'non-root worker identity required')
+    limits = value['limits']
+    for field in ('timeout_seconds', 'poll_seconds', 'cleanup_seconds', 'disk_poll_seconds', 'memory_bytes',
+                  'pids', 'file_bytes', 'open_files', 'max_job_bytes', 'min_free_bytes'):
+        number = limits[field]
+        _require(type(number) in (int, float) and math.isfinite(number) and number > 0,
+                 'explicit finite positive resource limits required')
+    _require(1 <= limits['timeout_seconds'] <= 7200 and limits['poll_seconds'] <= 5
+             and limits['cleanup_seconds'] <= 60, 'bounded job/poll/cleanup timeouts required')
+    _require(max(1, limits['poll_seconds']) <= limits['disk_poll_seconds'] <= 60,
+             'disk samples must use an explicit lower-frequency interval')
+    for field in ('memory_bytes', 'pids', 'file_bytes', 'open_files', 'max_job_bytes', 'min_free_bytes'):
+        _require(type(limits[field]) is int, 'integer kernel resource limits required')

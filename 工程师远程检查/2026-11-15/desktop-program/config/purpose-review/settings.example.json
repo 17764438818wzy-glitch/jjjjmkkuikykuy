@@ -1,0 +1,15 @@
+{
+  "schema": "purpose-review-config/1",
+  "enabled": true,
+  "base_url": "https://api.deepseek.com/v1",
+  "model": "deepseek-flash",
+  "reasoning_effort": "max",
+  "timeout": 240,
+  "max_output_tokens": 16384,
+  "cache_root": "E:\\uv\\ragflow_upstream\\data\\private\\purpose-review",
+  "key_name": "deepseek_direct_20261027",
+  "evidence_policy": "single-read/1",
+  "protected_body_registry": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-22\\ma-s\\outputs\\论文预处理系统\\config\\purpose-review\\protected-bodies.json",
+  "protected_body_registry_sha256": "009b171d99af7532ddc81092bf49d1b7ff4d090fa09fc6938c5806529e64ab25",
+  "workers": 20
+}

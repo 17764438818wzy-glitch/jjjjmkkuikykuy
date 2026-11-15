@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>合成后处理界面验收</title>
+  <link rel="stylesheet" href="../baseline/styles.css">
+  <script>
+    // Synthetic responses only: this test never contacts the running API.
+    window.fixtureCalls = [];
+    window.fetch = async (url) => {
+      const query = new URL(url).searchParams;
+      const filter = query.get('postprocessing_result_filter');
+      const page = Number(query.get('postprocessing_result_page'));
+      window.fixtureCalls.push({ filter, page });
+      const item = { task_name: '合成任务', task_id: 'task-test', group_id: `group-${page}`,
+        folder_label: `合成文件夹 ${page}`, title_status: '已提取', paper_title: `合成论文 ${page}`,
+        reason: filter === 'failed' ? '合成校验诊断' : '', warnings: ['合成警告'] };
+      const total = filter === 'passed' ? 21 : filter === 'failed' ? 1 : null;
+      const items = total === null ? [] : [item];
+      return { ok: true, json: async () => ({ postprocessing_results: {
+        available: true, counts: { passed: 21, failed: 1, unrecognized: null }, partial: false,
+        as_of: '2026-11-01T00:00:00Z',
+        list: { filter, page, page_size: 20, total, items, message: '合成数据中未提供此结果' },
+      } }) };
+    };
+    window.addEventListener('DOMContentLoaded', () => {
+      window.dispatchEvent(new CustomEvent('paperflow:queue-summary', { detail: { postprocessing_results: {
+        available: true, counts: { passed: 21, failed: 1, unrecognized: null }, partial: false,
+        as_of: '2026-11-01T00:00:00Z',
+      } } }));
+    });
+  </script>
+  <script src="../postprocessing-results.js" defer></script>
+</head>
+<body><main>
+  <section class="card queue-card" aria-labelledby="postprocessing-title">
+    <div class="card-body">
+      <div class="card-heading"><h2 id="postprocessing-title">后处理中</h2></div>
+      <p id="postprocessing-count" class="queue-count">—</p>
+      <p id="postprocessing-hint" class="queue-hint">合成环境</p>
+      <div class="results" role="group" aria-label="后处理结果">
+        <div class="stats">
+          <button class="preprocessing-stat" data-postprocessing-filter="passed" type="button" aria-pressed="false"><span>已通过</span><strong id="postprocessing-passed-count" class="passed">—</strong></button>
+          <button class="preprocessing-stat" data-postprocessing-filter="failed" type="button" aria-pressed="false"><span>未通过</span><strong id="postprocessing-failed-count" class="failed">—</strong></button>
+          <button class="preprocessing-stat" data-postprocessing-filter="unrecognized" type="button" aria-pressed="false"><span>未识别</span><strong id="postprocessing-unrecognized-count" class="unrecognized">—</strong></button>
+        </div>
+        <p id="postprocessing-results-hint" class="queue-hint">结果暂不可用</p>
+        <section id="postprocessing-list-panel" class="list-panel" aria-labelledby="postprocessing-list-title" hidden>
+          <div class="list-header"><div><h3 id="postprocessing-list-title">后处理结果</h3><p id="postprocessing-list-count">列表获取中</p></div><button id="postprocessing-close-list" class="text-button" type="button">收起</button></div>
+          <div id="postprocessing-list-message" class="list-message" hidden></div>
+          <ul id="postprocessing-group-list" class="group-list"></ul>
+          <div id="postprocessing-pagination" class="pagination" hidden><span id="postprocessing-page-info"></span><div><button id="postprocessing-previous-page" type="button">上一页</button><button id="postprocessing-next-page" type="button">下一页</button></div></div>
+        </section>
+      </div>
+    </div>
+  </section>
+</main></body>
+</html>

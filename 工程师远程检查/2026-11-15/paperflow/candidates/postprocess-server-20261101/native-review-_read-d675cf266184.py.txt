@@ -1,0 +1,11 @@
+def _read(path, *, max_bytes=64 * 1024 * 1024):
+    path = _absolute(path)
+    tree = _Tree(path.parent)
+    try:
+        with tree.regular(path.name) as (stream, before):
+            _require(before.st_size <= max_bytes, 'service metadata exceeds its bound')
+            raw = stream.read(max_bytes + 1)
+            _require(len(raw) <= max_bytes, 'service metadata grew beyond its bound')
+            return raw
+    finally:
+        tree.close()

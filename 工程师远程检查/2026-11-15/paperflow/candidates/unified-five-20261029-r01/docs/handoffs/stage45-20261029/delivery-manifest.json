@@ -1,0 +1,113 @@
+{
+  "schema": "stage45-document-delivery-manifest/1",
+  "version": "stage45-20261029-v1",
+  "business_code_included": false,
+  "note": "Documents, examples, source hashes and an owned candidate diff are included; no runtime config or executable deployment bundle.",
+  "files": [
+    {
+      "path": "evidence/delivery-verification.json",
+      "bytes": 884,
+      "sha256": "1a1f6e9b4f1adaeac6433474e5376f3de7e04c0b3ebc033fbaee94ffb66cbe5e"
+    },
+    {
+      "path": "evidence/prefect-document-sync.json",
+      "bytes": 1667,
+      "sha256": "eb6ac8f7aa4e22a368e95ccb2ad82c3af88df1fd0e1d723d567c366537a815a8"
+    },
+    {
+      "path": "evidence/source-snapshot.json",
+      "bytes": 10326,
+      "sha256": "6003a98dac7331a32d025b6dfa824a43536e58bbd84261a8a9db299282b9d7b3"
+    },
+    {
+      "path": "examples/前端状态样例.json",
+      "bytes": 9956,
+      "sha256": "e462e5d58d283ac312140b8a2c165c18d761d56800bef926b9e8d47aa740d7e8"
+    },
+    {
+      "path": "Prefect同步说明.md",
+      "bytes": 1580,
+      "sha256": "4eefdd040557b37955a527848ba373a1164f9c5543845b8e02e45c78f333ce37"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4031,
+      "sha256": "721c9a963b2e35b31310a897b2c5cba32779963064f5b4d4ceba9d3dda8982aa"
+    },
+    {
+      "path": "references/H2.1接收接口.md",
+      "bytes": 6973,
+      "sha256": "4a17bd9ff92df9146e1b25a1235eceefe6ba20d9943add4823f7cff5dce58ac1"
+    },
+    {
+      "path": "references/H2.1第三状态交接.md",
+      "bytes": 6116,
+      "sha256": "14afdb70baf1f29e1985aed7d58728b917c3007c6ef9eb10c901738cba1ad801"
+    },
+    {
+      "path": "references/第五步代码哈希清单.json",
+      "bytes": 3913,
+      "sha256": "a8ecf8ea5375d8689e3dd8da12f5da9d628812aea7d1ce94d8845aec9f1ac99f"
+    },
+    {
+      "path": "references/第五步增量差异.diff",
+      "bytes": 87156,
+      "sha256": "0c23bb881e56199419958be26e225604f9496fba26a607b492603cb4b70c511f"
+    },
+    {
+      "path": "references/第五步验收.md",
+      "bytes": 6206,
+      "sha256": "b2962f3b5e2b47eec6258f19687a7caaa019082e53c6247c75537cd16a7db03c"
+    },
+    {
+      "path": "references/第四到五步模块归属清单.json",
+      "bytes": 2671,
+      "sha256": "821f7c5a6b8ffd5ae1e11aeeb73447e5bbaf080b853539434d76149f3a919397"
+    },
+    {
+      "path": "references/第四步20路候选验收.md",
+      "bytes": 6580,
+      "sha256": "2bfe3b3859fd1c20a381d9ccd67fc0c5c3ec74d7bd0e7d9ff0a8d6546748d8da"
+    },
+    {
+      "path": "references/第四步20路增量清单.json",
+      "bytes": 6017,
+      "sha256": "810951970bdc9eab7ecadc66f2e0a76c61dd0e3eb5abff1a7ac2ba957885a8e7"
+    },
+    {
+      "path": "references/第四步到第五步交接约定.md",
+      "bytes": 6792,
+      "sha256": "874cc13f88dc52b8c69bd50fccf64311edaa4fe7b605185dc8ffb80b8e9a3baf"
+    },
+    {
+      "path": "references/第四步到第五步联验结果.md",
+      "bytes": 5199,
+      "sha256": "9dd543cdaa127dc88e9e934a8a1779cd395f4dff0bbbb56529b26b87ecc798e8"
+    },
+    {
+      "path": "references/附件MD主工程交付清单.json",
+      "bytes": 1615,
+      "sha256": "3a04775f94d82085dfdbdc9a3534dadf6f0eeb44fab896aa10c247bd45f3f097"
+    },
+    {
+      "path": "references/附件MD接收与下载.md",
+      "bytes": 3346,
+      "sha256": "b756595bf217a5945efd998520c068be45efd1f6e06ec64adfbaca0da3932bad"
+    },
+    {
+      "path": "references/附件交付模板_v1.md",
+      "bytes": 3030,
+      "sha256": "4af9404885c2404727c00c3f9c0d18c898c783eb9fe71c908e0aa1408e6a28e7"
+    },
+    {
+      "path": "代码与验收交付清单.md",
+      "bytes": 5792,
+      "sha256": "0111f6fa9c9339c513bfe4b158a69d15a0a64c186c013b98f276691e6a0786f2"
+    },
+    {
+      "path": "前端与Prefect3接线设计.md",
+      "bytes": 14231,
+      "sha256": "f075dd540def9da8635c23561588e225205de30b229083b6125ce94d790684ac"
+    }
+  ]
+}

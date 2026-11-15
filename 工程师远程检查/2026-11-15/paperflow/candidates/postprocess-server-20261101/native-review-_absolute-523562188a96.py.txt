@@ -1,0 +1,4 @@
+def _absolute(value):
+    value = Path(value)
+    _require(value.is_absolute() and '..' not in value.parts, 'absolute configured server paths required')
+    return value

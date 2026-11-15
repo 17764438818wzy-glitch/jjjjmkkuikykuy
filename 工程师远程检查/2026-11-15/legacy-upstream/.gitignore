@@ -1,0 +1,25 @@
+# ① 运行时与产物 —— 可能含未脱敏论文内容，禁止入库
+data/
+output/
+logs/
+private/
+*.dpapi
+
+# ② 历史副本 —— 体积大，且曾是严重误判的来源
+backups/
+
+# ③ Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# ④ 编辑器 / 系统垃圾
+Thumbs.db
+desktop.ini
+~$*
+*.lnk
+shortcut-backup-*
+
+# ⑤ 运行态状态文件（断点/熔断状态，不是源码）
+vision_circuit.json

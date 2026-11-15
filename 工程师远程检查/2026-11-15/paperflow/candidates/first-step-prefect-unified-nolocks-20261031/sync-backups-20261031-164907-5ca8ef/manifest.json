@@ -1,0 +1,128 @@
+[
+  {
+    "target": "candidates\\first-step-control-20261029\\paperflow_prefect_v2\\__init__.py",
+    "before_sha256": null,
+    "after_sha256": "36eb15e3c093d4652c0c2fe548e6285b5c646bcadac6680cc91d748ea3602e97"
+  },
+  {
+    "target": "candidates\\first-step-control-20261029\\paperflow_prefect_v2\\controlled_first_step.py",
+    "before_sha256": null,
+    "after_sha256": "584f63ee3915c39ff32f693b51f623a17bf8e19f5eb4708e8ebbccc9bb376092"
+  },
+  {
+    "target": "candidates\\first-step-control-20261029\\paperflow_prefect_v2\\controlled_nimble.py",
+    "before_sha256": null,
+    "after_sha256": "85ceacc188febdb6d0b974c7bc8dd1f1b70124461f9151b0b6aadf1978ea54bb"
+  },
+  {
+    "target": "candidates\\first-step-control-20261029\\paperflow_prefect_v2\\first_step_control.py",
+    "before_sha256": null,
+    "after_sha256": "601c64c1bd1d488fbcf1cf9837cdb5bc46ac402353a6b727f262ab829562ce34",
+    "note": "message wording adjusted after initial sync"
+  },
+  {
+    "target": "candidates\\first-step-control-20261029\\paperflow_prefect_v2\\first_step_delete.py",
+    "before_sha256": null,
+    "after_sha256": "10825274870c225d2b00cf54db6c3ffc797424c8fa7b4f701956acaf7c5ded44"
+  },
+  {
+    "target": "candidates\\first-step-control-20261029\\paperflow_prefect_v2\\first_step_retention.py",
+    "before_sha256": null,
+    "after_sha256": "e0f0b6098bd373e6fc115eecf38dbc58ee88bb20b336e87d7dbd8638db06913a"
+  },
+  {
+    "target": "candidates\\first-step-control-20261029\\paperflow_prefect_v2\\first_step_scheduler.py",
+    "before_sha256": null,
+    "after_sha256": "2edba14ccfc043da07b655da6847e76d800ba113c3273ec0c56b248fcb808015"
+  },
+  {
+    "target": "candidates\\first-step-control-20261029\\paperflow_prefect_v2\\group_summary_store.py",
+    "before_sha256": null,
+    "after_sha256": "4b75ea88a3018eb564a672731480ea07a3867df6591cfd0a0d75229e8f16a543"
+  },
+  {
+    "target": "candidates\\first-step-control-20261029\\paperflow_prefect_v2\\nimble_dependency.py",
+    "before_sha256": null,
+    "after_sha256": "45ef5819688165feec741cb5c7bfc84857df7f298ca9ccc19034d461afc55bc1"
+  },
+  {
+    "target": "candidates\\first-step-control-20261029\\paperflow_prefect_v2\\nimble_group.py",
+    "before_sha256": null,
+    "after_sha256": "ec31a0a1ac0dea0b56569acf97e7efee26fc0c238d9921d800adbea0a21576c7"
+  },
+  {
+    "target": "candidates\\first-step-control-20261029\\paperflow_prefect\\first_step_control.py",
+    "before_sha256": "31597c5c3b5e6d4572ec0ddad8cc674335a71d02106e52e392d75cfdbb13a059",
+    "after_sha256": "d6e3690135f83f08529b527e4d22249efb648e6fbfbf03071129fb2afee3219a"
+  },
+  {
+    "target": "candidates\\first-step-control-20261029\\paperflow_prefect\\first_step_delete.py",
+    "before_sha256": "852439991ed8a1c8f16baabb2dce395e1d6d4356bf3d63b48b7f356f72e093e6",
+    "after_sha256": "f9a6b6f850a3956c4cf917214c053462e6f742c8cfe42dbb466481fb587d80f5"
+  },
+  {
+    "target": "candidates\\first-step-control-20261029\\paperflow_prefect\\first_step_retention.py",
+    "before_sha256": "d6734b7592aa50150fc573df65708114f2f8002c83883a227d1fee29f6812cbf",
+    "after_sha256": "e0f0b6098bd373e6fc115eecf38dbc58ee88bb20b336e87d7dbd8638db06913a"
+  },
+  {
+    "target": "candidates\\first-step-control-20261029\\order_v2_flow.py",
+    "before_sha256": null,
+    "after_sha256": "10c713e1ac9ad25f541bb949baa8be18e2ed48e05f94ac2d4a9cabfba9b19d74"
+  },
+  {
+    "target": "candidates\\first-step-control-20261029\\summary_api.py",
+    "before_sha256": "ccd5247889480dc626fb8d240e090be00ec27f8a7194232470bc8827c4eb428d",
+    "after_sha256": "1a4bbc604cff033241fefea34cdbcd663e3b016101bbd4e8e876467a20e08aa7"
+  },
+  {
+    "target": "candidates\\first-step-control-20261029\\serve_controlled.py",
+    "before_sha256": "65b591e8c71f728010cbeb76d5f704a58914b1b13f1d4840de77439133a588a6",
+    "after_sha256": "917529e27bbd26707ba8a00f2483a7454a47be3418c3832c34e2c18b3e818a0b"
+  },
+  {
+    "target": "candidates\\first-step-control-20261029\\managed_service_host.py",
+    "before_sha256": "b4e873f55558da050d3aef6dd3c49c2df9fbd804e838f5b2b90dc6eca5a15c10",
+    "after_sha256": "0f8c7853eb8846075d31610af8952294d91eb49b935c2a30d0e24fbc570fff7a"
+  },
+  {
+    "target": "candidates\\local-intake-live-link-20261031\\folder_order_flow.py",
+    "before_sha256": null,
+    "after_sha256": "f7547b35f3b34dfa2733355bb09623228431b4a5b671fb1028e93fb0ec7984af"
+  },
+  {
+    "target": "candidates\\local-intake-live-link-20261031\\prefect_orders.py",
+    "before_sha256": null,
+    "after_sha256": "9c92a69ad9d17cbeafae8d64113c745f8cd0cc71cb2e18142074eae464b38d74"
+  },
+  {
+    "target": "candidates\\local-intake-live-link-20261031\\register_waiting_deployment.py",
+    "before_sha256": null,
+    "after_sha256": "358d79a924bcf7b086a44e6a6656eb8802769a1e27dac8d085d8f1cf3598cc00"
+  },
+  {
+    "target": "candidates\\local-intake-live-link-20261031\\upstream_discovery.py",
+    "before_sha256": "c4d8432eb73557252fb458aaab5c29d77a8c9e4e4aa016f5f57855aa06ff5e4e",
+    "after_sha256": "895cb7c8f6fdb6f5b3cccb6300259a169e75fef4d43506e4b610c685baf21005"
+  },
+  {
+    "target": "candidates\\local-intake-live-link-20261031\\waiting_api.py",
+    "before_sha256": "12d927d0b02f2e5708b865ea655cdee2ca51e19d9d2f79a0cd0c8b1290c15dc4",
+    "after_sha256": "92ef6bd0ba5e886c00e2b8b297e1e128080217ba08c5e13d07abc3ce0e52f5d4"
+  },
+  {
+    "target": "candidates\\local-intake-live-link-20261031\\waiting_cli.py",
+    "before_sha256": "ec4a65affc6237fb6bbe2dfc49eee4ef163216501c1c80e482e700f24f6fc31c",
+    "after_sha256": "61d12ba3445c3ac074a48e1bf1efa8fab317e1f1a640864448ebdf6b6dcfe606"
+  },
+  {
+    "target": "candidates\\first-step-preview-8795\\app.js",
+    "before_sha256": "a0c9ad8ba554f99d8c548529750cbefa0eef379b15a6573c860e1548db1690f0",
+    "after_sha256": "4324d3c494b2c9a8008ce5e7584676d95ad755deeee36a99332462980ca4937f"
+  },
+  {
+    "target": "candidates\\first-step-preview-8795\\index.html",
+    "before_sha256": "124a65af8ac58a8f9aa063b91dd853a36da03ecc0a3d08f6bfdaf3d46a89e840",
+    "after_sha256": "0605b936d80af2f463ed5b3b3323ca9257d2441a23341d2adff77987ff9ebf21"
+  }
+]

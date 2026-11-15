@@ -1,0 +1,504 @@
+# 修复前测试基线（补正后）
+
+## 权威基线：干净检出
+
+- 检出：`pre-fix`
+- commit：`6ed0eccd80df1c6428a9b0e1728317c43b5726fb`
+- worktree：`E:\uv\_pristine_pre-fix`（测试完成后已移除）
+- git status --porcelain：空
+- 解释器：`C:\Python314\python.exe`
+- Python：`Python 3.14.0`
+- 完整命令：`C:\Python314\python.exe -m pytest -v`
+- 结果：`561 passed, 1 failed`（562 items，49.79 秒）
+- 原始完整输出：`baseline/raw_测试_pre-fix.txt`
+
+唯一失败：
+
+- `test_p0_2_fallback_config.py::test_saved_runtime_config_enables_configured_fallback_channel`
+- 分类：**环境**
+- 原因：测试读取 `data/ai_settings.json`，该运行时 fixture 未进入 `pre-fix` 干净检出；异常为 `FileNotFoundError`，不是业务代码断言失败，也不是网络或外部服务失败。
+- 处理：计入环境阻塞，不计入“既有代码失败”；修复线应补齐受版本控制的测试 fixture 后单独复核。
+
+分类汇总（权威运行）：环境 1；网络 0；真·代码失败 0。
+
+本次是唯一可用于修复前后闸门的测试基线。测试输出写入临时文件后，临时 worktree 已移除；原始输出已复制进仓库。
+
+## 历史记录（均作废，不用于闸门）
+
+### 记录 A：`556 passed, 6 failed`
+
+这次记录保留在下方原文，并另存为 `baseline/历史_测试_修复前_556通过6失败.txt`。它作废的原因是运行时工作区没有被证明是干净的，且失败栈已经包含修复线期间出现的未提交状态；它不能证明 pre-fix 版本的真实失败数。
+
+### 记录 B：`561 passed, 1 failed`
+
+完成前复核的 `561 passed, 1 failed` 也作废：它是在当前工作区/非独立干净检出上完成，解释器、工作区状态和被忽略的运行时 fixture 没有与记录 A 形成可重复的冻结条件。它与本次结果数字相同只是巧合，不能替代本次带 commit、解释器和空 status 的权威记录。
+
+历史失败的可见归因（仅说明当时发生了什么，不把它们算入闸门）：
+
+- 记录 A 的 `test_automatic.py::test_upload_response_loss_reconciles_without_second_upload`：真·代码失败（当次栈为断言失败；由于工作区不干净，不能认定为 pre-fix 既有失败）。
+- 记录 A 的五个 `test_upload_dedup.py` 失败：真·代码失败（当次栈包含 `NameError`、上传状态断言失败等；同样因工作区不干净，只作历史观察）。
+- 记录 B 的 `test_upload_dedup.py::test_successful_upload_refreshes_the_existing_input_list[automatic]`：环境（`tkinter.TclError: Can't find a usable tk.tcl`）；不是网络失败，也不能作为代码回归基线。
+- 权威运行没有网络分类失败；RAGFlow/模型测试均为受控本地测试，未进行外部探活。
+
+### 记录 A 原文
+
+............F........................................................... [ 12%]
+........................................................................ [ 25%]
+........................................................................ [ 38%]
+........................................................................ [ 51%]
+........................................................................ [ 64%]
+........................................................................ [ 76%]
+......................................................FFFF.......F...... [ 89%]
+..........................................................               [100%]
+================================== FAILURES ===================================
+_________ test_upload_response_loss_reconciles_without_second_upload __________
+
+tmp_path = WindowsPath('C:/Users/Administrator/AppData/Local/Temp/pytest-of-Administrator/pytest-5094/test_upload_response_loss_reco0')
+
+    def test_upload_response_loss_reconciles_without_second_upload(tmp_path):
+        from auto_pipeline import AutoProcessor
+        from auto_ragflow import handoff
+        from engine import Store,scan_sources
+        from test_workbench import paper
+        from ragflow_client import upload_name
+        folder=tmp_path/'in';folder.mkdir();(folder/'paper.txt').write_text(paper(),encoding='utf-8')
+        store=Store(tmp_path/'out');p=AutoProcessor(store)
+        class Agent:
+            def call(self,task,*a,**kw):
+                result={'decision':'pass','reason':'符合要求'}
+                if task=='privacy_text': result['sensitive_strings']=[]
+                if task=='classify': result.update(major='会计学',title='企业财务管理研究')
+                return result
+        p.agent=Agent();result=p.run(scan_sources(folder));item=result['items'][0]
+        class Rag:
+            base_url='http://localhost';api_key='TEST';uploads=0;parsed=0
+            def datasets(self): return [{'id':'education','name':'学前教育'}]
+            def upload(self,*a): self.uploads+=1;raise TimeoutError('lost response')
+            def documents(self,*a,**kw): return [{'id':'remote1','name':kw.get('name') or upload_name(Path(item['path'])),'run':'UNSTART'}]
+            def parse(self,*a): self.parsed+=1
+        client=Rag();handoff(store,result['run_id'],client,{})
+        assert client.uploads==1
+        handoff(store,result['run_id'],client,{})
+        handoff(store,result['run_id'],client,{})
+>       assert client.uploads==2 and client.parsed==1
+E       assert (1 == 2)
+E        +  where 1 = <test_automatic.test_upload_response_loss_reconciles_without_second_upload.<locals>.Rag object at 0x0000021512CDE900>.uploads
+
+test_automatic.py:200: AssertionError
+______ test_asset_handoff_uploads_structured_recipe_and_approved_images _______
+
+tmp_path = WindowsPath('C:/Users/Administrator/AppData/Local/Temp/pytest-of-Administrator/pytest-5094/test_asset_handoff_uploads_str0')
+
+    def test_asset_handoff_uploads_structured_recipe_and_approved_images(tmp_path):
+        store=Store(tmp_path/'data');item=processed(store,'assets');client=AssetRemote()
+>       assert upload_items(store,'assets',['assets'],client,DATASET,include_assets=True)==1
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test_upload_dedup.py:79: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+ragflow_client.py:190: in upload_items
+    return _upload_items(store,run_id,item_ids,client,dataset,callback,include_assets)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ragflow_client.py:284: in _upload_items
+    _upload_package_assets(store,manifest,item,destination_key,dataset,client)
+ragflow_client.py:430: in _upload_package_assets
+    if lock is None:
+          ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+package = WindowsPath('C:/Users/Administrator/AppData/Local/Temp/pytest-of-Administrator/pytest-5094/test_asset_handoff_uploads_str0/data/runs/assets/package')
+
+    def _package_asset_files(package):
+        """Return checked upload artifacts as (relative, path, route, fallback)."""
+        package=Path(package).resolve()
+        manifest_path=package/'manifest.json'
+        if not manifest_path.is_file():
+            return []
+        from knowledge_package import knowledge_files
+        knowledge_files(package)
+        metadata=json.loads((package/'metadata.json').read_text(encoding='utf-8'))
+        manifest=json.loads(manifest_path.read_text(encoding='utf-8'))
+        # A checked package can contain figure JSON with a per-image privacy
+        # decision. Keep an unapproved figure out of both image routes.
+        blocked_image_paths=set()
+        for figure_row in manifest.get('figures',[]):
+            figure_path=figure_row.get('path') if isinstance(figure_row,dict) else None
+            if not figure_path:
+                continue
+            figure_file=package/figure_path
+            if not figure_file.is_file():
+                continue
+            try:
+                figure=json.loads(figure_file.read_text(encoding='utf-8'))
+            except (OSError,ValueError):
+                continue
+            image=figure.get('image') or {}
+            if image.get('privacy_status')!='approved' and image.get('path'):
+                blocked_image_paths.add(image['path'])
+        approved_image_paths=set()
+        for resource in metadata.get('resources',[]):
+            local=resource.get('local_path','')
+            path=(package/local).resolve()
+            if (resource.get('privacy_status')=='approved' and local.startswith('assets/') and
+                    path.is_file() and path.is_relative_to(package)):
+                if path.suffix.lower() not in _IMAGE_SUFFIXES:
+                    artifact_route(local,None)
+                approved_image_paths.add(local)
+        rows=[]
+        for row in manifest.get('files',[]):
+            if not isinstance(row,dict):
+                continue
+            relative=row.get('path')
+            if not relative:
+                continue
+            path=(package/relative).resolve()
+            if not path.is_file() or not path.is_relative_to(package):
+                continue
+            role_present='role' in row
+            role=row.get('role')
+            if role_present:
+                if role=='paper_primary':
+                    continue
+                route=artifact_route(relative,role)
+                if role=='image' and (relative not in approved_image_paths or relative in blocked_image_paths):
+                    continue
+                rows.append((relative,path,route,False))
+                continue
+            # Legacy packages did not annotate upload artifacts. The package
+            # convention names ingest.md as the primary; remaining user-facing
+            # text and approved image files retain extension-based compatibility.
+            if relative in {'ingest.md','document.md'}:
+                continue
+            if relative.startswith('metadata/') or relative.startswith('writing_units/'):
+                continue
+>           if _is_text_path(relative):
+               ^^^^^^^^^^^^^
+E           NameError: name '_is_text_path' is not defined
+
+ragflow_client.py:407: NameError
+___________ test_routed_upload_separates_paper_and_image_documents ____________
+
+tmp_path = WindowsPath('C:/Users/Administrator/AppData/Local/Temp/pytest-of-Administrator/pytest-5094/test_routed_upload_separates_p0')
+
+    def test_routed_upload_separates_paper_and_image_documents(tmp_path):
+        from ragflow_client import upload_routed_items
+    
+        store=Store(tmp_path/'data');processed(store,'assets-routed');client=AssetRemote()
+        routes={'paper':{'id':'paper-kb','name':'论文库'},'image':{'id':'image-kb','name':'图片库'}}
+>       assert upload_routed_items(store,'assets-routed',['assets-routed'],client,routes)==1
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test_upload_dedup.py:93: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+ragflow_client.py:547: in upload_routed_items
+    _increment_upload_stat(upload_stats,'derived_uploaded')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ragflow_client.py:547: in <genexpr>
+    _increment_upload_stat(upload_stats,'derived_uploaded')
+               ^^^^^^^^^^^^^^^^^^^
+ragflow_client.py:543: in upload_one
+    raise RuntimeError(f'资产 {relative} 上传未返回有效文档编号，结果待确认。')
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+ragflow_client.py:530: in upload_one_unlocked
+    'dedupe_status':'new'}
+ragflow_client.py:430: in _upload_package_assets
+    if lock is None:
+          ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+package = WindowsPath('C:/Users/Administrator/AppData/Local/Temp/pytest-of-Administrator/pytest-5094/test_routed_upload_separates_p0/data/runs/assets-routed/package')
+
+    def _package_asset_files(package):
+        """Return checked upload artifacts as (relative, path, route, fallback)."""
+        package=Path(package).resolve()
+        manifest_path=package/'manifest.json'
+        if not manifest_path.is_file():
+            return []
+        from knowledge_package import knowledge_files
+        knowledge_files(package)
+        metadata=json.loads((package/'metadata.json').read_text(encoding='utf-8'))
+        manifest=json.loads(manifest_path.read_text(encoding='utf-8'))
+        # A checked package can contain figure JSON with a per-image privacy
+        # decision. Keep an unapproved figure out of both image routes.
+        blocked_image_paths=set()
+        for figure_row in manifest.get('figures',[]):
+            figure_path=figure_row.get('path') if isinstance(figure_row,dict) else None
+            if not figure_path:
+                continue
+            figure_file=package/figure_path
+            if not figure_file.is_file():
+                continue
+            try:
+                figure=json.loads(figure_file.read_text(encoding='utf-8'))
+            except (OSError,ValueError):
+                continue
+            image=figure.get('image') or {}
+            if image.get('privacy_status')!='approved' and image.get('path'):
+                blocked_image_paths.add(image['path'])
+        approved_image_paths=set()
+        for resource in metadata.get('resources',[]):
+            local=resource.get('local_path','')
+            path=(package/local).resolve()
+            if (resource.get('privacy_status')=='approved' and local.startswith('assets/') and
+                    path.is_file() and path.is_relative_to(package)):
+                if path.suffix.lower() not in _IMAGE_SUFFIXES:
+                    artifact_route(local,None)
+                approved_image_paths.add(local)
+        rows=[]
+        for row in manifest.get('files',[]):
+            if not isinstance(row,dict):
+                continue
+            relative=row.get('path')
+            if not relative:
+                continue
+            path=(package/relative).resolve()
+            if not path.is_file() or not path.is_relative_to(package):
+                continue
+            role_present='role' in row
+            role=row.get('role')
+            if role_present:
+                if role=='paper_primary':
+                    continue
+                route=artifact_route(relative,role)
+                if role=='image' and (relative not in approved_image_paths or relative in blocked_image_paths):
+                    continue
+                rows.append((relative,path,route,False))
+                continue
+            # Legacy packages did not annotate upload artifacts. The package
+            # convention names ingest.md as the primary; remaining user-facing
+            # text and approved image files retain extension-based compatibility.
+            if relative in {'ingest.md','document.md'}:
+                continue
+            if relative.startswith('metadata/') or relative.startswith('writing_units/'):
+                continue
+>           if _is_text_path(relative):
+               ^^^^^^^^^^^^^
+E           NameError: name '_is_text_path' is not defined
+
+ragflow_client.py:407: NameError
+________ test_routed_upload_skips_images_when_image_dataset_is_missing ________
+
+tmp_path = WindowsPath('C:/Users/Administrator/AppData/Local/Temp/pytest-of-Administrator/pytest-5094/test_routed_upload_skips_image0')
+
+    def test_routed_upload_skips_images_when_image_dataset_is_missing(tmp_path):
+        from ragflow_client import upload_routed_items
+    
+        store=Store(tmp_path/'data');processed(store,'assets-paper-only');client=AssetRemote();messages=[]
+        routes={'paper':{'id':'paper-kb','name':'论文库'},'image':None}
+>       assert upload_routed_items(store,'assets-paper-only',['assets-paper-only'],client,routes,messages.append)==1
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test_upload_dedup.py:112: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+ragflow_client.py:547: in upload_routed_items
+    _increment_upload_stat(upload_stats,'derived_uploaded')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ragflow_client.py:547: in <genexpr>
+    _increment_upload_stat(upload_stats,'derived_uploaded')
+               ^^^^^^^^^^^^^^^^^^^
+ragflow_client.py:543: in upload_one
+    raise RuntimeError(f'资产 {relative} 上传未返回有效文档编号，结果待确认。')
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+ragflow_client.py:530: in upload_one_unlocked
+    'dedupe_status':'new'}
+ragflow_client.py:430: in _upload_package_assets
+    if lock is None:
+          ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+package = WindowsPath('C:/Users/Administrator/AppData/Local/Temp/pytest-of-Administrator/pytest-5094/test_routed_upload_skips_image0/data/runs/assets-paper-only/package')
+
+    def _package_asset_files(package):
+        """Return checked upload artifacts as (relative, path, route, fallback)."""
+        package=Path(package).resolve()
+        manifest_path=package/'manifest.json'
+        if not manifest_path.is_file():
+            return []
+        from knowledge_package import knowledge_files
+        knowledge_files(package)
+        metadata=json.loads((package/'metadata.json').read_text(encoding='utf-8'))
+        manifest=json.loads(manifest_path.read_text(encoding='utf-8'))
+        # A checked package can contain figure JSON with a per-image privacy
+        # decision. Keep an unapproved figure out of both image routes.
+        blocked_image_paths=set()
+        for figure_row in manifest.get('figures',[]):
+            figure_path=figure_row.get('path') if isinstance(figure_row,dict) else None
+            if not figure_path:
+                continue
+            figure_file=package/figure_path
+            if not figure_file.is_file():
+                continue
+            try:
+                figure=json.loads(figure_file.read_text(encoding='utf-8'))
+            except (OSError,ValueError):
+                continue
+            image=figure.get('image') or {}
+            if image.get('privacy_status')!='approved' and image.get('path'):
+                blocked_image_paths.add(image['path'])
+        approved_image_paths=set()
+        for resource in metadata.get('resources',[]):
+            local=resource.get('local_path','')
+            path=(package/local).resolve()
+            if (resource.get('privacy_status')=='approved' and local.startswith('assets/') and
+                    path.is_file() and path.is_relative_to(package)):
+                if path.suffix.lower() not in _IMAGE_SUFFIXES:
+                    artifact_route(local,None)
+                approved_image_paths.add(local)
+        rows=[]
+        for row in manifest.get('files',[]):
+            if not isinstance(row,dict):
+                continue
+            relative=row.get('path')
+            if not relative:
+                continue
+            path=(package/relative).resolve()
+            if not path.is_file() or not path.is_relative_to(package):
+                continue
+            role_present='role' in row
+            role=row.get('role')
+            if role_present:
+                if role=='paper_primary':
+                    continue
+                route=artifact_route(relative,role)
+                if role=='image' and (relative not in approved_image_paths or relative in blocked_image_paths):
+                    continue
+                rows.append((relative,path,route,False))
+                continue
+            # Legacy packages did not annotate upload artifacts. The package
+            # convention names ingest.md as the primary; remaining user-facing
+            # text and approved image files retain extension-based compatibility.
+            if relative in {'ingest.md','document.md'}:
+                continue
+            if relative.startswith('metadata/') or relative.startswith('writing_units/'):
+                continue
+>           if _is_text_path(relative):
+               ^^^^^^^^^^^^^
+E           NameError: name '_is_text_path' is not defined
+
+ragflow_client.py:407: NameError
+_______ test_routed_upload_deduplicates_same_paper_across_new_auto_ids ________
+
+tmp_path = WindowsPath('C:/Users/Administrator/AppData/Local/Temp/pytest-of-Administrator/pytest-5094/test_routed_upload_deduplicate0')
+
+    def test_routed_upload_deduplicates_same_paper_across_new_auto_ids(tmp_path):
+        from ragflow_client import upload_routed_items
+    
+        store=Store(tmp_path/'data');processed(store,'asset-first');client=AssetRemote()
+        routes={'paper':{'id':'paper-kb','name':'论文库'},'image':{'id':'image-kb','name':'图片库'}}
+>       assert upload_routed_items(store,'asset-first',['asset-first'],client,routes)==1
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test_upload_dedup.py:122: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+ragflow_client.py:547: in upload_routed_items
+    _increment_upload_stat(upload_stats,'derived_uploaded')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ragflow_client.py:547: in <genexpr>
+    _increment_upload_stat(upload_stats,'derived_uploaded')
+               ^^^^^^^^^^^^^^^^^^^
+ragflow_client.py:543: in upload_one
+    raise RuntimeError(f'资产 {relative} 上传未返回有效文档编号，结果待确认。')
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+ragflow_client.py:530: in upload_one_unlocked
+    'dedupe_status':'new'}
+ragflow_client.py:430: in _upload_package_assets
+    if lock is None:
+          ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+package = WindowsPath('C:/Users/Administrator/AppData/Local/Temp/pytest-of-Administrator/pytest-5094/test_routed_upload_deduplicate0/data/runs/asset-first/package')
+
+    def _package_asset_files(package):
+        """Return checked upload artifacts as (relative, path, route, fallback)."""
+        package=Path(package).resolve()
+        manifest_path=package/'manifest.json'
+        if not manifest_path.is_file():
+            return []
+        from knowledge_package import knowledge_files
+        knowledge_files(package)
+        metadata=json.loads((package/'metadata.json').read_text(encoding='utf-8'))
+        manifest=json.loads(manifest_path.read_text(encoding='utf-8'))
+        # A checked package can contain figure JSON with a per-image privacy
+        # decision. Keep an unapproved figure out of both image routes.
+        blocked_image_paths=set()
+        for figure_row in manifest.get('figures',[]):
+            figure_path=figure_row.get('path') if isinstance(figure_row,dict) else None
+            if not figure_path:
+                continue
+            figure_file=package/figure_path
+            if not figure_file.is_file():
+                continue
+            try:
+                figure=json.loads(figure_file.read_text(encoding='utf-8'))
+            except (OSError,ValueError):
+                continue
+            image=figure.get('image') or {}
+            if image.get('privacy_status')!='approved' and image.get('path'):
+                blocked_image_paths.add(image['path'])
+        approved_image_paths=set()
+        for resource in metadata.get('resources',[]):
+            local=resource.get('local_path','')
+            path=(package/local).resolve()
+            if (resource.get('privacy_status')=='approved' and local.startswith('assets/') and
+                    path.is_file() and path.is_relative_to(package)):
+                if path.suffix.lower() not in _IMAGE_SUFFIXES:
+                    artifact_route(local,None)
+                approved_image_paths.add(local)
+        rows=[]
+        for row in manifest.get('files',[]):
+            if not isinstance(row,dict):
+                continue
+            relative=row.get('path')
+            if not relative:
+                continue
+            path=(package/relative).resolve()
+            if not path.is_file() or not path.is_relative_to(package):
+                continue
+            role_present='role' in row
+            role=row.get('role')
+            if role_present:
+                if role=='paper_primary':
+                    continue
+                route=artifact_route(relative,role)
+                if role=='image' and (relative not in approved_image_paths or relative in blocked_image_paths):
+                    continue
+                rows.append((relative,path,route,False))
+                continue
+            # Legacy packages did not annotate upload artifacts. The package
+            # convention names ingest.md as the primary; remaining user-facing
+            # text and approved image files retain extension-based compatibility.
+            if relative in {'ingest.md','document.md'}:
+                continue
+            if relative.startswith('metadata/') or relative.startswith('writing_units/'):
+                continue
+>           if _is_text_path(relative):
+               ^^^^^^^^^^^^^
+E           NameError: name '_is_text_path' is not defined
+
+ragflow_client.py:407: NameError
+_______ test_automatic_handoff_reuses_doc_id_without_pending_key_error ________
+
+tmp_path = WindowsPath('C:/Users/Administrator/AppData/Local/Temp/pytest-of-Administrator/pytest-5094/test_automatic_handoff_reuses_0')
+
+    def test_automatic_handoff_reuses_doc_id_without_pending_key_error(tmp_path):
+        from auto_ragflow import handoff
+        store=Store(tmp_path);processed(store,'first');client=Remote()
+        upload_items(store,'first',['first'],client,DATASET)
+        processed(store,'second');handoff(store,'second',client,{},auto_parse=True)
+        item=store.load('second')['items'][0]
+>       assert item['handoff_status']=='uploaded' and not item.get('handoff_reason')
+E       AssertionError: assert ('pending' == 'uploaded'
+E         
+E         - uploaded
+E         + pending)
+
+test_upload_dedup.py:208: AssertionError
+=========================== short test summary info ===========================
+FAILED test_automatic.py::test_upload_response_loss_reconciles_without_second_upload
+FAILED test_upload_dedup.py::test_asset_handoff_uploads_structured_recipe_and_approved_images
+FAILED test_upload_dedup.py::test_routed_upload_separates_paper_and_image_documents
+FAILED test_upload_dedup.py::test_routed_upload_skips_images_when_image_dataset_is_missing
+FAILED test_upload_dedup.py::test_routed_upload_deduplicates_same_paper_across_new_auto_ids
+FAILED test_upload_dedup.py::test_automatic_handoff_reuses_doc_id_without_pending_key_error
+6 failed, 556 passed in 48.48s
+

@@ -1,0 +1,20 @@
+{
+  "base_url": "http://127.0.0.1:9/v1",
+  "text_model": "workbuddy-intl-cli-deepseek-free",
+  "timeout": 3600,
+  "max_tokens": 128000,
+  "preextract_limits": {
+    "base_url": "http://192.168.1.120:8081/v1",
+    "model": "workbuddy-intl-cli-deepseek-free",
+    "context_window": 1000000,
+    "max_output_tokens": 128000,
+    "supports_images": true,
+    "max_images": 600,
+    "max_total_image_bytes": 25165824,
+    "max_single_image_bytes": 6291456,
+    "max_request_bytes": 50331648,
+    "image_detail": "auto",
+    "supports_json_object": false,
+    "capacity_source": "Official CLI 168-image receipt and deployed adapter limits; single-image raw bound 6MiB corresponds to 8MiB Base64"
+  }
+}

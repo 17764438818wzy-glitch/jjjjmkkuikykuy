@@ -1,0 +1,41 @@
+{
+  "counts": {
+    "files": 6545,
+    "json": 138,
+    "python": 5559
+  },
+  "compile_errors": [],
+  "json_errors": [],
+  "security_findings": [],
+  "long_encoded_blocks": [],
+  "snapshot_date": "2026-11-15",
+  "timezone": "Asia/Shanghai",
+  "scope": "All delivered source files were statically checked before this report/index were generated; one original invalid historical .py fragment is retained as .txt.",
+  "offline_tests": {
+    "passed": 16,
+    "failed": 0,
+    "network_attempts": 0,
+    "runner": "tools/run_offline_checks.py",
+    "files": [
+      "test_unknown_transport_preservation.py",
+      "test_transport_journal.py",
+      "test_owned_work.py"
+    ],
+    "boundaries": [
+      "no conftest binding",
+      "socket connects denied",
+      "temporary project_paths constants",
+      "exported source copies only"
+    ]
+  },
+  "explicit_user_supplied_secrets_scan": "No matches; values are never recorded in this report.",
+  "not_performed": [
+    "full test suite",
+    "production task execution",
+    "model calls",
+    "RAG writes",
+    "NAS writes",
+    "source cleanup",
+    "lifecycle changes"
+  ]
+}

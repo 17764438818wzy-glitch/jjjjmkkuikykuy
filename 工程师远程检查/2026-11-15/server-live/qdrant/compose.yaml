@@ -1,0 +1,26 @@
+services:
+  qdrant:
+    image: qdrant/qdrant:v1.20.0
+    container_name: paperflow-qdrant
+    restart: unless-stopped
+    environment:
+      QDRANT__SERVICE__API_KEY: ${QDRANT_API_KEY}
+      QDRANT__TELEMETRY_DISABLED: 'true'
+    ports:
+      - '127.0.0.1:6333:6333'
+    volumes:
+      - ./qdrant-data:/qdrant/storage
+  gateway:
+    build: .
+    container_name: paperflow-qdrant-gateway
+    restart: unless-stopped
+    depends_on:
+      - qdrant
+    env_file: .env
+    environment:
+      QDRANT_URL: http://qdrant:6333
+      OBJECT_ROOT: /data/objects
+    ports:
+      - '192.168.1.120:8097:8097'
+    volumes:
+      - ./objects:/data/objects

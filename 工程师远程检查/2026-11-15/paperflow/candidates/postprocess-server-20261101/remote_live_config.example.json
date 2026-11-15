@@ -1,0 +1,62 @@
+{
+  "schema": "paperflow-remote-live/1",
+  "runtime_dir": "F:\\请填写工作区\\candidates\\postprocess-prefect-20261031\\generation_next",
+  "runtime_sources": {
+    "live_runtime.py": "<该文件的64位SHA256>",
+    "stage_runtime.py": "<该文件的64位SHA256>",
+    "batch_next.py": "<该文件的64位SHA256>"
+  },
+  "prefect_project": "F:\\请填写工作区\\prefect-paperflow",
+  "settings_sha256": "<原config.json的64位SHA256>",
+  "tokenizer_runtime_sha256": "<原runtime-config.json的64位SHA256>",
+  "expected_prefect_api_url": "<原Prefect API地址>",
+  "journal_database": "F:\\请填写已安装的远程交接账本路径.sqlite3",
+  "journal_id": "<已安装账本的UUID>",
+  "server_identity": {
+    "server_id": "<服务器身份>",
+    "ledger_id": "<服务器持久账本UUID>"
+  },
+  "transport_config": {
+    "schema": "paperflow-server-transport/1",
+    "server_identity": {
+      "server_id": "<与上面的服务器身份相同>",
+      "ledger_id": "<与上面的服务器持久账本UUID相同>"
+    },
+    "connection": {
+      "host": "<服务器地址>",
+      "port": 22,
+      "username": "<SSH用户名>",
+      "private_key": "F:\\请填写本机SSH私钥路径",
+      "server_key_sha256": "<独立核验的SSH主机公钥64位SHA256>"
+    },
+    "server_python": "/请填写/venv/bin/python",
+    "staging_script": "/请填写/server_staging_cli.py",
+    "rpc_script": "/请填写/server_rpc.py",
+    "service_config": "/请填写/server-job-service.json",
+    "service_config_sha256": "<服务器服务配置的64位SHA256>",
+    "staging_root": "/请填写/staging",
+    "allowed_roots": ["F:\\请填写允许读取的原材料目录"],
+    "trusted_files": [
+      {"path": "F:\\请填写原catalog路径.json", "sha256": "<原catalog文件的64位SHA256>"}
+    ],
+    "staging_timeout_seconds": 60,
+    "metadata_timeout_seconds": 5,
+    "admit_timeout_seconds": 2,
+    "wait_timeout_seconds": 3600,
+    "poll_seconds": 0.5
+  },
+  "transport_config_sha256": "<transport_config按规范JSON序列化后的64位SHA256>",
+  "snapshot_options": {
+    "code_sha256": "<服务器业务代码清单的64位SHA256>",
+    "paperflow_root_windows": "F:\\请填写服务器业务目录\\core",
+    "business_workspace_windows": "F:\\请填写服务器业务工作区",
+    "output_root_windows": "F:\\请填写服务器交付区",
+    "runtime_template_sha256": "<服务器运行时模板的64位SHA256>",
+    "allowed_roots": ["F:\\请填写允许读取的原材料目录"],
+    "max_json_file_bytes": 8388608,
+    "max_total_json_bytes": 67108864
+  },
+  "expected_catalog_path": "F:\\请填写原catalog路径.json",
+  "expected_catalog_sha256": "<原catalog文件的64位SHA256>",
+  "max_summary_receipts": 1000
+}

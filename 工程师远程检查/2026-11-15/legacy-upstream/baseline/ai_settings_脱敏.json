@@ -1,0 +1,55 @@
+{
+  "base_url": "https://cpamc.aditya.top/v1",
+  "vision_base_url": "https://cpamc.aditya.top/v1",
+  "text_model": "deepseek-v4-flash-ascend",
+  "vision_model": {
+    "enabled": true,
+    "primary": {
+      "base_url": "https://cpamc.aditya.top/v1",
+      "api_key": "",
+      "model": "deepseek-v4-flash-ascend"
+    },
+    "fallback": {
+      "enabled": true,
+      "base_url": "https://api.deepseek.com/v1",
+      "api_key": "",
+      "model": "deepseek-flash"
+    },
+    "retry": {
+      "max_tries": 3,
+      "backoff_base_seconds": 2.0
+    },
+    "circuit_breaker": {
+      "failure_threshold": 3,
+      "cooldown_seconds": 300.0,
+      "cooldown_multiplier": 2.0,
+      "max_cooldown_seconds": 3600.0
+    }
+  },
+  "timeout": 90,
+  "attempts": 3,
+  "max_pages": 80,
+  "max_tokens": 8192,
+  "auto_upload": true,
+  "auto_parse": true,
+  "dataset_map": {
+    "会计学": {
+      "paper": "a12c3bdeb18c11f1b1c441a63d939554",
+      "image": ""
+    }
+  },
+  "legacy_dataset_map_fallback": true,
+  "usd_cny": "7",
+  "concurrency": {
+    "enabled": true,
+    "papers": 2,
+    "images_per_paper": 2,
+    "global_llm": 4,
+    "max_retries": 4,
+    "backoff_base_seconds": 1.0
+  },
+  "resume": {
+    "enabled": true,
+    "state_file": "processing_state.json"
+  }
+}

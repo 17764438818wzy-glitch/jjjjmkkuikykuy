@@ -1,0 +1,388 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:source-education:1.0",
+  "title": "Source education handoff v1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "extraction_rule_version",
+    "original_source_sha256",
+    "evidence_source_sha256",
+    "evidence_source_format",
+    "source_relation",
+    "derivation",
+    "education_level",
+    "study_mode",
+    "business_classification",
+    "evidence"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "source-education/1.0"
+    },
+    "extraction_rule_version": {
+      "const": "source-education-extract/1.0"
+    },
+    "original_source_sha256": {
+      "$ref": "#/$defs/sha"
+    },
+    "evidence_source_sha256": {
+      "$ref": "#/$defs/sha"
+    },
+    "evidence_source_format": {
+      "enum": [
+        "pdf",
+        "docx",
+        "txt",
+        "md"
+      ]
+    },
+    "source_relation": {
+      "enum": [
+        "original",
+        "converted",
+        "normalized"
+      ]
+    },
+    "derivation": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "input_sha256",
+            "output_sha256",
+            "method",
+            "record_id"
+          ],
+          "properties": {
+            "input_sha256": {
+              "$ref": "#/$defs/sha"
+            },
+            "output_sha256": {
+              "$ref": "#/$defs/sha"
+            },
+            "method": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "record_id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 160
+            }
+          }
+        }
+      ]
+    },
+    "education_level": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/field"
+        },
+        {
+          "properties": {
+            "value": {
+              "$ref": "#/$defs/level"
+            },
+            "candidates": {
+              "items": {
+                "properties": {
+                  "value": {
+                    "$ref": "#/$defs/level"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "study_mode": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/field"
+        },
+        {
+          "properties": {
+            "value": {
+              "$ref": "#/$defs/mode"
+            },
+            "candidates": {
+              "items": {
+                "properties": {
+                  "value": {
+                    "$ref": "#/$defs/mode"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "business_classification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "status",
+        "basis",
+        "rule_id",
+        "rule_version",
+        "evidence_ids"
+      ],
+      "properties": {
+        "value": {
+          "enum": [
+            "correspondence",
+            "unknown"
+          ]
+        },
+        "status": {
+          "enum": [
+            "resolved",
+            "unknown",
+            "conflict"
+          ]
+        },
+        "basis": {
+          "enum": [
+            "source_correspondence",
+            "business_rule",
+            "none"
+          ]
+        },
+        "rule_id": {
+          "enum": [
+            "explicit_correspondence",
+            "adult_education_to_correspondence",
+            null
+          ]
+        },
+        "rule_version": {
+          "const": "adult-to-correspondence/1.0"
+        },
+        "evidence_ids": {
+          "$ref": "#/$defs/ids"
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "quote",
+          "supports",
+          "locator"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^ev-[A-Za-z0-9_-]{1,60}$"
+          },
+          "quote": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 240
+          },
+          "supports": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "education_level",
+                "study_mode"
+              ]
+            }
+          },
+          "locator": {
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "kind",
+                  "page"
+                ],
+                "properties": {
+                  "kind": {
+                    "const": "pdf_page"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 9007199254740991
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "kind",
+                  "part",
+                  "paragraph_index"
+                ],
+                "properties": {
+                  "kind": {
+                    "const": "docx_paragraph"
+                  },
+                  "part": {
+                    "const": "word/document.xml"
+                  },
+                  "paragraph_index": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 9007199254740991
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "kind",
+                  "start_line",
+                  "end_line"
+                ],
+                "properties": {
+                  "kind": {
+                    "const": "text_lines"
+                  },
+                  "start_line": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 9007199254740991
+                  },
+                  "end_line": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 9007199254740991
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "sha": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "maxItems": 32,
+      "items": {
+        "type": "string",
+        "pattern": "^ev-[A-Za-z0-9_-]{1,60}$"
+      }
+    },
+    "labels": {
+      "type": "array",
+      "uniqueItems": true,
+      "maxItems": 16,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 80
+      }
+    },
+    "level": {
+      "enum": [
+        "associate",
+        "bachelor",
+        "master",
+        "doctor",
+        "unknown"
+      ]
+    },
+    "mode": {
+      "enum": [
+        "correspondence",
+        "adult_education",
+        "full_time",
+        "part_time",
+        "amateur",
+        "off_job",
+        "self_study",
+        "open_education",
+        "online_education",
+        "other",
+        "unknown"
+      ]
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "raw_labels",
+        "evidence_ids"
+      ],
+      "properties": {
+        "value": {
+          "type": "string",
+          "minLength": 1
+        },
+        "raw_labels": {
+          "$ref": "#/$defs/labels"
+        },
+        "evidence_ids": {
+          "$ref": "#/$defs/ids"
+        }
+      }
+    },
+    "field": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "status",
+        "raw_labels",
+        "evidence_ids",
+        "candidates"
+      ],
+      "properties": {
+        "value": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "source_explicit",
+            "unknown",
+            "conflict"
+          ]
+        },
+        "raw_labels": {
+          "$ref": "#/$defs/labels"
+        },
+        "evidence_ids": {
+          "$ref": "#/$defs/ids"
+        },
+        "candidates": {
+          "type": "array",
+          "maxItems": 8,
+          "items": {
+            "$ref": "#/$defs/candidate"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><title>后处理登记展示合成验收</title>
+<link rel="stylesheet" href="../../ui_next/baseline/styles.css">
+<script>
+  // All responses are synthetic. This page never contacts the live API.
+  window.fixtureCalls = [];
+  window.fetch = async (url) => {
+    const query = new URL(url).searchParams;
+    const filter = query.get('postprocessing_result_filter');
+    const page = Number(query.get('postprocessing_result_page') || 1);
+    const revision = query.get('postprocessing_result_revision');
+    window.fixtureCalls.push({ filter, page, revision });
+    const basis = 'postprocessing-registered-ledger/1';
+    const as_of = '2026-11-01T08:00:00Z';
+    const result = { available: true, basis, as_of, partial: true,
+      counts: { passed: 21, failed: 1, unrecognized: null } };
+    if (filter) {
+      const total = filter === 'passed' ? 21 : filter === 'failed' ? 1 : null;
+      result.list = { filter, page, page_size: 20, total,
+        has_next: filter === 'passed' && page === 1,
+        items: total === null ? [] : [{ task_name: '合成任务', group_id: `synthetic-${page}`,
+          folder_label: `合成文件夹 ${page}`, title_status: '暂不可用',
+          reason: filter === 'failed' ? '已登记未通过：正文画像校验未通过' : '合成登记记录' }] };
+    }
+    return { ok: true, json: async () => ({ prefect_ticket_summary: { available: false },
+      postprocessing_registered_ledger: { available: true, basis, as_of, revision: 'a'.repeat(64),
+        current_delivery_verified: false,
+        stage: { available: true, basis, as_of, partial: true, counts: { waiting_postprocessing: 268,
+          postprocessing_in_progress: null, waiting_rag_upload: 0, postprocessing_unresolved: 1 } },
+        results: result } }) };
+  };
+</script>
+<script src="../postprocessing-results.js" defer></script>
+<script src="../prefect-ticket-counts.js" defer></script></head>
+<body><main>
+<section class="card queue-card"><div class="card-body"><h2>等待后处理队列</h2><p id="waiting-postprocessing-count" class="queue-count">—</p><p id="waiting-postprocessing-hint" class="queue-hint"></p></div></section>
+<section class="card queue-card"><div class="card-body"><h2>后处理中</h2><p id="postprocessing-count" class="queue-count">—</p><p id="postprocessing-hint" class="queue-hint"></p>
+  <div class="stats">
+    <button class="preprocessing-stat" data-postprocessing-filter="passed" type="button" aria-pressed="false"><span>已通过</span><strong id="postprocessing-passed-count" class="passed">—</strong></button>
+    <button class="preprocessing-stat" data-postprocessing-filter="failed" type="button" aria-pressed="false"><span>未通过</span><strong id="postprocessing-failed-count" class="failed">—</strong></button>
+    <button class="preprocessing-stat" data-postprocessing-filter="unrecognized" type="button" aria-pressed="false"><span>未识别</span><strong id="postprocessing-unrecognized-count" class="unrecognized">—</strong></button>
+  </div>
+  <p id="postprocessing-results-hint" class="queue-hint"></p>
+  <section id="postprocessing-list-panel" class="list-panel" aria-labelledby="postprocessing-list-title" hidden>
+    <div class="list-header"><div><h3 id="postprocessing-list-title">后处理结果</h3><p id="postprocessing-list-count">列表获取中</p></div><button id="postprocessing-close-list" class="text-button" type="button">收起</button></div>
+    <div id="postprocessing-list-message" class="list-message" hidden></div><ul id="postprocessing-group-list" class="group-list"></ul>
+    <div id="postprocessing-pagination" class="pagination" hidden><span id="postprocessing-page-info"></span><div><button id="postprocessing-previous-page" type="button">上一页</button><button id="postprocessing-next-page" type="button">下一页</button></div></div>
+  </section>
+</div></section>
+<section class="card queue-card"><div class="card-body"><h2>等待 RAG 上传队列</h2><p id="waiting-rag-upload-count" class="queue-count">—</p><p id="waiting-rag-upload-hint" class="queue-hint"></p></div></section>
+</main></body></html>

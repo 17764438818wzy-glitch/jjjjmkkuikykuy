@@ -1,0 +1,9 @@
+def _mapped_executables():
+    _require(sys.platform == 'linux', 'Linux native identity verification required')
+    values = set()
+    for line in Path('/proc/self/maps').read_text().splitlines():
+        fields = line.split(None, 5)
+        if len(fields) == 6 and 'x' in fields[1] and fields[5].startswith('/'):
+            _require(not fields[5].endswith(' (deleted)'), 'mapped native executable was deleted')
+            values.add(str(Path(fields[5]).resolve(strict=True)))
+    return values

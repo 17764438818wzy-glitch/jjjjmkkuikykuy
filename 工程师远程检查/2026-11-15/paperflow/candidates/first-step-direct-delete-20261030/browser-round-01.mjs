@@ -1,0 +1,12 @@
+const task = await taskSpace(42);
+const page = task.page('p1');
+const fixture = await page.evaluate(async () => (await fetch('/fixture-info')).json());
+await page.click('#new-task-button');
+await page.fill('#new-task-name', '合成测试任务');
+await page.click('#create-task-confirm');
+await page.waitForFunction(() => !document.querySelector('#local-folder-button').disabled, undefined, { timeout: 10000 });
+await page.click('#local-folder-button');
+await page.fill('#local-folder-path', fixture.source);
+await page.click('#confirm-local-folder');
+await page.waitForFunction(() => !document.querySelector('#start-button').disabled, undefined, { timeout: 10000 });
+console.log(await page.snapshot());

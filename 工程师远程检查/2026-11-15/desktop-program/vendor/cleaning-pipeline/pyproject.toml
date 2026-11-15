@@ -1,0 +1,10 @@
+[project]
+name = "paper-cleaning"
+version = "0.1.0"
+description = "Local file inventory, checking, and small-sample utilities for document cleaning."
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

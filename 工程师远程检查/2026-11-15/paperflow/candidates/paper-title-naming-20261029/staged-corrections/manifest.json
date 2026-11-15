@@ -1,0 +1,54 @@
+{
+  "scope": "desktop108-20261029 310 groups",
+  "records": [
+    {
+      "paper_id": "PF_3be97b8eb71d46b0a6a76eeb",
+      "group": "郑子豪_201913137048",
+      "record": "F:\\论文预处理系统\\预处理系统2\\candidates\\paper-title-naming-20261029\\staged-corrections\\naming-overrides\\PF_3be97b8eb71d46b0a6a76eeb\\title.json",
+      "record_sha256": "e86a82a00c5974e10e53d2c834790c651a28c506f3c9de3c2ee67377b56efa7d",
+      "display_name": "基于Harmony OS的手机壁纸APP.docx",
+      "uses_retained_conversion": false
+    },
+    {
+      "paper_id": "PF_681cb0c58a3045c4916697d2",
+      "group": "卢柯宪_201905167057",
+      "record": "F:\\论文预处理系统\\预处理系统2\\candidates\\paper-title-naming-20261029\\staged-corrections\\naming-overrides\\PF_681cb0c58a3045c4916697d2\\title.json",
+      "record_sha256": "add5fe16acf02f8042b7cea5674bf2ebdf98f8e064adad785460399e309acd61",
+      "display_name": "施工项目绩效评价研究.docx",
+      "uses_retained_conversion": false
+    },
+    {
+      "paper_id": "PF_69576af804d14df7a906e7c5",
+      "group": "张泽旭_201913137046",
+      "record": "F:\\论文预处理系统\\预处理系统2\\candidates\\paper-title-naming-20261029\\staged-corrections\\naming-overrides\\PF_69576af804d14df7a906e7c5\\title.json",
+      "record_sha256": "dd8691655853908c6594e33f45a59cac82b7f80b2737d21f71d9a38b1652b8aa",
+      "display_name": "基于Python的web版图书馆管理系统设计.docx",
+      "uses_retained_conversion": false
+    },
+    {
+      "paper_id": "PF_86f3bcc324494a74b4d54e98",
+      "group": "杨旭_201919151059",
+      "record": "F:\\论文预处理系统\\预处理系统2\\candidates\\paper-title-naming-20261029\\staged-corrections\\naming-overrides\\PF_86f3bcc324494a74b4d54e98\\title.json",
+      "record_sha256": "822088759f2392635beda733ca80098f3e7ac0081a835af9f81ee87ea1c7db22",
+      "display_name": "冷湖石油小镇旅游景区路灯设计.doc",
+      "uses_retained_conversion": true
+    },
+    {
+      "paper_id": "PF_c39143b303c74f24a2e949d1",
+      "group": "黄斯乐_201905168018",
+      "record": "F:\\论文预处理系统\\预处理系统2\\candidates\\paper-title-naming-20261029\\staged-corrections\\naming-overrides\\PF_c39143b303c74f24a2e949d1\\title.json",
+      "record_sha256": "8632bd17e5507a9fbfbeb6fbbffa2942426b4e455c816c30d9f7667811618db1",
+      "display_name": "农村信用合作社个人信贷业务发展现状研究.docx",
+      "uses_retained_conversion": false
+    },
+    {
+      "paper_id": "PF_d4cdc718612f407da5161dfe",
+      "group": "董孔梅_201905168015",
+      "record": "F:\\论文预处理系统\\预处理系统2\\candidates\\paper-title-naming-20261029\\staged-corrections\\naming-overrides\\PF_d4cdc718612f407da5161dfe\\title.json",
+      "record_sha256": "26aedb377d7b9564ba032b5e35a583ca2283a1242fc5954b27e3d154e3fc1769",
+      "display_name": "新营销理念对企业市场营销策略造成的影响问题研究.docx",
+      "uses_retained_conversion": false
+    }
+  ],
+  "live_writes": 0
+}

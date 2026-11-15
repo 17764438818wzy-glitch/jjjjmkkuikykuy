@@ -1,0 +1,8 @@
+{
+  "schema": "paper-source-layout/1",
+  "python": "C:\\Python314\\python.exe",
+  "production_app": "F:\\论文预处理系统\\旧预处理工程\\ragflow_upstream",
+  "data_dir": "F:\\论文预处理系统\\旧预处理工程\\ragflow_upstream\\data",
+  "runtime_dir": "F:\\论文预处理系统\\预处理核心与工作台\\deployments\\workbench-8089-20261018\\runtime",
+  "original_core": "F:\\论文预处理系统\\预处理核心与工作台\\langgraph_workflow"
+}

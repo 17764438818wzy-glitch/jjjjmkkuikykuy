@@ -1,0 +1,5 @@
+{
+  "queue_db": "F:\\论文预处理系统\\预处理系统2\\local-intake-runtime\\waiting-pool.sqlite3",
+  "receipt_root": "F:\\论文预处理系统\\预处理系统2\\candidates\\first-step-control-20261029\\runtime\\workspace\\receipts",
+  "journal_root": "F:\\论文预处理系统\\预处理系统2\\prefect-paperflow\\runtime\\data\\attachment-auto-dispatch"
+}

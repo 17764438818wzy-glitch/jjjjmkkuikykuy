@@ -1,0 +1,379 @@
+"""Frontend-facing waiting-count API; constructing it starts no intake work."""
+
+from collections import OrderedDict
+import copy
+from datetime import datetime, timezone
+import sqlite3
+from threading import Lock, Thread
+import time
+from typing import Literal
+
+from fastapi import FastAPI, Query, Response
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+
+
+STAGE_KEYS = ('waiting_postprocessing', 'postprocessing_in_progress', 'waiting_rag_upload')
+STAGE_DIAGNOSTICS = ('postprocessing_held', 'postprocessing_unresolved')
+PROJECTION_REFRESH_SECONDS = 4
+PROJECTION_MAX_AGE_SECONDS = 8
+GUARDED_PROJECTION_REFRESH_SECONDS = 15
+GUARDED_PROJECTION_MAX_AGE_SECONDS = 45
+GUARDED_REMOTE_REFRESH_SECONDS = 3
+GUARDED_REMOTE_MAX_AGE_SECONDS = 8
+projection_clock = time.monotonic
+
+
+def _snapshot_key(snapshot):
+    return tuple(snapshot.get(name) for name in (
+        'receiver_status', 'receiver_session_id', 'scan_source_instance',
+        'waiting_available', 'upstream_scan_verified', 'waiting_llm_total'))
+
+
+def _usable_source(snapshot):
+    return (snapshot.get('receiver_status') == 'running'
+            and isinstance(snapshot.get('receiver_session_id'), str) and bool(snapshot['receiver_session_id'])
+            and isinstance(snapshot.get('scan_source_instance'), str) and bool(snapshot['scan_source_instance'])
+            and snapshot.get('waiting_available') is True
+            and snapshot.get('upstream_scan_verified') is True
+            and type(snapshot.get('waiting_llm_total')) is int and snapshot['waiting_llm_total'] >= 0)
+
+
+def _valid_count(value):
+    return value is None or (type(value) is int and value >= 0)
+
+
+def _valid_verification_time(value):
+    if not isinstance(value, str):
+        return False
+    try:
+        parsed = datetime.fromisoformat(value.replace('Z', '+00:00'))
+        return parsed.utcoffset() is not None
+    except (TypeError, ValueError, OverflowError):
+        return False
+
+
+def _valid_stage(value):
+    if (not isinstance(value, dict) or value.get('available') is not True
+            or value.get('basis') != 'folder-stage-receipts/1'
+            or not _valid_verification_time(value.get('as_of'))
+            or not isinstance(value.get('counts'), dict)):
+        return False
+    counts = value['counts']
+    return (all(key in counts and _valid_count(counts[key]) for key in STAGE_KEYS)
+            and type(counts.get('waiting_postprocessing_partial', False)) is bool
+            and all(_valid_count(counts[key]) for key in STAGE_DIAGNOSTICS if key in counts))
+
+
+def _valid_results(value, result_filter, page, page_size):
+    if (not isinstance(value, dict) or value.get('available') is not True
+            or not _valid_verification_time(value.get('as_of'))
+            or not isinstance(value.get('counts'), dict) or type(value.get('partial')) is not bool):
+        return False
+    counts = value['counts']
+    if not all(key in counts and _valid_count(counts[key]) for key in ('passed', 'failed', 'unrecognized')):
+        return False
+    if result_filter is None:
+        return True
+    rows = value.get('list')
+    return (isinstance(rows, dict) and rows.get('filter') == result_filter
+            and type(rows.get('page')) is int and rows['page'] == page
+            and type(rows.get('page_size')) is int and rows['page_size'] == page_size
+            and _valid_count(rows.get('total')) and 'total' in rows
+            and isinstance(rows.get('items'), list) and len(rows['items']) <= page_size
+            and all(isinstance(item, dict) for item in rows['items']))
+
+
+def _unavailable_results(result_filter, page, page_size):
+    value = {'available': False, 'counts': dict.fromkeys(('passed', 'failed', 'unrecognized')),
+             'partial': True, 'message': '后处理结果暂不可核验'}
+    if result_filter is not None:
+        value['list'] = dict(filter=result_filter, page=page, page_size=page_size,
+                             total=None, items=[], message=value['message'])
+    return value
+
+
+class _ProjectionCache:
+    """Bounded, passive cache; reads and hashing never block an HTTP response."""
+    def __init__(self, *, max_entries=32, max_inflight=2):
+        self.entries = OrderedDict()
+        self.inflight = set()
+        self.remote_inflight = set()
+        self.lock = Lock()
+        self.max_entries = max_entries
+        self.max_inflight = max_inflight
+
+    def get(self, key, compute, *, snapshot=None):
+        now = projection_clock()
+        with self.lock:
+            entry = self.entries.get(key)
+            if entry is not None:
+                self.entries.move_to_end(key)
+        witness = entry.get('witness') if entry is not None else None
+        local_ok = True
+        if witness is not None:
+            try:
+                local_ok = witness.local(snapshot) is True
+            except Exception:
+                local_ok = False
+        # Expiration is measured after, not before, any slow local check.
+        now = projection_clock()
+        with self.lock:
+            # A different full refresh may have replaced the value while its
+            # inexpensive local witness was being checked.
+            if self.entries.get(key) is not entry:
+                return None
+            if entry is not None and not local_ok:
+                self.entries.pop(key, None)
+                entry = None
+                witness = None
+            age = now - entry['at'] if entry is not None else None
+            max_age = GUARDED_PROJECTION_MAX_AGE_SECONDS if witness is not None else PROJECTION_MAX_AGE_SECONDS
+            refresh_age = GUARDED_PROJECTION_REFRESH_SECONDS if witness is not None else PROJECTION_REFRESH_SECONDS
+            remote_age = now - entry['remote_at'] if witness is not None else None
+            remote_ok = witness is None or 0 <= remote_age <= GUARDED_REMOTE_MAX_AGE_SECONDS
+            cached = entry['value'] if age is not None and 0 <= age <= max_age and remote_ok else None
+            remote_launch = (witness is not None and 0 <= age <= max_age
+                             and (remote_age < 0 or remote_age >= GUARDED_REMOTE_REFRESH_SECONDS)
+                             and key not in self.remote_inflight
+                             and len(self.remote_inflight) < self.max_inflight)
+            if remote_launch:
+                self.remote_inflight.add(key)
+            launch = ((age is None or age < 0 or age >= refresh_age)
+                      and key not in self.inflight and len(self.inflight) < self.max_inflight)
+            if launch:
+                self.inflight.add(key)
+        if remote_launch:
+            def refresh_remote():
+                try:
+                    valid = witness.remote() is True
+                except Exception:
+                    valid = False
+                finally:
+                    with self.lock:
+                        if self.entries.get(key) is entry:
+                            if valid:
+                                # A slow remote read must not make the start
+                                # of that observation appear newly verified.
+                                entry['remote_at'] = now
+                            else:
+                                self.entries.pop(key, None)
+                        self.remote_inflight.discard(key)
+            try:
+                Thread(target=refresh_remote, name='postprocessing-prefect-witness', daemon=True).start()
+            except Exception:
+                with self.lock:
+                    if self.entries.get(key) is entry:
+                        self.entries.pop(key, None)
+                    self.remote_inflight.discard(key)
+                cached = None
+        if launch:
+            def refresh():
+                value = None
+                try:
+                    value = copy.deepcopy(compute())
+                    guard = getattr(value, '_cache_witness', None)
+                    if guard is not None and (not callable(getattr(guard, 'local', None))
+                                              or not callable(getattr(guard, 'remote', None))):
+                        value, guard = None, None
+                except Exception:
+                    value, guard = None, None
+                finally:
+                    with self.lock:
+                        now = projection_clock()
+                        self.entries[key] = dict(at=now, value=value, witness=guard, remote_at=now)
+                        self.entries.move_to_end(key)
+                        while len(self.entries) > self.max_entries:
+                            self.entries.popitem(last=False)
+                        self.inflight.discard(key)
+            try:
+                Thread(target=refresh, name='postprocessing-projection', daemon=True).start()
+            except Exception:
+                with self.lock:
+                    self.inflight.discard(key)
+        if cached is not None:
+            with self.lock:
+                if self.entries.get(key) is not entry:
+                    return None
+        return copy.deepcopy(cached)
+
+
+def create_app(queue, *, max_age_seconds=60, enable_claims=False, ticket_observer=None,
+               stage_projection=None, results_projection=None):
+    app = FastAPI(title='本地接收等待统计', version='1.0')
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origin_regex=r'^https?://(localhost|127\.0\.0\.1)(:\d+)?$',
+        allow_methods=['GET'], allow_headers=['*'])
+    llm_cache = {'key': None, 'at': 0.0, 'value': None, 'inflight': False}
+    llm_lock = Lock()
+    stage_cache = _ProjectionCache(max_inflight=1)
+    results_cache = _ProjectionCache()
+
+    def projection_nonblocking(snapshot, ticket_summary, projection, cache, args, validator):
+        if (not callable(projection) or not _usable_source(snapshot)
+                or ticket_summary.get('source') != 'prefect'
+                or ticket_summary.get('scope') != 'all_tasks'):
+            return None
+        captured = copy.deepcopy(snapshot)
+        source = _snapshot_key(captured)
+        key = (source, *args)
+
+        def read():
+            value = projection(*args) if cache is results_cache else projection(copy.deepcopy(captured))
+            if not validator(value):
+                return None
+            current = queue.snapshot(max_age_seconds=max_age_seconds)
+            if not _usable_source(current) or _snapshot_key(current) != source:
+                return None
+            return value
+
+        return cache.get(key, read, snapshot=captured)
+
+    def llm_snapshot_key(snapshot):
+        return (snapshot.get('receiver_status'), snapshot.get('receiver_session_id'),
+                snapshot.get('scan_source_instance'), snapshot.get('waiting_available'),
+                snapshot.get('upstream_scan_verified'), snapshot.get('waiting_llm_total'))
+
+    def llm_summary_nonblocking(snapshot):
+        """Keep Prefect latency from blanking unrelated preprocessing cards."""
+        if ticket_observer is None or snapshot.get('receiver_status') != 'running':
+            return None
+        key = llm_snapshot_key(snapshot)
+        started = time.monotonic()
+        with llm_lock:
+            age = started - llm_cache['at'] if llm_cache['key'] == key else None
+            cached = llm_cache['value'] if age is not None and age <= 8 else None
+            launch = (age is None or age >= 4) and not llm_cache['inflight']
+            if launch:
+                llm_cache['inflight'] = True
+        if launch:
+            def refresh():
+                value = None
+                try:
+                    from llm_queue_summary import summarize_llm
+                    value = summarize_llm(queue, ticket_observer.index, ticket_observer, snapshot)
+                    current = queue.snapshot(max_age_seconds=max_age_seconds)
+                    if llm_snapshot_key(current) != key:
+                        value = None
+                except Exception:
+                    value = None
+                finally:
+                    with llm_lock:
+                        llm_cache.update(key=key, at=time.monotonic(), value=value, inflight=False)
+            Thread(target=refresh, name='prefect-llm-summary', daemon=True).start()
+        return cached
+
+    @app.get('/api/v1/local-intake/preprocessing/summary')
+    def waiting_summary(response: Response, result_filter: Literal['passed', 'failed', 'unrecognized'] | None = None,
+                        result_page: int = Query(1, ge=1, le=1000000),
+                        result_page_size: int = Query(20, ge=1, le=100),
+                        llm_result_filter: Literal['passed', 'failed', 'unrecognized'] | None = None,
+                        llm_result_page: int = Query(1, ge=1, le=1000000),
+                        llm_result_page_size: int = Query(20, ge=1, le=100),
+                        postprocessing_result_filter: Literal['passed', 'failed', 'unrecognized'] | None = None,
+                        postprocessing_result_page: int = Query(1, ge=1, le=1000000),
+                        postprocessing_result_page_size: int = Query(20, ge=1, le=100)):
+        response.headers['Cache-Control'] = 'no-store'
+        try:
+            snapshot = queue.snapshot(max_age_seconds=max_age_seconds)
+            snapshot['prefect_ticket_summary'] = (
+                ticket_observer.summary(snapshot) if ticket_observer is not None else
+                {'source': 'prefect', 'scope': 'all_tasks', 'available': False, 'counts': {}})
+            results = (ticket_observer.preprocessing_results(snapshot, result_filter, result_page, result_page_size)
+                       if ticket_observer is not None else {'available': False, 'counts': {}})
+            snapshot['preprocessing_results'] = results
+            # An unavailable LLM results projection must not break the existing
+            # preprocessing counts or other queue cards.
+            try:
+                snapshot['llm_results'] = (
+                    ticket_observer.llm_results(snapshot, llm_result_filter, llm_result_page, llm_result_page_size)
+                    if ticket_observer is not None else {'available': False, 'counts': {}})
+            except Exception:
+                snapshot['llm_results'] = {'available': False, 'counts': {}, 'message': 'LLM 结果暂不可用'}
+            ticket_summary = snapshot['prefect_ticket_summary']
+            # Never reuse upstream cumulative LLM completions as current stage counts.
+            ticket_summary['counts'] = dict(ticket_summary.get('counts', {}))
+            for name in (*STAGE_KEYS, *STAGE_DIAGNOSTICS):
+                ticket_summary['counts'].pop(name, None)
+            ticket_summary.pop('postprocessing_basis', None)
+            ticket_summary.pop('postprocessing_as_of', None)
+            ticket_summary.pop('waiting_postprocessing_partial', None)
+            if ticket_summary.get('available'):
+                # The live snapshot checks which local preprocessing attempts
+                # are actually active. Do not discard it merely because an
+                # older cached ticket snapshot has a different count.
+                in_progress = snapshot.get('in_progress_count')
+                if type(in_progress) is int and in_progress >= 0:
+                    ticket_summary['counts']['preprocessing_in_progress'] = in_progress
+                    ticket_summary['preprocessing_in_progress_as_of'] = snapshot.get('as_of')
+                else:
+                    ticket_summary['counts'].pop('preprocessing_in_progress', None)
+                # Passed preprocessing is cumulative, not the current LLM
+                # waiting queue. Derive LLM phases from the folder ledger.
+                names = ('waiting_llm', 'llm_body_in_progress', 'llm_attachment_in_progress')
+                try:
+                    llm = llm_summary_nonblocking(snapshot)
+                    if llm is None:
+                        raise ValueError('LLM 工单快照暂不可用')
+                    for name in names:
+                        value = llm.get(name)
+                        if type(value) is int and value >= 0:
+                            ticket_summary['counts'][name] = value
+                        else:
+                            ticket_summary['counts'].pop(name, None)
+                    ticket_summary['waiting_llm_as_of'] = llm.get('as_of')
+                    ticket_summary['waiting_llm_partial'] = llm['waiting_llm_partial']
+                    ticket_summary['llm_processing_as_of'] = llm.get('as_of')
+                    ticket_summary['llm_body_in_progress_partial'] = llm['llm_body_in_progress_partial']
+                    ticket_summary['llm_attachment_in_progress_partial'] = llm['llm_attachment_in_progress_partial']
+                except Exception:
+                    for name in names:
+                        ticket_summary['counts'].pop(name, None)
+            stage = projection_nonblocking(snapshot, ticket_summary, stage_projection, stage_cache, (), _valid_stage)
+            if stage is not None:
+                ticket_summary['counts'].update({key: stage['counts'][key] for key in STAGE_KEYS})
+                for key in STAGE_DIAGNOSTICS:
+                    if key in stage['counts']:
+                        ticket_summary['counts'][key] = stage['counts'][key]
+                ticket_summary['postprocessing_basis'] = stage['basis']
+                ticket_summary['waiting_postprocessing_partial'] = stage['counts'].get(
+                    'waiting_postprocessing_partial', False)
+                if isinstance(stage.get('as_of'), str):
+                    ticket_summary['postprocessing_as_of'] = stage['as_of']
+            args = (postprocessing_result_filter, postprocessing_result_page, postprocessing_result_page_size)
+            result = projection_nonblocking(snapshot, ticket_summary, results_projection, results_cache, args,
+                                            lambda value: _valid_results(value, *args))
+            snapshot['postprocessing_results'] = result if result is not None else _unavailable_results(*args)
+            return snapshot
+        except (OSError, sqlite3.Error):
+            return JSONResponse(
+                status_code=503,
+                headers={'Cache-Control': 'no-store'},
+                content={'scope': 'all_tasks', 'waiting_count': None,
+                         'waiting_available': False,
+                         'as_of': datetime.now(timezone.utc).isoformat(),
+                         'upstream_scan_completed_at': None,
+                         'upstream_scan_status': 'unavailable',
+                         'receiver_status': 'unknown', 'receiver_heartbeat_at': None,
+                         'oldest_verified_at': None, 'needs_review_count': None,
+                         'preprocessing_handoff_connected': False,
+                         'error': 'local_state_unavailable'})
+
+    @app.get('/api/v1/local-intake/llm/waiting')
+    def llm_waiting(response: Response):
+        response.headers['Cache-Control'] = 'no-store'
+        try:
+            if ticket_observer is None:
+                raise ValueError('文件夹工单观察器不可用')
+            from llm_queue_summary import summarize_llm
+            snapshot = queue.snapshot(max_age_seconds=max_age_seconds)
+            llm = summarize_llm(queue, ticket_observer.index, ticket_observer, snapshot)
+            return {'available': llm['waiting_llm'] is not None, 'waiting_count': llm['waiting_llm'],
+                    'unavailable_count': llm['unavailable_count'], 'items': llm['waiting_items'],
+                    'partial': llm['waiting_llm_partial']}
+        except Exception:
+            return JSONResponse(status_code=503, headers={'Cache-Control': 'no-store'},
+                                content={'available': False, 'waiting_count': None, 'items': []})
+
+    return app

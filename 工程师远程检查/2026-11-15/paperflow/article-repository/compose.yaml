@@ -1,0 +1,39 @@
+services:
+  article-postgres:
+    image: postgres:18.6-alpine
+    container_name: paperflow-article-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: article_repository
+      POSTGRES_USER: article_repository
+      POSTGRES_PASSWORD: $ARTICLE_POSTGRES_PASSWORD
+    volumes:
+      - article_pgdata:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U article_repository"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+  repository:
+    build: .
+    container_name: paperflow-article-repository
+    restart: unless-stopped
+    depends_on:
+      article-postgres:
+        condition: service_healthy
+    env_file: .env
+    environment:
+      ARTICLE_DATABASE_URL: postgresql://article_repository:$ARTICLE_POSTGRES_PASSWORD@article-postgres/article_repository
+      QDRANT_URL: http://paperflow-qdrant:6333
+      PREFECT_API_URL: http://192.168.1.120:4200/api
+      ARTICLE_NAS_ROOT: '\\192.168.1.67\paper_ai\论文原件库'
+      HAYSTACK_TELEMETRY_ENABLED: 'false'
+      PYTHONUNBUFFERED: '1'
+    ports:
+      - '192.168.1.120:8098:8098'
+volumes:
+  article_pgdata:
+networks:
+  default:
+    external: true
+    name: paperflow-qdrant-20261103_default

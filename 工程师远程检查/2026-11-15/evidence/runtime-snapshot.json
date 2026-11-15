@@ -1,0 +1,73 @@
+{
+  "observed_at": "2026-11-15T21:08:12.985735+08:00",
+  "mode": "read-only; no model calls, business writes, or lifecycle operations",
+  "http": {
+    "prefect-health": {
+      "status_code": 200
+    },
+    "prefect-version": {
+      "status_code": 200,
+      "version": "0.8.4"
+    },
+    "qdrant-health": {
+      "status_code": 200,
+      "status": "ok",
+      "backend": "qdrant"
+    }
+  },
+  "deployments_read_status": 200,
+  "v3_deployments": [
+    {
+      "id": "6d189f0e-26fc-4e43-9209-8bbc7ee0607f",
+      "name": "paper",
+      "entrypoint": "paperflow_v3\\control\\flows.py:paper_order",
+      "path": ".",
+      "work_pool_name": "paperflow-v3-parent-child",
+      "version": "200f6163cb1f2f5d78f9fd7861db2f4d",
+      "updated": "2026-11-15T09:59:43.870262Z",
+      "working_dir": "F:\\论文预处理系统\\预处理系统2\\candidates\\parent-child-v3-20261102"
+    },
+    {
+      "id": "a035a625-30c1-4893-90f7-fea031ed13da",
+      "name": "parent",
+      "entrypoint": "paperflow_v3\\control\\flows.py:parent_order",
+      "path": ".",
+      "work_pool_name": "paperflow-v3-parent-child",
+      "version": "200f6163cb1f2f5d78f9fd7861db2f4d",
+      "updated": "2026-11-15T09:59:43.461628Z",
+      "working_dir": "F:\\论文预处理系统\\预处理系统2\\candidates\\parent-child-v3-20261102"
+    }
+  ],
+  "v3_workers": [
+    {
+      "name": "StageProcessWorker 3127e306-df37-480a-ace6-3ee671d718d5",
+      "status": "ONLINE",
+      "last_heartbeat_time": "2026-11-15T13:07:51.502582Z"
+    }
+  ],
+  "historical_offline_worker_count": 42,
+  "workers_read_status": 200,
+  "configured_limits": {
+    "body_llm": 50,
+    "attachment_llm": 50,
+    "total_llm": 50,
+    "local": 5,
+    "package": 10,
+    "rag": 20,
+    "nas": 2,
+    "cleanup": 2
+  },
+  "configured_backend": "qdrant",
+  "nas": {
+    "host": "zwjy-nas",
+    "ipv4": "192.168.1.67",
+    "archive_root_directory_accessible": true
+  },
+  "local_ports": {
+    "8795": false,
+    "8796": true,
+    "8797": true,
+    "8826": true,
+    "11434": true
+  }
+}

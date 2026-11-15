@@ -1,0 +1,89 @@
+{
+  "schema": "naming-candidate-manifest/2",
+  "captured_at_utc": "2026-10-30T00:04:49.062322+00:00",
+  "live_config_sha256_at_snapshot": "a2c79343829a04864a58017f95d6b79874b4c23fba5f7b363e31f7115c5a8837",
+  "status": "isolated_not_installed",
+  "future_automatic_title_request": "not_wired",
+  "files": [
+    {
+      "relative": "paperflow_prefect/attachment_ingest.py",
+      "candidate_sha256": "80c19c337002a2875dafef4bd7aaaf35198ecfad650dadfd7a43df328c120bff",
+      "live_sha256_at_snapshot": "419ac8354eab6fed6a7e8387c81147a58f2893ab786ab5b7eb49af31d7beac1f"
+    },
+    {
+      "relative": "paperflow_prefect/attachment_publish.py",
+      "candidate_sha256": "7aa183db60f47e00b19456a1bbe82ad95003234f5ea0e5c236e123545e1ff2fa",
+      "live_sha256_at_snapshot": "944d984bc59a5fb9e5d568fd7bedca1b6050e7334564f025765e840356cac5ac"
+    },
+    {
+      "relative": "paperflow_prefect/attachments.py",
+      "candidate_sha256": "23bf3a8066a4cc3c61fe8c9e82ce9df7ae963a9cf6b617f32b2a96045aaa38b1",
+      "live_sha256_at_snapshot": "569fe07f24dae66c91c498496ed0e6a5ed8aeecb7b13f168c713ec520dec5288"
+    },
+    {
+      "relative": "paperflow_prefect/backend.py",
+      "candidate_sha256": "4a78afe76dae787c03152e4a47b32750e6af719bcd16820c8fc85748ac472eea",
+      "live_sha256_at_snapshot": "1fd13eeb9117f943f89e2022f1fd4bd284bdeb5173322764afa4b6f210106f3c"
+    },
+    {
+      "relative": "paperflow_prefect/filename_title.py",
+      "candidate_sha256": "d786add4eec3a8c50cf30cea15c7bd0133938e187ed8275fec42b459dd08f95f",
+      "live_sha256_at_snapshot": null
+    },
+    {
+      "relative": "paperflow_prefect/group_classification.py",
+      "candidate_sha256": "45514894d2442e00c005f6d7b3d8ae53e6ead20e1aca81850493be46247769b8",
+      "live_sha256_at_snapshot": "acfdae3bc29612fe971e3eb7ce538bd2a313776efdcc8b7b6cb3cd63afa35a1a"
+    },
+    {
+      "relative": "paperflow_prefect/group_evidence.py",
+      "candidate_sha256": "1ff20875b763c44ffe46864d1b494ce12ad4c299a1571b8819efe8f2e45e8afa",
+      "live_sha256_at_snapshot": "fda70ecbe4d1cfad24ab54c6222997a9a28f3636855a273351b96a9b289caa27"
+    },
+    {
+      "relative": "paperflow_prefect/group_sort_cli.py",
+      "candidate_sha256": "9ee12501d140ab0bf3fff405de85fd7e7fc315edb71e72cd1dba12c89826f6c7",
+      "live_sha256_at_snapshot": "927ce75c11c31f78d695f7d2019c8a9dc4cbd3a2d386e19fa88288f74d8ef65a"
+    },
+    {
+      "relative": "paperflow_prefect/intake_handoff.py",
+      "candidate_sha256": "56fd0e9414453cd0ac3a3e21ff240e25a6b3b5b6b03c252d07b9ff4570b651d0",
+      "live_sha256_at_snapshot": "cd4802d7e05e9a360c9363319a9912905496cd8ef61770315e3069917deeb902"
+    },
+    {
+      "relative": "paperflow_prefect/named_delivery.py",
+      "candidate_sha256": "f0a8ac671c3bcdc5d58265a9e9148aa9e10a741bd8235205a1213d148ce5d028",
+      "live_sha256_at_snapshot": null
+    },
+    {
+      "relative": "paperflow_prefect/nimble_group.py",
+      "candidate_sha256": "5a974f73698113de12fe544e08215a36b461d8997c9235a103159e92aca0321c",
+      "live_sha256_at_snapshot": "cff057e1db78cc2de7b4131c91fc6a477647e93f7889ef9297242bf37708d4d1"
+    },
+    {
+      "relative": "paperflow_prefect/stage3_handoff.py",
+      "candidate_sha256": "3444cb3ff006ebc364c763fbd9424afab8df14bc0ada2e44dd240eb916efc4bd",
+      "live_sha256_at_snapshot": "1c3486a9a42e641ef7d6a26c27f93d752dae9b6c93cc0a6afabf4015a20715c8"
+    },
+    {
+      "relative": "paperflow_prefect/unified_attachments.py",
+      "candidate_sha256": "358ef638828c17b8281068f8b9a7c3b795212622d49acf58968fe8884023afe4",
+      "live_sha256_at_snapshot": "ac84ee00e7e7e189910e5aac32562d035cf5692f58a742180eb8235635cecccb"
+    },
+    {
+      "relative": "paperflow_prefect/generated_title_journal.py",
+      "candidate_sha256": "3f5013ee9c38c62c42b69f469377dd5fb5f0057082736301a66c75481276d247",
+      "live_sha256_at_snapshot": null
+    },
+    {
+      "relative": "title_llm_supplement.py",
+      "candidate_sha256": "4618f1c16471e13445ccf7213ec685ab656aab3cffa5cdccaadae21ee11f9f12",
+      "live_sha256_at_snapshot": null
+    },
+    {
+      "relative": "stage_generated_title_inputs.py",
+      "candidate_sha256": "bbbfe1335dfb6825d5c8181012d38c9dc9a0987b9e5dcd605e8119665fad777a",
+      "live_sha256_at_snapshot": null
+    }
+  ]
+}

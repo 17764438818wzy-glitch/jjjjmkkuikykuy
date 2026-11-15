@@ -1,0 +1,66 @@
+{
+  "snapshot_at_utc": "2026-10-29T19:53:22.046578+00:00",
+  "source": "read-only running container file snapshot",
+  "container": "ragflow-server-ragflow-1",
+  "versions": {
+    "quart": "0.20.0",
+    "python": "3.13.11"
+  },
+  "files": [
+    {
+      "path": "api/apps/restful_apis/chunk_api.py",
+      "size": 62174,
+      "sha256": "58e52762e818927a2675a6d5d945a488dc5e9bb606f48ad26e4d6a8474f4267f"
+    },
+    {
+      "path": "api/apps/__init__.py",
+      "size": 15566,
+      "sha256": "a69fbdf8fd18cedde60fcd0245e558ebef8198039aad532576d28a7f7726ba27"
+    },
+    {
+      "path": "api/ragflow_server.py",
+      "size": 6548,
+      "sha256": "b1f2de1654a859459aec65383f27da48192e3e9d278f5b926ba728d824202ce0"
+    },
+    {
+      "path": "api/db/services/document_service.py",
+      "size": 58299,
+      "sha256": "323fc77b4d9405ad0e9812592eab0d3c8f04cee72abd1c163fe0bc0dd4f79275"
+    },
+    {
+      "path": "api/db/services/knowledgebase_service.py",
+      "size": 25934,
+      "sha256": "cb3f777e034a972cda2771aa273dec2fe96d23fd5a566be87d4e0f6e62fcc825"
+    },
+    {
+      "path": "api/db/services/tenant_llm_service.py",
+      "size": 24447,
+      "sha256": "b9c1fd908b757f1918432ffff7cfaff5e34fb473c034154dd9abb5e35ed47308"
+    },
+    {
+      "path": "api/db/joint_services/tenant_model_service.py",
+      "size": 25449,
+      "sha256": "2156a00303d194dd5398e3d435f5f73d31d9b9e1ccb371fd8596d145e0faf556"
+    },
+    {
+      "path": "api/db/db_models.py",
+      "size": 122339,
+      "sha256": "65afe20e083f39c7b258fe49a41b74590d1eddd1401fe30229b9b859dd9f6046"
+    },
+    {
+      "path": "common/misc_utils.py",
+      "size": 13376,
+      "sha256": "e332fd6fa4984e2c28480b11ca90bf1f4099e1ef099642f39305a29eb49bfac8"
+    },
+    {
+      "path": "common/llm_request_context.py",
+      "size": 3857,
+      "sha256": "b22c7ebc302917f0ecbb539ad6fd26c091d41f801bee71bf9603f75bdca6b17b"
+    },
+    {
+      "path": "rag/utils/es_conn.py",
+      "size": 28014,
+      "sha256": "a865ff1a6cee5e3dc362347e989a3d6b6494f0122ff756d80f4f050288c37cf4"
+    }
+  ]
+}

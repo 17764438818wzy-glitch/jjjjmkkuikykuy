@@ -1,0 +1,5 @@
+def _uuid(value):
+    try:
+        return isinstance(value, str) and str(UUID(value)) == value
+    except (ValueError, AttributeError):
+        return False

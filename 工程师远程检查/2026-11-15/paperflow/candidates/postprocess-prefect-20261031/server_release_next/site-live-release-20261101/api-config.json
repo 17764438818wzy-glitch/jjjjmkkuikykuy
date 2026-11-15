@@ -1,0 +1,5 @@
+{
+  "api_base_url": "http://127.0.0.1:14203",
+  "folder_tickets_api_url": "http://127.0.0.1:14206/api/v1/prefect/folder-tickets",
+  "open_current": true
+}

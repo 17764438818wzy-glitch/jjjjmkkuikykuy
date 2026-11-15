@@ -1,0 +1,2 @@
+def _value(path):
+    return json.loads(_read(path))

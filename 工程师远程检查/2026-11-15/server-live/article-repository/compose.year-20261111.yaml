@@ -1,0 +1,3 @@
+services:
+  repository:
+    image: paperflow-article-repository:year-20261111-r2

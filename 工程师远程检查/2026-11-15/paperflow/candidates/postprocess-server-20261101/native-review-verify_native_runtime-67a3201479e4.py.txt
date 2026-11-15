@@ -1,0 +1,78 @@
+def verify_native_runtime(config):
+    """Verify pinned known bytes and the actual supported counter launch binding.
+
+    These checks do not prove the complete future dynamic dependency closure.
+    """
+    raw = _read(config['native_manifest'])
+    _require(_digest(raw) == config['native_manifest_sha256'], 'native runtime inventory changed')
+    manifest = json.loads(raw)
+    _require(manifest.get('schema') == 'paperflow-native-runtime/1'
+             and manifest.get('verification_scope') == 'pinned-known-files'
+             and manifest.get('reviewed_dependency_closure') is False
+             and isinstance(manifest.get('files'), list) and manifest['files'],
+             'an explicitly scoped, independently pinned native file inventory is required')
+    files = {}
+    for ref in manifest['files']:
+        path = _absolute(ref['path'])
+        _require(path.resolve(strict=True) == path and str(path) not in files,
+                 'native files must be canonical, independent and unique')
+        tree = _Tree(path.parent)
+        try:
+            with tree.regular(path.name) as (stream, before):
+                _require(before.st_size == ref['bytes']
+                    and _stream_digest(stream) == ref['sha256'],
+                    'native dependency bytes changed')
+        finally:
+            tree.close()
+        files[str(path)] = ref
+    roles = manifest['roles']
+    required = {'python', 'service_script', 'worker_script', 'wine64', 'counter_config',
+                'counter_env', 'counter_runtime_manifest', 'model', 'libllama', 'cl100k'}
+    _require(required <= set(roles), 'native runtime roles are incomplete')
+    for path in roles.values():
+        _require(str(_absolute(path).resolve(strict=True)) in files, 'native role is not inventoried')
+    here = Path(__file__).resolve()
+    expected = dict(python=Path(sys.executable).resolve(), service_script=here,
+        worker_script=here.with_name('server_wine_worker.py'),
+        wine64=Path(config['base']) / 'wine-runtime/usr/lib/wine/wine64',
+        counter_config=Path(config['base']) / 'tokenizer/server-counter-config.json')
+    _require(all(Path(roles[key]).resolve(strict=True) == path.resolve(strict=True)
+                 for key, path in expected.items()), 'actual interpreter/worker/Wine/config differs from pinned runtime')
+    # A venv interpreter can resolve to the system binary while selecting a
+    # different import environment. Preserve its invocation path as well.
+    _require(roles['python'] == sys.executable, 'actual Python invocation environment differs from pinned runtime')
+    environment = dict(prefix=sys.prefix, base_prefix=sys.base_prefix)
+    _require(manifest.get('python_environment') == environment,
+             'actual Python prefix differs from the reviewed environment')
+    if sys.prefix != sys.base_prefix:
+        prefix = _absolute(sys.prefix)
+        _require(prefix.resolve(strict=True) == prefix and Path(roles['python']).parent == prefix / 'bin'
+                 and str(prefix / 'pyvenv.cfg') in files,
+                 'private virtual-environment invocation and pinned pyvenv.cfg are required')
+    critical = ['remote_jobs.py', 'server_admission.py', 'server_release.py', 'server_supervisor.py',
+                'server_receipt_inspect.py', 'snapshot_import.py', 'snapshot_wire.py',
+                'windows_snapshot.py', 'tokenizer_service.py', 'server_path_guard.py',
+                'server_service_descriptor.py', 'server_receipt_query.py', 'server_rpc.py']
+    _require(all(str(here.with_name(name)) in files for name in critical),
+             'service dependency source files are not pinned')
+    _require(_mapped_executables() <= set(files), 'currently mapped native loader/library is not pinned')
+    counter = _value(roles['counter_config'])
+    command = counter.get('counter', {}).get('command')
+    _require(isinstance(command, list) and len(command) == 4
+        and all(isinstance(part, str) and '\0' not in part for part in command)
+        and (command[0] == 'env' or Path(command[0]).is_absolute()),
+        'only the reviewed env/LD_LIBRARY_PATH/venv-python/-B counter command is supported')
+    actual_env = shutil.which(command[0], path=_WORKER_PATH)
+    _require(actual_env is not None
+        and Path(actual_env).resolve(strict=True) == Path(roles['counter_env']).resolve(strict=True)
+        and command[1] == 'LD_LIBRARY_PATH=' + str(Path(roles['libllama']).resolve(strict=True).parent)
+        and command[2:] == [roles['python'], '-B'],
+        'counter env resolution, native library directory or venv Python differs from fixed roles')
+    runtime_manifest = _absolute(roles['counter_runtime_manifest'])
+    _require(str(runtime_manifest.resolve(strict=True)) == str(runtime_manifest)
+        and counter['counter'].get('runtime_manifest') == str(runtime_manifest),
+        'actual counter runtime manifest differs from the inventoried file')
+    for role, policy_key in [('model', 'model_sha256'), ('libllama', 'libllama_sha256'), ('cl100k', 'cl100k_sha256')]:
+        ref = files[str(Path(roles[role]).resolve(strict=True))]
+        _require(ref['sha256'] == counter['policy'][policy_key], 'counter/native policy identity mismatch')
+    return manifest

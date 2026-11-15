@@ -1,0 +1,34 @@
+{
+  "scope": "desktop108-20261029",
+  "records": [
+    {
+      "group": "刘婉婷_201913137111",
+      "paper_id": "PF_10ae7c24f9bd4b6fa3fe8011",
+      "record": "F:\\论文预处理系统\\预处理系统2\\candidates\\paper-title-naming-20261029\\staged-separate-cover-corrections\\naming-overrides\\PF_10ae7c24f9bd4b6fa3fe8011\\title.json",
+      "record_sha256": "8923203b6becf43645eda50e98a12b600b331c0e93ea1d4213c59a70861320ab",
+      "display_name": "基于Java的宠物领养系统开发.docx"
+    },
+    {
+      "group": "王梓旻_201921190060",
+      "paper_id": "PF_132ec21b342f4e5fbeafd6f6",
+      "record": "F:\\论文预处理系统\\预处理系统2\\candidates\\paper-title-naming-20261029\\staged-separate-cover-corrections\\naming-overrides\\PF_132ec21b342f4e5fbeafd6f6\\title.json",
+      "record_sha256": "1b992e9fbcc1fa9ccfc25ea4f640326bd518fdb0b03d08bfd06d96034c952b50",
+      "display_name": "基于数字图像处理的自动对焦算法分析设计.docx"
+    },
+    {
+      "group": "廖显奇_201913136066",
+      "paper_id": "PF_41d76666eb7441fa9395ccac",
+      "record": "F:\\论文预处理系统\\预处理系统2\\candidates\\paper-title-naming-20261029\\staged-separate-cover-corrections\\naming-overrides\\PF_41d76666eb7441fa9395ccac\\title.json",
+      "record_sha256": "7d155b45bdfcd50053f551f1f7a815743a6cb747d7afe7f23dbb3ba79fee9ac5",
+      "display_name": "基于SpringBoot和Vue的电商网站的设计.docx"
+    },
+    {
+      "group": "徐家顺_201913137133",
+      "paper_id": "PF_87e5e094f0474d98becbcc8b",
+      "record": "F:\\论文预处理系统\\预处理系统2\\candidates\\paper-title-naming-20261029\\staged-separate-cover-corrections\\naming-overrides\\PF_87e5e094f0474d98becbcc8b\\title.json",
+      "record_sha256": "ce5e0cfdb38759056023060b528b45fedcb85a9dc38cd16cdafbce5b3b0495d8",
+      "display_name": "基于SpringBoot和Vue的影视信息系统开发.doc"
+    }
+  ],
+  "live_writes": 0
+}

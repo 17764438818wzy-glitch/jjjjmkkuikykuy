@@ -1,0 +1,52 @@
+预处理程序卡死修复与验证记录
+完成时间：2026-10-22T18:04:05-07:00
+
+结果：卡死修复已应用到现有统一启动入口，并按用户后续指令重开程序。
+新程序 PID 26756，窗口标题“论文知识库预处理工作台”，Windows 检查正常响应。
+本次用现有 --monitor 模式打开，recover=False，不恢复预处理或自动上传。
+本批最后落盘进度 157/6197 个来源；这不等于157篇通过或入库完成。旧父清单字节保持原样，旧 running 标签没有被本次改写。
+
+修复内容：
+1. 工作线程无论正常结束、提前停止还是异常，均在 finally 释放其准备/模型/后处理名额。
+2. 调度器发生异常时，在线程池收尾等待之前，先传播停止信号并唤醒等待线程。
+3. 转换原始异常不再被取消异常遮盖；结果目录刷新失败也不覆盖首发异常。
+4. 主界面事件循环返回或异常退出时，取消其处理线程；保存异常类型及调用位置，不记录异常参数或局部变量。
+5. 统一启动入口接通已有 --monitor 参数，保留原有重复实例保护。
+
+验证：
+- 原版共10个新增定向用例按预期失败；修复后10项通过。
+- 覆盖原始卡死等待链、真实子进程退出、真实DOCX回答与封包保持、异常记录及不恢复任务的启动参数。
+- 扩展183项：165通过，9项断言失败，9项缺旧诊断脚本错误。后18项在未修改的原版逐项重跑，名称、类型和错误信息完全相同，未发现新增回归。
+- 真实更新加载器的模块来源校验、篡改拒绝、热替换拒绝均通过；隔离GUI 6个页面、空闲、无任务启动。
+- 独立审查通过；最终也独立核实了真实新窗口、版本选择和旧清单哈希。
+
+已保存成果保护：
+- 529818个受保护文件，共8003364075字节，逐个SHA256前后核对：变化0。
+- 当前批次16087个文件大小及修改时间：变化0。
+- 6191个现存原始输入的大小及修改时间：变化0。
+- 原版本22个模块内容：变化0。新修复使用独立更新目录。
+- 确认旧进程身份、创建时间和卡死栈后，仅结束PID 9932；其他现有进程保留。
+- 实际重开后未产生新run、未启动上传worker，模型用量日志仍停在17:18:54。
+
+边界：本次已证明退出收尾卡死缺陷得到修复。最初触发旧程序退出的异常没有保留日志，仍不知道具体触发原因。没有通过恢复生产任务来验收。
+后续处理与上传续跑仍等待明确指令。
+
+既有测试问题（本次未扩大修改，详细错误信息见同目录JSON）：
+- ma-s.outputs.论文预处理系统.desktop.test_preextract_refill::test_preparation_runs_ahead_of_four_blocked_models_without_building_waiting_requests[12-True] [failure]
+- ma-s.outputs.论文预处理系统.desktop.test_parallel_result_regressions::test_new_parallel_run_clears_previous_stop_flag [failure]
+- ma-s.outputs.论文预处理系统.desktop.test_recovery_parallel_batches::test_main_dispatches_bounded_batches_using_saved_limits[normal] [error]
+- ma-s.outputs.论文预处理系统.desktop.test_recovery_parallel_batches::test_main_dispatches_bounded_batches_using_saved_limits[service_failure] [error]
+- ma-s.outputs.论文预处理系统.desktop.test_recovery_parallel_batches::test_main_dispatches_bounded_batches_using_saved_limits[stop_after_batch] [error]
+- ma-s.outputs.论文预处理系统.desktop.test_recovery_parallel_batches::test_main_dispatches_bounded_batches_using_saved_limits[legacy_console] [error]
+- ma-s.outputs.论文预处理系统.desktop.test_recovery_parallel_batches::test_main_dispatches_bounded_batches_using_saved_limits[mixed_versions] [error]
+- ma-s.outputs.论文预处理系统.desktop.test_recovery_parallel_batches::test_batch_receipts_keep_archive_members_separate [error]
+- ma-s.outputs.论文预处理系统.desktop.test_recovery_parallel_batches::test_batch_crash_keeps_every_pending_source_and_created_run [error]
+- ma-s.outputs.论文预处理系统.desktop.test_recovery_parallel_batches::test_archive_expansion_and_duplicate_skip_have_individual_receipts [error]
+- ma-s.outputs.论文预处理系统.desktop.test_recovery_parallel_batches::test_legacy_archive_member_duplicate_event_can_match_its_exact_path [error]
+- ma-s.outputs.论文预处理系统.desktop.test_preextract_workbench::test_original_runner_records_program_failure_without_entering_ai [failure]
+- ma-s.outputs.论文预处理系统.desktop.test_preextract_workbench::test_ai_failure_keeps_prepared_program_result [failure]
+- ma-s.outputs.论文预处理系统.desktop.test_preextract_workbench::test_packaging_failure_does_not_erase_valid_ai_result [failure]
+- ma-s.outputs.论文预处理系统.desktop.test_preextract_workbench::test_saved_incomplete_model_request_keeps_program_preparation_success [failure]
+- ma-s.outputs.论文预处理系统.desktop.test_preextract_workbench::test_targeted_read_uses_existing_gate_ledger_and_once_client [failure]
+- ma-s.outputs.论文预处理系统.desktop.test_preextract_workbench::test_child_and_global_requests_share_the_original_four_slot_gate [failure]
+- ma-s.outputs.论文预处理系统.desktop.test_preextract_reuse_repairs::test_saved_answer_validation_has_its_own_label_and_retry_eligibility [failure]

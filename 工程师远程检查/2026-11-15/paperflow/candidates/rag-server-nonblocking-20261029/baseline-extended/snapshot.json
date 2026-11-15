@@ -1,0 +1,55 @@
+{
+  "snapshot_at_utc": "2026-10-29T21:30:39.806624+00:00",
+  "source": "read-only server container source; executor container identity not established",
+  "versions": {
+    "quart": "0.20.0",
+    "python": "3.13.11"
+  },
+  "files": [
+    {
+      "path": "api/apps/restful_apis/chunk_api.py",
+      "sha256": "58e52762e818927a2675a6d5d945a488dc5e9bb606f48ad26e4d6a8474f4267f",
+      "bytes": 62174
+    },
+    {
+      "path": "api/apps/restful_apis/document_api.py",
+      "sha256": "06364bf4f07dd070ebf0ddac610dc44b52013269a14c314549f0cef2fbc3d4b7",
+      "bytes": 87435
+    },
+    {
+      "path": "api/apps/services/document_api_service.py",
+      "sha256": "ac43792254aac46d372acaa4bf1a7fb93a4b26df47414ea109983ec7283c6512",
+      "bytes": 11379
+    },
+    {
+      "path": "api/db/services/document_service.py",
+      "sha256": "323fc77b4d9405ad0e9812592eab0d3c8f04cee72abd1c163fe0bc0dd4f79275",
+      "bytes": 58299
+    },
+    {
+      "path": "api/db/services/knowledgebase_service.py",
+      "sha256": "cb3f777e034a972cda2771aa273dec2fe96d23fd5a566be87d4e0f6e62fcc825",
+      "bytes": 25934
+    },
+    {
+      "path": "api/db/db_models.py",
+      "sha256": "65afe20e083f39c7b258fe49a41b74590d1eddd1401fe30229b9b859dd9f6046",
+      "bytes": 122339
+    },
+    {
+      "path": "rag/svr/task_executor.py",
+      "sha256": "519958be3fc33d9d5f3e9fc38eae44e23aa24f5629e86fc5d7a0f047c239561f",
+      "bytes": 96976
+    },
+    {
+      "path": "rag/llm/embedding_model.py",
+      "sha256": "0efdebf67db6ab4dd48a6be561bc7ba6db30c93fa02e465a2bd429005a0898b3",
+      "bytes": 63512
+    },
+    {
+      "path": "rag/utils/es_conn.py",
+      "sha256": "a865ff1a6cee5e3dc362347e989a3d6b6494f0122ff756d80f4f050288c37cf4",
+      "bytes": 28014
+    }
+  ]
+}
